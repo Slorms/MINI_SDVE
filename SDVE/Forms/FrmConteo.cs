@@ -14,5 +14,10 @@ namespace SDVE.Forms
         {
             InitializeComponent();
         }
+
+        private void FrmConteo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
