@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -19,5 +18,10 @@ namespace SDVE.Forms
         {
 
         }
-    }
-}
+
+        private void dgvResultados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        
+    
+

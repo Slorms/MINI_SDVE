@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmExportaciones));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             pnlMenu = new Panel();
             btnConfiguracion = new Button();
             btnExportacion = new Button();
@@ -95,6 +96,34 @@
             pnlDona = new Panel();
             pnlLeyenda = new Panel();
             pnlAcciones = new Panel();
+            lblTituloAcciones = new Label();
+            btnProcesarResultados = new Button();
+            btnDetalleCandidatura = new Button();
+            btnParticipacionGrupo = new Button();
+            btnExportarResultados = new Button();
+            cmsExportar = new ContextMenuStrip(components);
+            itemExportarPDF = new ToolStripMenuItem();
+            itemExportarExcel = new ToolStripMenuItem();
+            pictureBox5 = new PictureBox();
+            pictureBox6 = new PictureBox();
+            pictureBox7 = new PictureBox();
+            pictureBox8 = new PictureBox();
+            pictureBox9 = new PictureBox();
+            pictureBox10 = new PictureBox();
+            pictureBox11 = new PictureBox();
+            pictureBox12 = new PictureBox();
+            pictureBox13 = new PictureBox();
+            pictureBox14 = new PictureBox();
+            pictureBox15 = new PictureBox();
+            pictureBox16 = new PictureBox();
+            pictureBox17 = new PictureBox();
+            pictureBox18 = new PictureBox();
+            pictureBox19 = new PictureBox();
+            pictureBox20 = new PictureBox();
+            pictureBox21 = new PictureBox();
+            pictureBox22 = new PictureBox();
+            pictureBox23 = new PictureBox();
+            pictureBox24 = new PictureBox();
             pnlMenu.SuspendLayout();
             pnlFiltros.SuspendLayout();
             pnlEstadisticas.SuspendLayout();
@@ -109,11 +138,39 @@
             pnlResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvResultados).BeginInit();
             pnlGrafica.SuspendLayout();
+            pnlAcciones.SuspendLayout();
+            cmsExportar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox19).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox20).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox23).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox24).BeginInit();
             SuspendLayout();
             // 
             // pnlMenu
             // 
-            pnlMenu.BackColor = Color.FromArgb(235, 240, 248);
+            pnlMenu.BackColor = Color.FromArgb(11, 50, 105);
+            pnlMenu.Controls.Add(pictureBox11);
+            pnlMenu.Controls.Add(pictureBox10);
+            pnlMenu.Controls.Add(pictureBox9);
+            pnlMenu.Controls.Add(pictureBox8);
+            pnlMenu.Controls.Add(pictureBox7);
+            pnlMenu.Controls.Add(pictureBox6);
             pnlMenu.Controls.Add(btnConfiguracion);
             pnlMenu.Controls.Add(btnExportacion);
             pnlMenu.Controls.Add(btnConvocatorias);
@@ -136,13 +193,13 @@
             btnConfiguracion.FlatAppearance.MouseOverBackColor = Color.Teal;
             btnConfiguracion.FlatStyle = FlatStyle.Flat;
             btnConfiguracion.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConfiguracion.ForeColor = Color.CadetBlue;
-            btnConfiguracion.Location = new Point(3, 800);
+            btnConfiguracion.ForeColor = Color.White;
+            btnConfiguracion.Location = new Point(43, 782);
             btnConfiguracion.Name = "btnConfiguracion";
-            btnConfiguracion.Size = new Size(210, 45);
+            btnConfiguracion.Size = new Size(187, 45);
             btnConfiguracion.TabIndex = 8;
             btnConfiguracion.Text = "Configuración";
-            btnConfiguracion.TextAlign = ContentAlignment.MiddleLeft;
+            btnConfiguracion.TextAlign = ContentAlignment.BottomLeft;
             btnConfiguracion.UseVisualStyleBackColor = true;
             // 
             // btnExportacion
@@ -152,13 +209,13 @@
             btnExportacion.FlatAppearance.MouseOverBackColor = Color.Teal;
             btnExportacion.FlatStyle = FlatStyle.Flat;
             btnExportacion.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExportacion.ForeColor = Color.FromArgb(35, 50, 75);
-            btnExportacion.Location = new Point(10, 370);
+            btnExportacion.ForeColor = Color.White;
+            btnExportacion.Location = new Point(43, 401);
             btnExportacion.Name = "btnExportacion";
-            btnExportacion.Size = new Size(210, 45);
+            btnExportacion.Size = new Size(187, 45);
             btnExportacion.TabIndex = 7;
             btnExportacion.Text = "Exportación";
-            btnExportacion.TextAlign = ContentAlignment.MiddleLeft;
+            btnExportacion.TextAlign = ContentAlignment.BottomLeft;
             btnExportacion.UseVisualStyleBackColor = true;
             // 
             // btnConvocatorias
@@ -168,13 +225,13 @@
             btnConvocatorias.FlatAppearance.MouseOverBackColor = Color.Teal;
             btnConvocatorias.FlatStyle = FlatStyle.Flat;
             btnConvocatorias.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConvocatorias.ForeColor = Color.FromArgb(35, 50, 75);
-            btnConvocatorias.Location = new Point(10, 205);
+            btnConvocatorias.ForeColor = Color.White;
+            btnConvocatorias.Location = new Point(43, 204);
             btnConvocatorias.Name = "btnConvocatorias";
-            btnConvocatorias.Size = new Size(210, 45);
+            btnConvocatorias.Size = new Size(187, 45);
             btnConvocatorias.TabIndex = 6;
             btnConvocatorias.Text = "Convocatorias\r\n";
-            btnConvocatorias.TextAlign = ContentAlignment.MiddleLeft;
+            btnConvocatorias.TextAlign = ContentAlignment.BottomLeft;
             btnConvocatorias.UseVisualStyleBackColor = true;
             // 
             // btnEmision
@@ -184,13 +241,13 @@
             btnEmision.FlatAppearance.MouseOverBackColor = Color.Teal;
             btnEmision.FlatStyle = FlatStyle.Flat;
             btnEmision.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEmision.ForeColor = Color.FromArgb(35, 50, 75);
-            btnEmision.Location = new Point(10, 260);
+            btnEmision.ForeColor = Color.White;
+            btnEmision.Location = new Point(43, 271);
             btnEmision.Name = "btnEmision";
-            btnEmision.Size = new Size(210, 45);
+            btnEmision.Size = new Size(187, 45);
             btnEmision.TabIndex = 5;
             btnEmision.Text = "Emision de Voto";
-            btnEmision.TextAlign = ContentAlignment.MiddleLeft;
+            btnEmision.TextAlign = ContentAlignment.BottomLeft;
             btnEmision.UseVisualStyleBackColor = true;
             // 
             // btnConteo
@@ -200,13 +257,13 @@
             btnConteo.FlatAppearance.MouseOverBackColor = Color.Teal;
             btnConteo.FlatStyle = FlatStyle.Flat;
             btnConteo.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConteo.ForeColor = Color.FromArgb(35, 50, 75);
-            btnConteo.Location = new Point(20, 315);
+            btnConteo.ForeColor = Color.White;
+            btnConteo.Location = new Point(43, 336);
             btnConteo.Name = "btnConteo";
-            btnConteo.Size = new Size(200, 45);
+            btnConteo.Size = new Size(187, 45);
             btnConteo.TabIndex = 4;
-            btnConteo.Text = "Conteo";
-            btnConteo.TextAlign = ContentAlignment.MiddleLeft;
+            btnConteo.Text = "Conteo y resultados";
+            btnConteo.TextAlign = ContentAlignment.BottomLeft;
             btnConteo.UseVisualStyleBackColor = true;
             // 
             // btnInicio
@@ -216,21 +273,21 @@
             btnInicio.FlatAppearance.MouseOverBackColor = Color.Teal;
             btnInicio.FlatStyle = FlatStyle.Flat;
             btnInicio.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnInicio.ForeColor = Color.FromArgb(35, 50, 75);
-            btnInicio.Location = new Point(10, 150);
+            btnInicio.ForeColor = Color.White;
+            btnInicio.Location = new Point(43, 150);
             btnInicio.Name = "btnInicio";
-            btnInicio.Size = new Size(210, 45);
+            btnInicio.Size = new Size(187, 45);
             btnInicio.TabIndex = 3;
-            btnInicio.Text = "⌂ Inicio";
-            btnInicio.TextAlign = ContentAlignment.MiddleLeft;
+            btnInicio.Text = " Inicio";
+            btnInicio.TextAlign = ContentAlignment.BottomLeft;
             btnInicio.UseVisualStyleBackColor = true;
             // 
             // lblSubtitulo2
             // 
             lblSubtitulo2.AutoSize = true;
             lblSubtitulo2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSubtitulo2.ForeColor = Color.FromArgb(35, 50, 75);
-            lblSubtitulo2.Location = new Point(80, 80);
+            lblSubtitulo2.ForeColor = Color.White;
+            lblSubtitulo2.Location = new Point(20, 85);
             lblSubtitulo2.Name = "lblSubtitulo2";
             lblSubtitulo2.Size = new Size(144, 20);
             lblSubtitulo2.TabIndex = 2;
@@ -240,8 +297,8 @@
             // 
             lblSubtitulo.AutoSize = true;
             lblSubtitulo.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSubtitulo.ForeColor = Color.FromArgb(35, 50, 75);
-            lblSubtitulo.Location = new Point(80, 60);
+            lblSubtitulo.ForeColor = Color.White;
+            lblSubtitulo.Location = new Point(20, 60);
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Size = new Size(135, 20);
             lblSubtitulo.TabIndex = 1;
@@ -251,8 +308,8 @@
             // 
             lblTituloMenu.AutoSize = true;
             lblTituloMenu.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloMenu.ForeColor = Color.FromArgb(35, 50, 75);
-            lblTituloMenu.Location = new Point(80, 9);
+            lblTituloMenu.ForeColor = Color.White;
+            lblTituloMenu.Location = new Point(12, 9);
             lblTituloMenu.Name = "lblTituloMenu";
             lblTituloMenu.Size = new Size(105, 46);
             lblTituloMenu.TabIndex = 0;
@@ -263,7 +320,7 @@
             lblTituloPrincipal.AutoSize = true;
             lblTituloPrincipal.Font = new Font("Segoe UI Semibold", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloPrincipal.ForeColor = Color.FromArgb(35, 50, 75);
-            lblTituloPrincipal.Location = new Point(236, 9);
+            lblTituloPrincipal.Location = new Point(308, 9);
             lblTituloPrincipal.Name = "lblTituloPrincipal";
             lblTituloPrincipal.Size = new Size(326, 46);
             lblTituloPrincipal.TabIndex = 1;
@@ -290,9 +347,9 @@
             btnConsejo.FlatStyle = FlatStyle.Flat;
             btnConsejo.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnConsejo.ForeColor = Color.FromArgb(30, 50, 80);
-            btnConsejo.Location = new Point(251, 111);
+            btnConsejo.Location = new Point(575, 121);
             btnConsejo.Name = "btnConsejo";
-            btnConsejo.Size = new Size(274, 34);
+            btnConsejo.Size = new Size(301, 36);
             btnConsejo.TabIndex = 3;
             btnConsejo.Text = "Consejo Universitario\r\n";
             btnConsejo.UseVisualStyleBackColor = false;
@@ -307,9 +364,9 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.FromArgb(30, 50, 80);
-            button1.Location = new Point(894, 111);
+            button1.Location = new Point(250, 120);
             button1.Name = "button1";
-            button1.Size = new Size(274, 34);
+            button1.Size = new Size(310, 36);
             button1.TabIndex = 4;
             button1.Text = "Sociedad de Alumnos";
             button1.UseVisualStyleBackColor = false;
@@ -324,17 +381,18 @@
             btnRepresentantes.FlatStyle = FlatStyle.Flat;
             btnRepresentantes.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRepresentantes.ForeColor = Color.FromArgb(30, 50, 80);
-            btnRepresentantes.Location = new Point(573, 111);
+            btnRepresentantes.Location = new Point(882, 121);
             btnRepresentantes.Name = "btnRepresentantes";
-            btnRepresentantes.Size = new Size(274, 34);
+            btnRepresentantes.Size = new Size(323, 34);
             btnRepresentantes.TabIndex = 5;
-            btnRepresentantes.Text = "Consejo de Representantes";
+            btnRepresentantes.Text = "    Consejo de Representantes";
             btnRepresentantes.UseVisualStyleBackColor = false;
             // 
             // pnlFiltros
             // 
             pnlFiltros.BackColor = Color.White;
             pnlFiltros.BorderStyle = BorderStyle.FixedSingle;
+            pnlFiltros.Controls.Add(pictureBox14);
             pnlFiltros.Controls.Add(btnVistaCentro);
             pnlFiltros.Controls.Add(btnVistaGrupo);
             pnlFiltros.Controls.Add(btnVistaCarrera);
@@ -526,16 +584,17 @@
             lblTituloFiltros.AutoSize = true;
             lblTituloFiltros.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloFiltros.ForeColor = Color.FromArgb(30, 50, 80);
-            lblTituloFiltros.Location = new Point(20, 15);
+            lblTituloFiltros.Location = new Point(63, 18);
             lblTituloFiltros.Name = "lblTituloFiltros";
-            lblTituloFiltros.Size = new Size(223, 28);
+            lblTituloFiltros.Size = new Size(196, 28);
             lblTituloFiltros.TabIndex = 0;
-            lblTituloFiltros.Text = "⚑  Filtros de resultados";
+            lblTituloFiltros.Text = "Filtros de resultados";
             // 
             // pnlEstadisticas
             // 
             pnlEstadisticas.BackColor = Color.White;
             pnlEstadisticas.BorderStyle = BorderStyle.FixedSingle;
+            pnlEstadisticas.Controls.Add(pictureBox18);
             pnlEstadisticas.Controls.Add(pnlAbstencionismo);
             pnlEstadisticas.Controls.Add(pnlParticipacion);
             pnlEstadisticas.Controls.Add(pnlVotantes);
@@ -551,11 +610,11 @@
             lblTituloEstadisticas.AutoSize = true;
             lblTituloEstadisticas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lblTituloEstadisticas.ForeColor = Color.FromArgb(30, 50, 80);
-            lblTituloEstadisticas.Location = new Point(20, 18);
+            lblTituloEstadisticas.Location = new Point(51, 18);
             lblTituloEstadisticas.Name = "lblTituloEstadisticas";
-            lblTituloEstadisticas.Size = new Size(232, 28);
+            lblTituloEstadisticas.Size = new Size(214, 28);
             lblTituloEstadisticas.TabIndex = 0;
-            lblTituloEstadisticas.Text = "◔ Estadisticas generales";
+            lblTituloEstadisticas.Text = " Estadisticas generales";
             lblTituloEstadisticas.Click += lblTituloEstadisticas_Click;
             // 
             // pnlRegistrados
@@ -776,6 +835,7 @@
             // 
             pnlResultados.BackColor = Color.White;
             pnlResultados.BorderStyle = BorderStyle.FixedSingle;
+            pnlResultados.Controls.Add(pictureBox13);
             pnlResultados.Controls.Add(dgvResultados);
             pnlResultados.Controls.Add(lblTituloResultados);
             pnlResultados.Location = new Point(250, 545);
@@ -788,7 +848,7 @@
             lblTituloResultados.AutoSize = true;
             lblTituloResultados.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloResultados.ForeColor = Color.FromArgb(50, 50, 80);
-            lblTituloResultados.Location = new Point(20, 15);
+            lblTituloResultados.Location = new Point(57, 15);
             lblTituloResultados.Name = "lblTituloResultados";
             lblTituloResultados.Size = new Size(205, 23);
             lblTituloResultados.TabIndex = 0;
@@ -800,32 +860,32 @@
             dgvResultados.AllowUserToDeleteRows = false;
             dgvResultados.AllowUserToResizeColumns = false;
             dgvResultados.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(249, 250, 252);
-            dgvResultados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(249, 250, 252);
+            dgvResultados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvResultados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvResultados.BackgroundColor = Color.White;
             dgvResultados.BorderStyle = BorderStyle.None;
             dgvResultados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(241, 245, 249);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(30, 50, 80);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(241, 245, 249);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(30, 50, 80);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(241, 245, 249);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(30, 50, 80);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(241, 245, 249);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(30, 50, 80);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvResultados.ColumnHeadersHeight = 34;
             dgvResultados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvResultados.Columns.AddRange(new DataGridViewColumn[] { colCandidato, colVotos, colPorcentaje });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(55, 65, 80);
-            dataGridViewCellStyle3.Padding = new Padding(5, 0, 5, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(228, 235, 244);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(30, 50, 80);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvResultados.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(55, 65, 80);
+            dataGridViewCellStyle6.Padding = new Padding(5, 0, 5, 0);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(228, 235, 244);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(30, 50, 80);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvResultados.DefaultCellStyle = dataGridViewCellStyle6;
             dgvResultados.EnableHeadersVisualStyles = false;
             dgvResultados.GridColor = Color.FromArgb(225, 230, 238);
             dgvResultados.Location = new Point(20, 48);
@@ -838,6 +898,7 @@
             dgvResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvResultados.Size = new Size(550, 125);
             dgvResultados.TabIndex = 1;
+            dgvResultados.CellContentClick += dgvResultados_CellContentClick;
             // 
             // colCandidato
             // 
@@ -870,6 +931,7 @@
             // 
             pnlGrafica.BackColor = Color.White;
             pnlGrafica.BorderStyle = BorderStyle.FixedSingle;
+            pnlGrafica.Controls.Add(pictureBox19);
             pnlGrafica.Controls.Add(pnlLeyenda);
             pnlGrafica.Controls.Add(pnlDona);
             pnlGrafica.Controls.Add(LblTituloGrafica);
@@ -883,7 +945,7 @@
             LblTituloGrafica.AutoSize = true;
             LblTituloGrafica.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblTituloGrafica.ForeColor = Color.FromArgb(30, 50, 80);
-            LblTituloGrafica.Location = new Point(18, 15);
+            LblTituloGrafica.Location = new Point(46, 19);
             LblTituloGrafica.Name = "LblTituloGrafica";
             LblTituloGrafica.Size = new Size(171, 23);
             LblTituloGrafica.TabIndex = 0;
@@ -908,10 +970,339 @@
             // 
             pnlAcciones.BackColor = Color.FromArgb(248, 250, 253);
             pnlAcciones.BorderStyle = BorderStyle.FixedSingle;
-            pnlAcciones.Location = new Point(250, 755);
+            pnlAcciones.Controls.Add(pictureBox24);
+            pnlAcciones.Controls.Add(pictureBox23);
+            pnlAcciones.Controls.Add(pictureBox22);
+            pnlAcciones.Controls.Add(pictureBox21);
+            pnlAcciones.Controls.Add(pictureBox20);
+            pnlAcciones.Controls.Add(btnExportarResultados);
+            pnlAcciones.Controls.Add(btnParticipacionGrupo);
+            pnlAcciones.Controls.Add(btnDetalleCandidatura);
+            pnlAcciones.Controls.Add(btnProcesarResultados);
+            pnlAcciones.Controls.Add(lblTituloAcciones);
+            pnlAcciones.Location = new Point(250, 746);
             pnlAcciones.Name = "pnlAcciones";
             pnlAcciones.Size = new Size(955, 90);
             pnlAcciones.TabIndex = 10;
+            // 
+            // lblTituloAcciones
+            // 
+            lblTituloAcciones.AutoSize = true;
+            lblTituloAcciones.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lblTituloAcciones.ForeColor = Color.FromArgb(30, 50, 80);
+            lblTituloAcciones.Location = new Point(63, 9);
+            lblTituloAcciones.Name = "lblTituloAcciones";
+            lblTituloAcciones.Size = new Size(77, 23);
+            lblTituloAcciones.TabIndex = 0;
+            lblTituloAcciones.Text = "Acciones";
+            // 
+            // btnProcesarResultados
+            // 
+            btnProcesarResultados.BackColor = Color.White;
+            btnProcesarResultados.Cursor = Cursors.Hand;
+            btnProcesarResultados.FlatAppearance.BorderColor = Color.FromArgb(212, 220, 231);
+            btnProcesarResultados.FlatAppearance.MouseDownBackColor = Color.FromArgb(207, 219, 235);
+            btnProcesarResultados.FlatAppearance.MouseOverBackColor = Color.FromArgb(228, 235, 244);
+            btnProcesarResultados.FlatStyle = FlatStyle.Flat;
+            btnProcesarResultados.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold);
+            btnProcesarResultados.ForeColor = Color.FromArgb(30, 50, 80);
+            btnProcesarResultados.Location = new Point(15, 35);
+            btnProcesarResultados.Name = "btnProcesarResultados";
+            btnProcesarResultados.Size = new Size(210, 34);
+            btnProcesarResultados.TabIndex = 11;
+            btnProcesarResultados.Text = " Procesar resultados";
+            btnProcesarResultados.UseVisualStyleBackColor = false;
+            // 
+            // btnDetalleCandidatura
+            // 
+            btnDetalleCandidatura.BackColor = Color.White;
+            btnDetalleCandidatura.Cursor = Cursors.Hand;
+            btnDetalleCandidatura.FlatAppearance.BorderColor = Color.FromArgb(212, 220, 231);
+            btnDetalleCandidatura.FlatAppearance.MouseDownBackColor = Color.FromArgb(207, 219, 235);
+            btnDetalleCandidatura.FlatAppearance.MouseOverBackColor = Color.FromArgb(228, 235, 244);
+            btnDetalleCandidatura.FlatStyle = FlatStyle.Flat;
+            btnDetalleCandidatura.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold);
+            btnDetalleCandidatura.ForeColor = Color.FromArgb(30, 50, 80);
+            btnDetalleCandidatura.Location = new Point(231, 35);
+            btnDetalleCandidatura.Name = "btnDetalleCandidatura";
+            btnDetalleCandidatura.Size = new Size(244, 34);
+            btnDetalleCandidatura.TabIndex = 12;
+            btnDetalleCandidatura.Text = "Ver detalle por candidatura";
+            btnDetalleCandidatura.UseVisualStyleBackColor = false;
+            // 
+            // btnParticipacionGrupo
+            // 
+            btnParticipacionGrupo.BackColor = Color.White;
+            btnParticipacionGrupo.Cursor = Cursors.Hand;
+            btnParticipacionGrupo.FlatAppearance.BorderColor = Color.FromArgb(212, 220, 231);
+            btnParticipacionGrupo.FlatAppearance.MouseDownBackColor = Color.FromArgb(207, 219, 235);
+            btnParticipacionGrupo.FlatAppearance.MouseOverBackColor = Color.FromArgb(228, 235, 244);
+            btnParticipacionGrupo.FlatStyle = FlatStyle.Flat;
+            btnParticipacionGrupo.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold);
+            btnParticipacionGrupo.ForeColor = Color.FromArgb(30, 50, 80);
+            btnParticipacionGrupo.Location = new Point(481, 35);
+            btnParticipacionGrupo.Name = "btnParticipacionGrupo";
+            btnParticipacionGrupo.Size = new Size(240, 34);
+            btnParticipacionGrupo.TabIndex = 13;
+            btnParticipacionGrupo.Text = "Ver participación por grupo";
+            btnParticipacionGrupo.UseVisualStyleBackColor = false;
+            // 
+            // btnExportarResultados
+            // 
+            btnExportarResultados.BackColor = Color.White;
+            btnExportarResultados.Cursor = Cursors.Hand;
+            btnExportarResultados.FlatAppearance.BorderColor = Color.FromArgb(212, 220, 231);
+            btnExportarResultados.FlatAppearance.MouseDownBackColor = Color.FromArgb(207, 219, 235);
+            btnExportarResultados.FlatAppearance.MouseOverBackColor = Color.FromArgb(228, 235, 244);
+            btnExportarResultados.FlatStyle = FlatStyle.Flat;
+            btnExportarResultados.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold);
+            btnExportarResultados.ForeColor = Color.FromArgb(30, 50, 80);
+            btnExportarResultados.Location = new Point(727, 35);
+            btnExportarResultados.Name = "btnExportarResultados";
+            btnExportarResultados.Size = new Size(214, 34);
+            btnExportarResultados.TabIndex = 14;
+            btnExportarResultados.Text = "Exportar resultados";
+            btnExportarResultados.UseVisualStyleBackColor = false;
+            // 
+            // cmsExportar
+            // 
+            cmsExportar.ImageScalingSize = new Size(20, 20);
+            cmsExportar.Items.AddRange(new ToolStripItem[] { itemExportarPDF, itemExportarExcel });
+            cmsExportar.Name = "cmsExportar";
+            cmsExportar.Size = new Size(215, 52);
+            // 
+            // itemExportarPDF
+            // 
+            itemExportarPDF.Name = "itemExportarPDF";
+            itemExportarPDF.Size = new Size(214, 24);
+            itemExportarPDF.Text = "Exportar como PDF";
+            // 
+            // itemExportarExcel
+            // 
+            itemExportarExcel.Name = "itemExportarExcel";
+            itemExportarExcel.Size = new Size(214, 24);
+            itemExportarExcel.Text = "Exportar como Excel";
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.BackColor = Color.Transparent;
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(934, 0);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(349, 105);
+            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox5.TabIndex = 8;
+            pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.BackColor = Color.Transparent;
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(10, 166);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(25, 29);
+            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox6.TabIndex = 7;
+            pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.BackColor = Color.Transparent;
+            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
+            pictureBox7.Location = new Point(12, 220);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(25, 29);
+            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox7.TabIndex = 9;
+            pictureBox7.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.BackColor = Color.Transparent;
+            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
+            pictureBox8.Location = new Point(12, 287);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(25, 29);
+            pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox8.TabIndex = 10;
+            pictureBox8.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.BackColor = Color.Transparent;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(12, 352);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(25, 29);
+            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox9.TabIndex = 11;
+            pictureBox9.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.BackColor = Color.Transparent;
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(12, 417);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(25, 29);
+            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox10.TabIndex = 12;
+            pictureBox10.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            pictureBox11.BackColor = Color.Transparent;
+            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
+            pictureBox11.Location = new Point(12, 798);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(25, 29);
+            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox11.TabIndex = 13;
+            pictureBox11.TabStop = false;
+            // 
+            // pictureBox12
+            // 
+            pictureBox12.BackColor = Color.Transparent;
+            pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
+            pictureBox12.Location = new Point(236, 1);
+            pictureBox12.Name = "pictureBox12";
+            pictureBox12.Size = new Size(82, 66);
+            pictureBox12.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox12.TabIndex = 14;
+            pictureBox12.TabStop = false;
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.BackColor = Color.Transparent;
+            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
+            pictureBox13.Location = new Point(20, 11);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(37, 27);
+            pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox13.TabIndex = 15;
+            pictureBox13.TabStop = false;
+            // 
+            // pictureBox14
+            // 
+            pictureBox14.BackColor = Color.Transparent;
+            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
+            pictureBox14.Location = new Point(20, 19);
+            pictureBox14.Name = "pictureBox14";
+            pictureBox14.Size = new Size(37, 27);
+            pictureBox14.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox14.TabIndex = 16;
+            pictureBox14.TabStop = false;
+            // 
+            // pictureBox15
+            // 
+            pictureBox15.BackColor = Color.Transparent;
+            pictureBox15.Image = (Image)resources.GetObject("pictureBox15.Image");
+            pictureBox15.Location = new Point(260, 119);
+            pictureBox15.Name = "pictureBox15";
+            pictureBox15.Size = new Size(37, 36);
+            pictureBox15.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox15.TabIndex = 17;
+            pictureBox15.TabStop = false;
+            // 
+            // pictureBox16
+            // 
+            pictureBox16.BackColor = Color.Transparent;
+            pictureBox16.Image = (Image)resources.GetObject("pictureBox16.Image");
+            pictureBox16.Location = new Point(897, 121);
+            pictureBox16.Name = "pictureBox16";
+            pictureBox16.Size = new Size(37, 36);
+            pictureBox16.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox16.TabIndex = 18;
+            pictureBox16.TabStop = false;
+            // 
+            // pictureBox17
+            // 
+            pictureBox17.BackColor = Color.Transparent;
+            pictureBox17.Image = (Image)resources.GetObject("pictureBox17.Image");
+            pictureBox17.Location = new Point(588, 121);
+            pictureBox17.Name = "pictureBox17";
+            pictureBox17.Size = new Size(37, 36);
+            pictureBox17.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox17.TabIndex = 19;
+            pictureBox17.TabStop = false;
+            // 
+            // pictureBox18
+            // 
+            pictureBox18.BackColor = Color.Transparent;
+            pictureBox18.Image = (Image)resources.GetObject("pictureBox18.Image");
+            pictureBox18.Location = new Point(20, 19);
+            pictureBox18.Name = "pictureBox18";
+            pictureBox18.Size = new Size(37, 27);
+            pictureBox18.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox18.TabIndex = 16;
+            pictureBox18.TabStop = false;
+            // 
+            // pictureBox19
+            // 
+            pictureBox19.BackColor = Color.Transparent;
+            pictureBox19.Image = (Image)resources.GetObject("pictureBox19.Image");
+            pictureBox19.Location = new Point(3, 15);
+            pictureBox19.Name = "pictureBox19";
+            pictureBox19.Size = new Size(37, 27);
+            pictureBox19.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox19.TabIndex = 16;
+            pictureBox19.TabStop = false;
+            pictureBox19.Click += this.pictureBox19_Click;
+            // 
+            // pictureBox20
+            // 
+            pictureBox20.BackColor = Color.Transparent;
+            pictureBox20.Image = (Image)resources.GetObject("pictureBox20.Image");
+            pictureBox20.Location = new Point(31, 9);
+            pictureBox20.Name = "pictureBox20";
+            pictureBox20.Size = new Size(26, 27);
+            pictureBox20.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox20.TabIndex = 16;
+            pictureBox20.TabStop = false;
+            // 
+            // pictureBox21
+            // 
+            pictureBox21.BackColor = Color.Transparent;
+            pictureBox21.Image = (Image)resources.GetObject("pictureBox21.Image");
+            pictureBox21.Location = new Point(41, 42);
+            pictureBox21.Name = "pictureBox21";
+            pictureBox21.Size = new Size(16, 20);
+            pictureBox21.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox21.TabIndex = 17;
+            pictureBox21.TabStop = false;
+            // 
+            // pictureBox22
+            // 
+            pictureBox22.BackColor = Color.Transparent;
+            pictureBox22.Image = (Image)resources.GetObject("pictureBox22.Image");
+            pictureBox22.Location = new Point(246, 42);
+            pictureBox22.Name = "pictureBox22";
+            pictureBox22.Size = new Size(16, 20);
+            pictureBox22.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox22.TabIndex = 18;
+            pictureBox22.TabStop = false;
+            // 
+            // pictureBox23
+            // 
+            pictureBox23.BackColor = Color.Transparent;
+            pictureBox23.Image = (Image)resources.GetObject("pictureBox23.Image");
+            pictureBox23.Location = new Point(493, 42);
+            pictureBox23.Name = "pictureBox23";
+            pictureBox23.Size = new Size(16, 20);
+            pictureBox23.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox23.TabIndex = 19;
+            pictureBox23.TabStop = false;
+            // 
+            // pictureBox24
+            // 
+            pictureBox24.BackColor = Color.Transparent;
+            pictureBox24.Image = (Image)resources.GetObject("pictureBox24.Image");
+            pictureBox24.Location = new Point(742, 42);
+            pictureBox24.Name = "pictureBox24";
+            pictureBox24.Size = new Size(16, 20);
+            pictureBox24.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox24.TabIndex = 20;
+            pictureBox24.TabStop = false;
             // 
             // FrmExportaciones
             // 
@@ -919,6 +1310,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1235, 848);
+            Controls.Add(pictureBox17);
+            Controls.Add(pictureBox16);
+            Controls.Add(pictureBox15);
+            Controls.Add(pictureBox12);
+            Controls.Add(pictureBox5);
             Controls.Add(pnlAcciones);
             Controls.Add(pnlGrafica);
             Controls.Add(pnlResultados);
@@ -957,6 +1353,29 @@
             ((System.ComponentModel.ISupportInitialize)dgvResultados).EndInit();
             pnlGrafica.ResumeLayout(false);
             pnlGrafica.PerformLayout();
+            pnlAcciones.ResumeLayout(false);
+            pnlAcciones.PerformLayout();
+            cmsExportar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox19).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox20).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox21).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox23).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox24).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1026,5 +1445,33 @@
         private Panel pnlLeyenda;
         private Panel pnlDona;
         private Panel pnlAcciones;
+        private Label lblTituloAcciones;
+        private Button btnProcesarResultados;
+        private Button btnDetalleCandidatura;
+        private Button btnExportarResultados;
+        private Button btnParticipacionGrupo;
+        private ContextMenuStrip cmsExportar;
+        private ToolStripMenuItem itemExportarPDF;
+        private ToolStripMenuItem itemExportarExcel;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox6;
+        private PictureBox pictureBox10;
+        private PictureBox pictureBox9;
+        private PictureBox pictureBox8;
+        private PictureBox pictureBox7;
+        private PictureBox pictureBox11;
+        private PictureBox pictureBox14;
+        private PictureBox pictureBox13;
+        private PictureBox pictureBox12;
+        private PictureBox pictureBox15;
+        private PictureBox pictureBox16;
+        private PictureBox pictureBox17;
+        private PictureBox pictureBox18;
+        private PictureBox pictureBox19;
+        private PictureBox pictureBox20;
+        private PictureBox pictureBox24;
+        private PictureBox pictureBox23;
+        private PictureBox pictureBox22;
+        private PictureBox pictureBox21;
     }
 }
