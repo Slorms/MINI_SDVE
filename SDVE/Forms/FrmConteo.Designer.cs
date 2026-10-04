@@ -38,30 +38,30 @@
             cmbAgrupacion = new ComboBox();
             btnProcesar = new Button();
             dgvResultados = new DataGridView();
-            pnlEncabezado = new Panel();
-            lblSubtitulo = new Label();
-            pnlConfiguracion = new Panel();
-            lblConfiguracion = new Label();
-            pnlRegistrados = new Panel();
-            lblTituloRegistrados = new Label();
-            lblRegistrados = new Label();
-            pnlVotantes = new Panel();
-            pnlParticipacion = new Panel();
-            pnlAbstencion = new Panel();
-            lblTituloVotantes = new Label();
-            lblVotantes = new Label();
-            lblTituloParticipacion = new Label();
-            lblParticipacion = new Label();
-            lblTituloAbstencion = new Label();
-            label2 = new Label();
-            pnlDatos = new Panel();
-            lblDatos = new Label();
             colCandidato = new DataGridViewTextBoxColumn();
             colGrupo = new DataGridViewTextBoxColumn();
             colCarrera = new DataGridViewTextBoxColumn();
             colCentro = new DataGridViewTextBoxColumn();
             colVotos = new DataGridViewTextBoxColumn();
             colPorcentaje = new DataGridViewTextBoxColumn();
+            pnlEncabezado = new Panel();
+            lblSubtitulo = new Label();
+            pnlConfiguracion = new Panel();
+            lblConfiguracion = new Label();
+            pnlRegistrados = new Panel();
+            lblRegistrados = new Label();
+            lblTituloRegistrados = new Label();
+            pnlVotantes = new Panel();
+            lblVotantes = new Label();
+            lblTituloVotantes = new Label();
+            pnlParticipacion = new Panel();
+            lblParticipacion = new Label();
+            lblTituloParticipacion = new Label();
+            pnlAbstencion = new Panel();
+            label2 = new Label();
+            lblTituloAbstencion = new Label();
+            pnlDatos = new Panel();
+            lblDatos = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvResultados).BeginInit();
             pnlEncabezado.SuspendLayout();
             pnlConfiguracion.SuspendLayout();
@@ -124,11 +124,12 @@
             cmbAgrupacion.BackColor = Color.FromArgb(248, 250, 252);
             cmbAgrupacion.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAgrupacion.FlatStyle = FlatStyle.Flat;
+            cmbAgrupacion.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbAgrupacion.FormattingEnabled = true;
             cmbAgrupacion.Items.AddRange(new object[] { "Todos", "Grupos", "Carrera", "Centro Universitario" });
             cmbAgrupacion.Location = new Point(485, 85);
             cmbAgrupacion.Name = "cmbAgrupacion";
-            cmbAgrupacion.Size = new Size(320, 28);
+            cmbAgrupacion.Size = new Size(320, 31);
             cmbAgrupacion.TabIndex = 4;
             // 
             // btnProcesar
@@ -145,6 +146,7 @@
             btnProcesar.TabIndex = 5;
             btnProcesar.Text = "&Procesar votos";
             btnProcesar.UseVisualStyleBackColor = false;
+            btnProcesar.Click += btnProcesar_Click;
             // 
             // dgvResultados
             // 
@@ -184,6 +186,54 @@
             dgvResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvResultados.Size = new Size(995, 120);
             dgvResultados.TabIndex = 6;
+            // 
+            // colCandidato
+            // 
+            colCandidato.HeaderText = "Candidato";
+            colCandidato.MinimumWidth = 6;
+            colCandidato.Name = "colCandidato";
+            colCandidato.ReadOnly = true;
+            colCandidato.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colGrupo
+            // 
+            colGrupo.HeaderText = "Grupo";
+            colGrupo.MinimumWidth = 6;
+            colGrupo.Name = "colGrupo";
+            colGrupo.ReadOnly = true;
+            colGrupo.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colCarrera
+            // 
+            colCarrera.HeaderText = "Carrera";
+            colCarrera.MinimumWidth = 6;
+            colCarrera.Name = "colCarrera";
+            colCarrera.ReadOnly = true;
+            colCarrera.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colCentro
+            // 
+            colCentro.HeaderText = "Centro Universitario";
+            colCentro.MinimumWidth = 6;
+            colCentro.Name = "colCentro";
+            colCentro.ReadOnly = true;
+            colCentro.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colVotos
+            // 
+            colVotos.HeaderText = "Votos";
+            colVotos.MinimumWidth = 6;
+            colVotos.Name = "colVotos";
+            colVotos.ReadOnly = true;
+            colVotos.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colPorcentaje
+            // 
+            colPorcentaje.HeaderText = "Porcentaje";
+            colPorcentaje.MinimumWidth = 6;
+            colPorcentaje.Name = "colPorcentaje";
+            colPorcentaje.ReadOnly = true;
+            colPorcentaje.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // pnlEncabezado
             // 
@@ -244,17 +294,6 @@
             pnlRegistrados.Size = new Size(245, 125);
             pnlRegistrados.TabIndex = 13;
             // 
-            // lblTituloRegistrados
-            // 
-            lblTituloRegistrados.AutoSize = true;
-            lblTituloRegistrados.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloRegistrados.ForeColor = Color.FromArgb(23, 90, 164);
-            lblTituloRegistrados.Location = new Point(15, 15);
-            lblTituloRegistrados.Name = "lblTituloRegistrados";
-            lblTituloRegistrados.Size = new Size(175, 23);
-            lblTituloRegistrados.TabIndex = 0;
-            lblTituloRegistrados.Text = "Alumnos registrados";
-            // 
             // lblRegistrados
             // 
             lblRegistrados.AutoSize = true;
@@ -266,6 +305,17 @@
             lblRegistrados.TabIndex = 1;
             lblRegistrados.Text = "0";
             // 
+            // lblTituloRegistrados
+            // 
+            lblTituloRegistrados.AutoSize = true;
+            lblTituloRegistrados.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTituloRegistrados.ForeColor = Color.FromArgb(23, 90, 164);
+            lblTituloRegistrados.Location = new Point(15, 15);
+            lblTituloRegistrados.Name = "lblTituloRegistrados";
+            lblTituloRegistrados.Size = new Size(175, 23);
+            lblTituloRegistrados.TabIndex = 0;
+            lblTituloRegistrados.Text = "Alumnos registrados";
+            // 
             // pnlVotantes
             // 
             pnlVotantes.BackColor = Color.FromArgb(231, 245, 238);
@@ -275,37 +325,6 @@
             pnlVotantes.Name = "pnlVotantes";
             pnlVotantes.Size = new Size(245, 125);
             pnlVotantes.TabIndex = 14;
-            // 
-            // pnlParticipacion
-            // 
-            pnlParticipacion.BackColor = Color.FromArgb(240, 234, 254);
-            pnlParticipacion.Controls.Add(lblParticipacion);
-            pnlParticipacion.Controls.Add(lblTituloParticipacion);
-            pnlParticipacion.Location = new Point(551, 305);
-            pnlParticipacion.Name = "pnlParticipacion";
-            pnlParticipacion.Size = new Size(245, 125);
-            pnlParticipacion.TabIndex = 15;
-            // 
-            // pnlAbstencion
-            // 
-            pnlAbstencion.BackColor = Color.FromArgb(252, 237, 239);
-            pnlAbstencion.Controls.Add(label2);
-            pnlAbstencion.Controls.Add(lblTituloAbstencion);
-            pnlAbstencion.Location = new Point(814, 305);
-            pnlAbstencion.Name = "pnlAbstencion";
-            pnlAbstencion.Size = new Size(245, 125);
-            pnlAbstencion.TabIndex = 16;
-            // 
-            // lblTituloVotantes
-            // 
-            lblTituloVotantes.AutoSize = true;
-            lblTituloVotantes.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloVotantes.ForeColor = Color.FromArgb(24, 120, 88);
-            lblTituloVotantes.Location = new Point(15, 15);
-            lblTituloVotantes.Name = "lblTituloVotantes";
-            lblTituloVotantes.Size = new Size(79, 23);
-            lblTituloVotantes.TabIndex = 0;
-            lblTituloVotantes.Text = "Votantes";
             // 
             // lblVotantes
             // 
@@ -318,16 +337,26 @@
             lblVotantes.TabIndex = 1;
             lblVotantes.Text = "0";
             // 
-            // lblTituloParticipacion
+            // lblTituloVotantes
             // 
-            lblTituloParticipacion.AutoSize = true;
-            lblTituloParticipacion.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloParticipacion.ForeColor = Color.FromArgb(104, 67, 165);
-            lblTituloParticipacion.Location = new Point(15, 15);
-            lblTituloParticipacion.Name = "lblTituloParticipacion";
-            lblTituloParticipacion.Size = new Size(114, 23);
-            lblTituloParticipacion.TabIndex = 0;
-            lblTituloParticipacion.Text = "Participación";
+            lblTituloVotantes.AutoSize = true;
+            lblTituloVotantes.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTituloVotantes.ForeColor = Color.FromArgb(24, 120, 88);
+            lblTituloVotantes.Location = new Point(15, 15);
+            lblTituloVotantes.Name = "lblTituloVotantes";
+            lblTituloVotantes.Size = new Size(79, 23);
+            lblTituloVotantes.TabIndex = 0;
+            lblTituloVotantes.Text = "Votantes";
+            // 
+            // pnlParticipacion
+            // 
+            pnlParticipacion.BackColor = Color.FromArgb(240, 234, 254);
+            pnlParticipacion.Controls.Add(lblParticipacion);
+            pnlParticipacion.Controls.Add(lblTituloParticipacion);
+            pnlParticipacion.Location = new Point(551, 305);
+            pnlParticipacion.Name = "pnlParticipacion";
+            pnlParticipacion.Size = new Size(245, 125);
+            pnlParticipacion.TabIndex = 15;
             // 
             // lblParticipacion
             // 
@@ -340,16 +369,26 @@
             lblParticipacion.TabIndex = 1;
             lblParticipacion.Text = "0 %";
             // 
-            // lblTituloAbstencion
+            // lblTituloParticipacion
             // 
-            lblTituloAbstencion.AutoSize = true;
-            lblTituloAbstencion.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloAbstencion.ForeColor = Color.FromArgb(174, 61, 80);
-            lblTituloAbstencion.Location = new Point(15, 15);
-            lblTituloAbstencion.Name = "lblTituloAbstencion";
-            lblTituloAbstencion.Size = new Size(137, 23);
-            lblTituloAbstencion.TabIndex = 0;
-            lblTituloAbstencion.Text = "Abstencionismo";
+            lblTituloParticipacion.AutoSize = true;
+            lblTituloParticipacion.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTituloParticipacion.ForeColor = Color.FromArgb(104, 67, 165);
+            lblTituloParticipacion.Location = new Point(15, 15);
+            lblTituloParticipacion.Name = "lblTituloParticipacion";
+            lblTituloParticipacion.Size = new Size(114, 23);
+            lblTituloParticipacion.TabIndex = 0;
+            lblTituloParticipacion.Text = "Participación";
+            // 
+            // pnlAbstencion
+            // 
+            pnlAbstencion.BackColor = Color.FromArgb(252, 237, 239);
+            pnlAbstencion.Controls.Add(label2);
+            pnlAbstencion.Controls.Add(lblTituloAbstencion);
+            pnlAbstencion.Location = new Point(814, 305);
+            pnlAbstencion.Name = "pnlAbstencion";
+            pnlAbstencion.Size = new Size(245, 125);
+            pnlAbstencion.TabIndex = 16;
             // 
             // label2
             // 
@@ -361,6 +400,17 @@
             label2.Size = new Size(92, 54);
             label2.TabIndex = 1;
             label2.Text = "0 %";
+            // 
+            // lblTituloAbstencion
+            // 
+            lblTituloAbstencion.AutoSize = true;
+            lblTituloAbstencion.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTituloAbstencion.ForeColor = Color.FromArgb(174, 61, 80);
+            lblTituloAbstencion.Location = new Point(15, 15);
+            lblTituloAbstencion.Name = "lblTituloAbstencion";
+            lblTituloAbstencion.Size = new Size(137, 23);
+            lblTituloAbstencion.TabIndex = 0;
+            lblTituloAbstencion.Text = "Abstencionismo";
             // 
             // pnlDatos
             // 
@@ -384,54 +434,6 @@
             lblDatos.TabIndex = 7;
             lblDatos.Text = "Datos procesados";
             // 
-            // colCandidato
-            // 
-            colCandidato.HeaderText = "Candidato";
-            colCandidato.MinimumWidth = 6;
-            colCandidato.Name = "colCandidato";
-            colCandidato.ReadOnly = true;
-            colCandidato.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colGrupo
-            // 
-            colGrupo.HeaderText = "Grupo";
-            colGrupo.MinimumWidth = 6;
-            colGrupo.Name = "colGrupo";
-            colGrupo.ReadOnly = true;
-            colGrupo.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colCarrera
-            // 
-            colCarrera.HeaderText = "Carrera";
-            colCarrera.MinimumWidth = 6;
-            colCarrera.Name = "colCarrera";
-            colCarrera.ReadOnly = true;
-            colCarrera.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colCentro
-            // 
-            colCentro.HeaderText = "Centro Universitario";
-            colCentro.MinimumWidth = 6;
-            colCentro.Name = "colCentro";
-            colCentro.ReadOnly = true;
-            colCentro.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colVotos
-            // 
-            colVotos.HeaderText = "Votos";
-            colVotos.MinimumWidth = 6;
-            colVotos.Name = "colVotos";
-            colVotos.ReadOnly = true;
-            colVotos.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colPorcentaje
-            // 
-            colPorcentaje.HeaderText = "Porcentaje";
-            colPorcentaje.MinimumWidth = 6;
-            colPorcentaje.Name = "colPorcentaje";
-            colPorcentaje.ReadOnly = true;
-            colPorcentaje.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
             // FrmConteo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -448,6 +450,7 @@
             Controls.Add(pnlEncabezado);
             MinimumSize = new Size(1100, 700);
             Name = "FrmConteo";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Motor de Agregación y Conteo";
             Load += FrmConteo_Load;
             ((System.ComponentModel.ISupportInitialize)dgvResultados).EndInit();
