@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Login;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Login
+namespace SDVE.Login
 { 
         public enum Rol { Alumno, Docente, Admin }
 

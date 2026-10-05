@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Login
+namespace SDVE.Login
 { 
         // Guarda los IDs que ya ingresaron (en votantes.txt) para que no puedan volver a entrar
         public static class RegistroVotantes
