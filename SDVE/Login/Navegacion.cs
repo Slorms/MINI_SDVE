@@ -23,7 +23,7 @@ namespace SDVE.Login
             // =====================================================================
             public static Func<Form> FormularioAlumno = () => new Form1();
         public static Func<Form> FormularioDocente = () => new Form1();
-        public static Func<Form> FormularioAdmin = () => new LoginAdmin();
+        public static Func<Form> FormularioAdmin = () => new prueba();
         // Ejemplo:  public static Func<Form> FormularioAdmin = () => new FrmConteo();
         // =====================================================================
 

@@ -124,7 +124,7 @@ namespace Votaciones
         private void btnConfirmarPropuesta_Click(object sender, EventArgs e)
         {
             DatosVotacion.PropuestasAsociacion.Add(txtPropuesta.Text);
-            
+
             if (string.IsNullOrWhiteSpace(txtPropuesta.Text))
             {
                 MessageBox.Show(
@@ -157,6 +157,11 @@ namespace Votaciones
 
                 this.Close();
             }
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
