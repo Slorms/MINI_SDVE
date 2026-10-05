@@ -47,6 +47,36 @@ namespace SDVE.Forms
             ConfigurarFormulario();
             ConfigurarEventos();
             ConfigurarMenuExportacion();
+            CargarDatosPrueba();
+        
+        }
+        private void CargarDatosPrueba()
+        {
+            List<ResultadoCandidato> resultadosPrueba =
+                new List<ResultadoCandidato>();
+
+            resultadosPrueba.Add(new ResultadoCandidato
+            {
+                candidato = "Candidatura A",
+                votos = 120,
+                porcentaje = 0
+            });
+
+            resultadosPrueba.Add(new ResultadoCandidato
+            {
+                candidato = "Candidatura B",
+                votos = 80,
+                porcentaje = 0
+            });
+
+            resultadosPrueba.Add(new ResultadoCandidato
+            {
+                candidato = "Candidatura C",
+                votos = 50,
+                porcentaje = 0
+            });
+
+            CargarResultados(400, resultadosPrueba);
         }
 
 
