@@ -53,7 +53,7 @@
             button1.Name = "button1";
             button1.Size = new Size(194, 100);
             button1.TabIndex = 0;
-            button1.Text = "Angel Carranza";
+            button1.Text = "Consejero 1";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -63,7 +63,7 @@
             button2.Name = "button2";
             button2.Size = new Size(203, 100);
             button2.TabIndex = 1;
-            button2.Text = "Daniel Garcia";
+            button2.Text = "Consejero 2";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -73,7 +73,7 @@
             button3.Name = "button3";
             button3.Size = new Size(206, 100);
             button3.TabIndex = 2;
-            button3.Text = "Alexa Janeth";
+            button3.Text = "Consejero 3";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
@@ -83,7 +83,7 @@
             button4.Name = "button4";
             button4.Size = new Size(176, 93);
             button4.TabIndex = 3;
-            button4.Text = "Valeria Ramirez";
+            button4.Text = "Consejero 4";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
@@ -93,7 +93,7 @@
             button5.Name = "button5";
             button5.Size = new Size(192, 93);
             button5.TabIndex = 4;
-            button5.Text = "Angel Enriquez";
+            button5.Text = "Consejero 5";
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
@@ -129,9 +129,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(293, 85);
+            label1.Font = new Font("Trebuchet MS", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Navy;
+            label1.Location = new Point(249, 81);
             label1.Name = "label1";
-            label1.Size = new Size(162, 20);
+            label1.Size = new Size(267, 28);
             label1.TabIndex = 8;
             label1.Text = "Consejero Universitario";
             label1.Click += label1_Click;
@@ -194,9 +196,9 @@
             lblTitulo.Location = new Point(156, 14);
             lblTitulo.Margin = new Padding(2, 0, 2, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(529, 28);
+            lblTitulo.Size = new Size(390, 28);
             lblTitulo.TabIndex = 1;
-            lblTitulo.Text = "Sistema de Votación Estudiantil (Centro de Ciencias Básicas)";
+            lblTitulo.Text = "Sistema de Votación Estudiantil - Consejero";
             lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // FormConsejero

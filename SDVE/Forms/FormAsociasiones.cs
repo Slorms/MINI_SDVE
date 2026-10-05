@@ -31,7 +31,7 @@ namespace Votaciones
             DatosVotacion.Asociacion1++;
 
             DialogResult respuesta = MessageBox.Show(
-        "¿Estás seguro de votar por FEUAA?",
+        "¿Estás seguro de votar por Esta Asociación?",
         "Confirmar voto",
         MessageBoxButtons.YesNo,
         MessageBoxIcon.Question
@@ -50,14 +50,14 @@ namespace Votaciones
 
                 this.Close();
             }
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             DatosVotacion.Asociacion2++;
-
             DialogResult respuesta = MessageBox.Show(
-        "¿Estás seguro de votar por CONECTA?",
+        "¿Estás seguro de votar por Esta Asociación?",
         "Confirmar voto",
         MessageBoxButtons.YesNo,
         MessageBoxIcon.Question
@@ -99,8 +99,9 @@ namespace Votaciones
         private void button3_Click(object sender, EventArgs e)
         {
             DatosVotacion.Asociacion3++;
+
             DialogResult respuesta = MessageBox.Show(
-       "¿Estás seguro de votar por MUCHACHOS?",
+       "¿Estás seguro de votar por Esta Asociación?",
        "Confirmar voto",
        MessageBoxButtons.YesNo,
        MessageBoxIcon.Question
@@ -119,6 +120,7 @@ namespace Votaciones
 
                 this.Close();
             }
+            
         }
 
         private void btnConfirmarPropuesta_Click(object sender, EventArgs e)
