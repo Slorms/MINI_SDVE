@@ -39,6 +39,7 @@
             panel2 = new Panel();
             panelCarreraContador = new Panel();
             pictureBox9 = new PictureBox();
+            label3 = new Label();
             pnlCarrera2 = new Panel();
             label11 = new Label();
             panel12 = new Panel();
@@ -48,9 +49,9 @@
             label7 = new Label();
             panel10 = new Panel();
             label5 = new Label();
-            label3 = new Label();
             pictureBox8 = new PictureBox();
             pnlCarreraAdmin = new Panel();
+            pictureBox10 = new PictureBox();
             pnlCarrera1 = new Panel();
             label10 = new Label();
             panel16 = new Panel();
@@ -71,7 +72,7 @@
             pnlContenido = new Panel();
             pictureBox5 = new PictureBox();
             lblIngreso = new Label();
-            btnvolver = new Button();
+            btnVolver = new Button();
             picCentroEconomicas = new PictureBox();
             picCentroSalud = new PictureBox();
             picCentroBasicas = new PictureBox();
@@ -82,7 +83,6 @@
             picLogo = new PictureBox();
             btnMenu = new Button();
             lblTitulo = new Label();
-            pictureBox10 = new PictureBox();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
@@ -91,6 +91,7 @@
             pnlCarrera2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             pnlCarreraAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             pnlCarrera1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             pnlAviso.SuspendLayout();
@@ -103,7 +104,6 @@
             ((System.ComponentModel.ISupportInitialize)picCentroBasicas).BeginInit();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             SuspendLayout();
             // 
             // panel3
@@ -215,6 +215,18 @@
             pictureBox9.TabIndex = 0;
             pictureBox9.TabStop = false;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(11, 50, 105);
+            label3.Location = new Point(73, 140);
+            label3.Name = "label3";
+            label3.Size = new Size(95, 21);
+            label3.TabIndex = 29;
+            label3.Text = "Lienciatura";
+            // 
             // pnlCarrera2
             // 
             pnlCarrera2.BorderStyle = BorderStyle.FixedSingle;
@@ -309,18 +321,6 @@
             label5.TabIndex = 30;
             label5.Text = "Contador Público";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            label3.ForeColor = Color.FromArgb(11, 50, 105);
-            label3.Location = new Point(73, 140);
-            label3.Name = "label3";
-            label3.Size = new Size(95, 21);
-            label3.TabIndex = 29;
-            label3.Text = "Lienciatura";
-            // 
             // pictureBox8
             // 
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
@@ -343,6 +343,17 @@
             pnlCarreraAdmin.Name = "pnlCarreraAdmin";
             pnlCarreraAdmin.Size = new Size(238, 235);
             pnlCarreraAdmin.TabIndex = 26;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.BackColor = Color.Wheat;
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(80, 86);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(75, 48);
+            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox10.TabIndex = 32;
+            pictureBox10.TabStop = false;
             // 
             // pnlCarrera1
             // 
@@ -533,7 +544,7 @@
             // 
             pnlContenido.Controls.Add(pictureBox5);
             pnlContenido.Controls.Add(lblIngreso);
-            pnlContenido.Controls.Add(btnvolver);
+            pnlContenido.Controls.Add(btnVolver);
             pnlContenido.Controls.Add(picCentroEconomicas);
             pnlContenido.Controls.Add(picCentroSalud);
             pnlContenido.Controls.Add(picCentroBasicas);
@@ -564,17 +575,17 @@
             lblIngreso.TabIndex = 20;
             lblIngreso.Text = "Tu centro universitario";
             // 
-            // btnvolver
+            // btnVolver
             // 
-            btnvolver.Cursor = Cursors.Hand;
-            btnvolver.FlatAppearance.BorderColor = Color.FromArgb(11, 50, 105);
-            btnvolver.ForeColor = Color.FromArgb(11, 50, 105);
-            btnvolver.Location = new Point(26, 387);
-            btnvolver.Name = "btnvolver";
-            btnvolver.Size = new Size(155, 37);
-            btnvolver.TabIndex = 3;
-            btnvolver.Text = "← Volver";
-            btnvolver.UseVisualStyleBackColor = true;
+            btnVolver.Cursor = Cursors.Hand;
+            btnVolver.FlatAppearance.BorderColor = Color.FromArgb(11, 50, 105);
+            btnVolver.ForeColor = Color.FromArgb(11, 50, 105);
+            btnVolver.Location = new Point(26, 387);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(155, 37);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "← Volver";
+            btnVolver.UseVisualStyleBackColor = true;
             // 
             // picCentroEconomicas
             // 
@@ -687,17 +698,6 @@
             lblTitulo.Text = "Sistema de Votación Estudiantil";
             lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // pictureBox10
-            // 
-            pictureBox10.BackColor = Color.Wheat;
-            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(80, 86);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(75, 48);
-            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox10.TabIndex = 32;
-            pictureBox10.TabStop = false;
-            // 
             // Frm_CCEA
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -725,6 +725,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             pnlCarreraAdmin.ResumeLayout(false);
             pnlCarreraAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             pnlCarrera1.ResumeLayout(false);
             pnlCarrera1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
@@ -741,7 +742,6 @@
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -790,7 +790,7 @@
         private Panel pnlContenido;
         private PictureBox pictureBox5;
         private Label lblIngreso;
-        private Button btnvolver;
+        private Button btnVolver;
         private PictureBox picCentroEconomicas;
         private PictureBox picCentroSalud;
         private PictureBox picCentroBasicas;

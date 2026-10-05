@@ -37,77 +37,77 @@
             lblSubtitulo = new Label();
             lblBienvenido = new Label();
             pnlContenido = new Panel();
+            pictureBox5 = new PictureBox();
+            lblIngreso = new Label();
+            btnVolver = new Button();
+            picCentroEconomicas = new PictureBox();
+            picCentroSalud = new PictureBox();
+            picCentroBasicas = new PictureBox();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
-            panel3 = new Panel();
-            lblfrase2 = new Label();
-            lblFrase = new Label();
-            panel5 = new Panel();
-            panel4 = new Panel();
-            panel6 = new Panel();
-            pictureBox1 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            btnvolver = new Button();
-            lblIngreso = new Label();
-            pictureBox5 = new PictureBox();
-            pictureBox6 = new PictureBox();
-            label1 = new Label();
-            pnlAviso = new Panel();
-            lblAviso = new Label();
-            btnIngresar = new Button();
-            panel7 = new Panel();
-            panel8 = new Panel();
-            pictureBox7 = new PictureBox();
-            pictureBox8 = new PictureBox();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            panel9 = new Panel();
-            panel10 = new Panel();
+            pnlCarreraInformatica = new Panel();
+            panel20 = new Panel();
+            pictureBox9 = new PictureBox();
             pnlCarrera2 = new Panel();
+            label11 = new Label();
             panel12 = new Panel();
             panel13 = new Panel();
             panel14 = new Panel();
             label6 = new Label();
             label7 = new Label();
+            panel10 = new Panel();
+            label5 = new Label();
+            label3 = new Label();
+            pictureBox8 = new PictureBox();
+            pnlCarreraSistemas = new Panel();
+            panel19 = new Panel();
+            pictureBox10 = new PictureBox();
             pnlCarrera1 = new Panel();
+            label10 = new Label();
             panel16 = new Panel();
             panel17 = new Panel();
             panel18 = new Panel();
             label8 = new Label();
             label9 = new Label();
-            label10 = new Label();
-            label11 = new Label();
-            pictureBox10 = new PictureBox();
-            panel19 = new Panel();
-            panel20 = new Panel();
-            pictureBox9 = new PictureBox();
+            panel9 = new Panel();
+            label4 = new Label();
+            label2 = new Label();
+            pictureBox7 = new PictureBox();
+            pnlAviso = new Panel();
+            lblAviso = new Label();
+            btnContinuar = new Button();
+            pictureBox6 = new PictureBox();
+            label1 = new Label();
             pictureBox11 = new PictureBox();
+            panel3 = new Panel();
+            panel5 = new Panel();
+            panel4 = new Panel();
+            panel6 = new Panel();
+            lblfrase2 = new Label();
+            lblFrase = new Label();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             pnlContenido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroEconomicas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroSalud).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroBasicas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            pnlAviso.SuspendLayout();
-            panel7.SuspendLayout();
-            panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            pnlCarrera2.SuspendLayout();
-            pnlCarrera1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            panel19.SuspendLayout();
+            pnlCarreraInformatica.SuspendLayout();
             panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
+            pnlCarrera2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            pnlCarreraSistemas.SuspendLayout();
+            panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            pnlCarrera1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            pnlAviso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // pnlHeader
@@ -195,142 +195,24 @@
             // 
             pnlContenido.Controls.Add(pictureBox5);
             pnlContenido.Controls.Add(lblIngreso);
-            pnlContenido.Controls.Add(btnvolver);
-            pnlContenido.Controls.Add(pictureBox4);
-            pnlContenido.Controls.Add(pictureBox3);
-            pnlContenido.Controls.Add(pictureBox1);
+            pnlContenido.Controls.Add(btnVolver);
+            pnlContenido.Controls.Add(picCentroEconomicas);
+            pnlContenido.Controls.Add(picCentroSalud);
+            pnlContenido.Controls.Add(picCentroBasicas);
             pnlContenido.Location = new Point(26, 158);
             pnlContenido.Name = "pnlContenido";
             pnlContenido.Size = new Size(376, 427);
             pnlContenido.TabIndex = 16;
             // 
-            // pictureBox2
+            // pictureBox5
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(0, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(94, 49);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 3;
-            pictureBox2.TabStop = false;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(panel8);
-            panel2.Controls.Add(panel7);
-            panel2.Controls.Add(pnlAviso);
-            panel2.Controls.Add(btnIngresar);
-            panel2.Controls.Add(pictureBox6);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(pictureBox11);
-            panel2.Location = new Point(422, 158);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(631, 427);
-            panel2.TabIndex = 17;
-            panel2.Paint += panel2_Paint;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(panel5);
-            panel3.Controls.Add(panel4);
-            panel3.Controls.Add(panel6);
-            panel3.Controls.Add(lblfrase2);
-            panel3.Controls.Add(lblFrase);
-            panel3.Controls.Add(pictureBox2);
-            panel3.Location = new Point(26, 591);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1027, 52);
-            panel3.TabIndex = 17;
-            // 
-            // lblfrase2
-            // 
-            lblfrase2.AutoSize = true;
-            lblfrase2.BackColor = Color.Transparent;
-            lblfrase2.Font = new Font("Segoe UI", 4F, FontStyle.Bold);
-            lblfrase2.ForeColor = Color.FromArgb(16, 58, 112);
-            lblfrase2.Location = new Point(920, 12);
-            lblfrase2.Name = "lblfrase2";
-            lblfrase2.Size = new Size(95, 11);
-            lblfrase2.TabIndex = 22;
-            lblfrase2.Text = "construye la universidad";
-            // 
-            // lblFrase
-            // 
-            lblFrase.AutoSize = true;
-            lblFrase.BackColor = Color.Transparent;
-            lblFrase.Font = new Font("Segoe UI", 4F, FontStyle.Bold);
-            lblFrase.ForeColor = Color.FromArgb(16, 58, 112);
-            lblFrase.Location = new Point(862, 12);
-            lblFrase.Name = "lblFrase";
-            lblFrase.Size = new Size(61, 11);
-            lblFrase.TabIndex = 21;
-            lblFrase.Text = "Tu voz también";
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.Red;
-            panel5.Location = new Point(973, 26);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(42, 5);
-            panel5.TabIndex = 26;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.Yellow;
-            panel4.Location = new Point(920, 26);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(42, 5);
-            panel4.TabIndex = 25;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.Navy;
-            panel6.Location = new Point(872, 26);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(42, 5);
-            panel6.TabIndex = 24;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(26, 64);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(322, 99);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(26, 169);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(322, 106);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 1;
-            pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(26, 281);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(322, 100);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 2;
-            pictureBox4.TabStop = false;
-            // 
-            // btnvolver
-            // 
-            btnvolver.Cursor = Cursors.Hand;
-            btnvolver.FlatAppearance.BorderColor = Color.FromArgb(11, 50, 105);
-            btnvolver.ForeColor = Color.FromArgb(11, 50, 105);
-            btnvolver.Location = new Point(26, 387);
-            btnvolver.Name = "btnvolver";
-            btnvolver.Size = new Size(155, 37);
-            btnvolver.TabIndex = 3;
-            btnvolver.Text = "← Volver";
-            btnvolver.UseVisualStyleBackColor = true;
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(27, 17);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(67, 42);
+            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox5.TabIndex = 21;
+            pictureBox5.TabStop = false;
             // 
             // lblIngreso
             // 
@@ -344,184 +226,105 @@
             lblIngreso.TabIndex = 20;
             lblIngreso.Text = "Tu centro universitario";
             // 
-            // pictureBox5
+            // btnVolver
             // 
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(27, 17);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(67, 42);
-            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox5.TabIndex = 21;
-            pictureBox5.TabStop = false;
+            btnVolver.Cursor = Cursors.Hand;
+            btnVolver.FlatAppearance.BorderColor = Color.FromArgb(11, 50, 105);
+            btnVolver.ForeColor = Color.FromArgb(11, 50, 105);
+            btnVolver.Location = new Point(26, 387);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(155, 37);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "← Volver";
+            btnVolver.UseVisualStyleBackColor = true;
             // 
-            // pictureBox6
+            // picCentroEconomicas
             // 
-            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(31, 17);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(67, 42);
-            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox6.TabIndex = 23;
-            pictureBox6.TabStop = false;
+            picCentroEconomicas.Image = (Image)resources.GetObject("picCentroEconomicas.Image");
+            picCentroEconomicas.Location = new Point(26, 281);
+            picCentroEconomicas.Name = "picCentroEconomicas";
+            picCentroEconomicas.Size = new Size(322, 100);
+            picCentroEconomicas.SizeMode = PictureBoxSizeMode.Zoom;
+            picCentroEconomicas.TabIndex = 2;
+            picCentroEconomicas.TabStop = false;
             // 
-            // label1
+            // picCentroSalud
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(11, 50, 105);
-            label1.Location = new Point(113, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(157, 28);
-            label1.TabIndex = 22;
-            label1.Text = "Elige tu carrera";
+            picCentroSalud.Image = (Image)resources.GetObject("picCentroSalud.Image");
+            picCentroSalud.Location = new Point(26, 169);
+            picCentroSalud.Name = "picCentroSalud";
+            picCentroSalud.Size = new Size(322, 106);
+            picCentroSalud.SizeMode = PictureBoxSizeMode.Zoom;
+            picCentroSalud.TabIndex = 1;
+            picCentroSalud.TabStop = false;
             // 
-            // pnlAviso
+            // picCentroBasicas
             // 
-            pnlAviso.BackColor = Color.FromArgb(240, 245, 252);
-            pnlAviso.Controls.Add(lblAviso);
-            pnlAviso.Cursor = Cursors.Hand;
-            pnlAviso.Location = new Point(14, 329);
-            pnlAviso.Name = "pnlAviso";
-            pnlAviso.Size = new Size(605, 45);
-            pnlAviso.TabIndex = 25;
+            picCentroBasicas.Image = (Image)resources.GetObject("picCentroBasicas.Image");
+            picCentroBasicas.Location = new Point(26, 64);
+            picCentroBasicas.Name = "picCentroBasicas";
+            picCentroBasicas.Size = new Size(322, 99);
+            picCentroBasicas.SizeMode = PictureBoxSizeMode.Zoom;
+            picCentroBasicas.TabIndex = 0;
+            picCentroBasicas.TabStop = false;
             // 
-            // lblAviso
+            // pictureBox2
             // 
-            lblAviso.AutoSize = true;
-            lblAviso.BackColor = Color.Transparent;
-            lblAviso.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAviso.ForeColor = Color.FromArgb(83, 102, 129);
-            lblAviso.Location = new Point(36, 10);
-            lblAviso.Name = "lblAviso";
-            lblAviso.Size = new Size(339, 21);
-            lblAviso.TabIndex = 22;
-            lblAviso.Text = "ⓘ Verás los candidatos de tu centro y tu carrera";
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(0, 3);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(94, 49);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 3;
+            pictureBox2.TabStop = false;
             // 
-            // btnIngresar
+            // panel2
             // 
-            btnIngresar.BackColor = Color.FromArgb(16, 58, 112);
-            btnIngresar.Cursor = Cursors.Hand;
-            btnIngresar.FlatAppearance.BorderSize = 0;
-            btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIngresar.ForeColor = Color.White;
-            btnIngresar.Location = new Point(31, 380);
-            btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(572, 44);
-            btnIngresar.TabIndex = 24;
-            btnIngresar.Text = "Continuar con la votación →";
-            btnIngresar.UseVisualStyleBackColor = false;
+            panel2.Controls.Add(pnlCarreraInformatica);
+            panel2.Controls.Add(pnlCarreraSistemas);
+            panel2.Controls.Add(pnlAviso);
+            panel2.Controls.Add(btnContinuar);
+            panel2.Controls.Add(pictureBox6);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(pictureBox11);
+            panel2.Location = new Point(422, 158);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(631, 427);
+            panel2.TabIndex = 17;
+            panel2.Paint += panel2_Paint;
             // 
-            // panel7
+            // pnlCarreraInformatica
             // 
-            panel7.Controls.Add(panel19);
-            panel7.Controls.Add(pnlCarrera1);
-            panel7.Controls.Add(panel9);
-            panel7.Controls.Add(label4);
-            panel7.Controls.Add(label2);
-            panel7.Controls.Add(pictureBox7);
-            panel7.Location = new Point(54, 76);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(238, 235);
-            panel7.TabIndex = 26;
+            pnlCarreraInformatica.Controls.Add(panel20);
+            pnlCarreraInformatica.Controls.Add(pnlCarrera2);
+            pnlCarreraInformatica.Controls.Add(panel10);
+            pnlCarreraInformatica.Controls.Add(label5);
+            pnlCarreraInformatica.Controls.Add(label3);
+            pnlCarreraInformatica.Controls.Add(pictureBox8);
+            pnlCarreraInformatica.Location = new Point(328, 76);
+            pnlCarreraInformatica.Name = "pnlCarreraInformatica";
+            pnlCarreraInformatica.Size = new Size(238, 235);
+            pnlCarreraInformatica.TabIndex = 27;
             // 
-            // panel8
+            // panel20
             // 
-            panel8.Controls.Add(panel20);
-            panel8.Controls.Add(pnlCarrera2);
-            panel8.Controls.Add(panel10);
-            panel8.Controls.Add(label5);
-            panel8.Controls.Add(label3);
-            panel8.Controls.Add(pictureBox8);
-            panel8.Location = new Point(328, 76);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(238, 235);
-            panel8.TabIndex = 27;
+            panel20.BackColor = Color.FromArgb(0, 192, 192);
+            panel20.Controls.Add(pictureBox9);
+            panel20.Location = new Point(87, 86);
+            panel20.Name = "panel20";
+            panel20.Size = new Size(81, 51);
+            panel20.TabIndex = 32;
             // 
-            // pictureBox7
+            // pictureBox9
             // 
-            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(0, 0);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(238, 102);
-            pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox7.TabIndex = 0;
-            pictureBox7.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(0, 0);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(238, 102);
-            pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox8.TabIndex = 1;
-            pictureBox8.TabStop = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(11, 50, 105);
-            label2.Location = new Point(29, 140);
-            label2.Name = "label2";
-            label2.Size = new Size(186, 21);
-            label2.TabIndex = 28;
-            label2.Text = "Ingenieria en Sistemas ";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            label3.ForeColor = Color.FromArgb(11, 50, 105);
-            label3.Location = new Point(73, 140);
-            label3.Name = "label3";
-            label3.Size = new Size(95, 21);
-            label3.TabIndex = 29;
-            label3.Text = "Lienciatura";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.MediumTurquoise;
-            label4.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            label4.ForeColor = Color.FromArgb(11, 50, 105);
-            label4.Location = new Point(48, 161);
-            label4.Name = "label4";
-            label4.Size = new Size(143, 21);
-            label4.TabIndex = 29;
-            label4.Text = "Computacionales";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.MediumTurquoise;
-            label5.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            label5.ForeColor = Color.FromArgb(11, 50, 105);
-            label5.Location = new Point(73, 161);
-            label5.Name = "label5";
-            label5.Size = new Size(99, 21);
-            label5.TabIndex = 30;
-            label5.Text = "Informática";
-            // 
-            // panel9
-            // 
-            panel9.BackColor = Color.Navy;
-            panel9.Location = new Point(102, 194);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(42, 5);
-            panel9.TabIndex = 30;
-            // 
-            // panel10
-            // 
-            panel10.BackColor = Color.Navy;
-            panel10.Location = new Point(101, 194);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(42, 5);
-            panel10.TabIndex = 31;
+            pictureBox9.BackColor = Color.MediumTurquoise;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(-14, 0);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(115, 65);
+            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox9.TabIndex = 0;
+            pictureBox9.TabStop = false;
             // 
             // pnlCarrera2
             // 
@@ -536,6 +339,18 @@
             pnlCarrera2.Name = "pnlCarrera2";
             pnlCarrera2.Size = new Size(213, 28);
             pnlCarrera2.TabIndex = 27;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Segoe UI", 6F);
+            label11.ForeColor = Color.FromArgb(11, 50, 105);
+            label11.Location = new Point(51, 8);
+            label11.Name = "label11";
+            label11.Size = new Size(108, 15);
+            label11.TabIndex = 27;
+            label11.Text = "Seleccionar Carrera";
             // 
             // panel12
             // 
@@ -585,6 +400,81 @@
             label7.TabIndex = 21;
             label7.Text = "Tu voz también";
             // 
+            // panel10
+            // 
+            panel10.BackColor = Color.Navy;
+            panel10.Location = new Point(101, 194);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(42, 5);
+            panel10.TabIndex = 31;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.MediumTurquoise;
+            label5.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            label5.ForeColor = Color.FromArgb(11, 50, 105);
+            label5.Location = new Point(73, 161);
+            label5.Name = "label5";
+            label5.Size = new Size(99, 21);
+            label5.TabIndex = 30;
+            label5.Text = "Informática";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(11, 50, 105);
+            label3.Location = new Point(73, 140);
+            label3.Name = "label3";
+            label3.Size = new Size(95, 21);
+            label3.TabIndex = 29;
+            label3.Text = "Lienciatura";
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
+            pictureBox8.Location = new Point(0, 0);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(238, 102);
+            pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox8.TabIndex = 1;
+            pictureBox8.TabStop = false;
+            // 
+            // pnlCarreraSistemas
+            // 
+            pnlCarreraSistemas.Controls.Add(panel19);
+            pnlCarreraSistemas.Controls.Add(pnlCarrera1);
+            pnlCarreraSistemas.Controls.Add(panel9);
+            pnlCarreraSistemas.Controls.Add(label4);
+            pnlCarreraSistemas.Controls.Add(label2);
+            pnlCarreraSistemas.Controls.Add(pictureBox7);
+            pnlCarreraSistemas.Location = new Point(54, 76);
+            pnlCarreraSistemas.Name = "pnlCarreraSistemas";
+            pnlCarreraSistemas.Size = new Size(238, 235);
+            pnlCarreraSistemas.TabIndex = 26;
+            // 
+            // panel19
+            // 
+            panel19.BackColor = Color.FromArgb(0, 192, 192);
+            panel19.Controls.Add(pictureBox10);
+            panel19.Location = new Point(83, 86);
+            panel19.Name = "panel19";
+            panel19.Size = new Size(81, 51);
+            panel19.TabIndex = 31;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.BackColor = Color.MediumTurquoise;
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(3, 0);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(75, 48);
+            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox10.TabIndex = 32;
+            pictureBox10.TabStop = false;
+            // 
             // pnlCarrera1
             // 
             pnlCarrera1.BorderStyle = BorderStyle.FixedSingle;
@@ -598,6 +488,18 @@
             pnlCarrera1.Name = "pnlCarrera1";
             pnlCarrera1.Size = new Size(213, 28);
             pnlCarrera1.TabIndex = 28;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Segoe UI", 6F);
+            label10.ForeColor = Color.FromArgb(11, 50, 105);
+            label10.Location = new Point(51, 8);
+            label10.Name = "label10";
+            label10.Size = new Size(108, 15);
+            label10.TabIndex = 18;
+            label10.Text = "Seleccionar Carrera";
             // 
             // panel16
             // 
@@ -647,69 +549,106 @@
             label9.TabIndex = 21;
             label9.Text = "Tu voz también";
             // 
-            // label10
+            // panel9
             // 
-            label10.AutoSize = true;
-            label10.BackColor = Color.Transparent;
-            label10.Font = new Font("Segoe UI", 6F);
-            label10.ForeColor = Color.FromArgb(11, 50, 105);
-            label10.Location = new Point(51, 8);
-            label10.Name = "label10";
-            label10.Size = new Size(108, 15);
-            label10.TabIndex = 18;
-            label10.Text = "Seleccionar Carrera";
+            panel9.BackColor = Color.Navy;
+            panel9.Location = new Point(102, 194);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(42, 5);
+            panel9.TabIndex = 30;
             // 
-            // label11
+            // label4
             // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Segoe UI", 6F);
-            label11.ForeColor = Color.FromArgb(11, 50, 105);
-            label11.Location = new Point(51, 8);
-            label11.Name = "label11";
-            label11.Size = new Size(108, 15);
-            label11.TabIndex = 27;
-            label11.Text = "Seleccionar Carrera";
+            label4.AutoSize = true;
+            label4.BackColor = Color.MediumTurquoise;
+            label4.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            label4.ForeColor = Color.FromArgb(11, 50, 105);
+            label4.Location = new Point(48, 161);
+            label4.Name = "label4";
+            label4.Size = new Size(143, 21);
+            label4.TabIndex = 29;
+            label4.Text = "Computacionales";
             // 
-            // pictureBox10
+            // label2
             // 
-            pictureBox10.BackColor = Color.MediumTurquoise;
-            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(3, 0);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(75, 48);
-            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox10.TabIndex = 32;
-            pictureBox10.TabStop = false;
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            label2.ForeColor = Color.FromArgb(11, 50, 105);
+            label2.Location = new Point(29, 140);
+            label2.Name = "label2";
+            label2.Size = new Size(186, 21);
+            label2.TabIndex = 28;
+            label2.Text = "Ingenieria en Sistemas ";
             // 
-            // panel19
+            // pictureBox7
             // 
-            panel19.BackColor = Color.FromArgb(0, 192, 192);
-            panel19.Controls.Add(pictureBox10);
-            panel19.Location = new Point(83, 86);
-            panel19.Name = "panel19";
-            panel19.Size = new Size(81, 51);
-            panel19.TabIndex = 31;
+            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
+            pictureBox7.Location = new Point(0, 0);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(238, 102);
+            pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox7.TabIndex = 0;
+            pictureBox7.TabStop = false;
             // 
-            // panel20
+            // pnlAviso
             // 
-            panel20.BackColor = Color.FromArgb(0, 192, 192);
-            panel20.Controls.Add(pictureBox9);
-            panel20.Location = new Point(87, 86);
-            panel20.Name = "panel20";
-            panel20.Size = new Size(81, 51);
-            panel20.TabIndex = 32;
+            pnlAviso.BackColor = Color.FromArgb(240, 245, 252);
+            pnlAviso.Controls.Add(lblAviso);
+            pnlAviso.Cursor = Cursors.Hand;
+            pnlAviso.Location = new Point(14, 329);
+            pnlAviso.Name = "pnlAviso";
+            pnlAviso.Size = new Size(605, 45);
+            pnlAviso.TabIndex = 25;
             // 
-            // pictureBox9
+            // lblAviso
             // 
-            pictureBox9.BackColor = Color.MediumTurquoise;
-            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(-14, 0);
-            pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(115, 65);
-            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox9.TabIndex = 0;
-            pictureBox9.TabStop = false;
+            lblAviso.AutoSize = true;
+            lblAviso.BackColor = Color.Transparent;
+            lblAviso.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAviso.ForeColor = Color.FromArgb(83, 102, 129);
+            lblAviso.Location = new Point(36, 10);
+            lblAviso.Name = "lblAviso";
+            lblAviso.Size = new Size(339, 21);
+            lblAviso.TabIndex = 22;
+            lblAviso.Text = "ⓘ Verás los candidatos de tu centro y tu carrera";
+            // 
+            // btnContinuar
+            // 
+            btnContinuar.BackColor = Color.FromArgb(16, 58, 112);
+            btnContinuar.Cursor = Cursors.Hand;
+            btnContinuar.FlatAppearance.BorderSize = 0;
+            btnContinuar.FlatStyle = FlatStyle.Flat;
+            btnContinuar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnContinuar.ForeColor = Color.White;
+            btnContinuar.Location = new Point(31, 380);
+            btnContinuar.Name = "btnContinuar";
+            btnContinuar.Size = new Size(572, 44);
+            btnContinuar.TabIndex = 24;
+            btnContinuar.Text = "Continuar con la votación →";
+            btnContinuar.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(31, 17);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(67, 42);
+            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox6.TabIndex = 23;
+            pictureBox6.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(11, 50, 105);
+            label1.Location = new Point(113, 24);
+            label1.Name = "label1";
+            label1.Size = new Size(157, 28);
+            label1.TabIndex = 22;
+            label1.Text = "Elige tu carrera";
             // 
             // pictureBox11
             // 
@@ -720,6 +659,67 @@
             pictureBox11.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox11.TabIndex = 18;
             pictureBox11.TabStop = false;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(panel5);
+            panel3.Controls.Add(panel4);
+            panel3.Controls.Add(panel6);
+            panel3.Controls.Add(lblfrase2);
+            panel3.Controls.Add(lblFrase);
+            panel3.Controls.Add(pictureBox2);
+            panel3.Location = new Point(26, 591);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1027, 52);
+            panel3.TabIndex = 17;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.Red;
+            panel5.Location = new Point(973, 26);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(42, 5);
+            panel5.TabIndex = 26;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Yellow;
+            panel4.Location = new Point(920, 26);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(42, 5);
+            panel4.TabIndex = 25;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.Navy;
+            panel6.Location = new Point(872, 26);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(42, 5);
+            panel6.TabIndex = 24;
+            // 
+            // lblfrase2
+            // 
+            lblfrase2.AutoSize = true;
+            lblfrase2.BackColor = Color.Transparent;
+            lblfrase2.Font = new Font("Segoe UI", 4F, FontStyle.Bold);
+            lblfrase2.ForeColor = Color.FromArgb(16, 58, 112);
+            lblfrase2.Location = new Point(920, 12);
+            lblfrase2.Name = "lblfrase2";
+            lblfrase2.Size = new Size(95, 11);
+            lblfrase2.TabIndex = 22;
+            lblfrase2.Text = "construye la universidad";
+            // 
+            // lblFrase
+            // 
+            lblFrase.AutoSize = true;
+            lblFrase.BackColor = Color.Transparent;
+            lblFrase.Font = new Font("Segoe UI", 4F, FontStyle.Bold);
+            lblFrase.ForeColor = Color.FromArgb(16, 58, 112);
+            lblFrase.Location = new Point(862, 12);
+            lblFrase.Name = "lblFrase";
+            lblFrase.Size = new Size(61, 11);
+            lblFrase.TabIndex = 21;
+            lblFrase.Text = "Tu voz también";
             // 
             // FrmCentros_Carreras
             // 
@@ -742,33 +742,33 @@
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             pnlContenido.ResumeLayout(false);
             pnlContenido.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroEconomicas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroSalud).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroBasicas).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            pnlAviso.ResumeLayout(false);
-            pnlAviso.PerformLayout();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
-            panel8.ResumeLayout(false);
-            panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            pnlCarrera2.ResumeLayout(false);
-            pnlCarrera2.PerformLayout();
-            pnlCarrera1.ResumeLayout(false);
-            pnlCarrera1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            panel19.ResumeLayout(false);
+            pnlCarreraInformatica.ResumeLayout(false);
+            pnlCarreraInformatica.PerformLayout();
             panel20.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
+            pnlCarrera2.ResumeLayout(false);
+            pnlCarrera2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            pnlCarreraSistemas.ResumeLayout(false);
+            pnlCarreraSistemas.PerformLayout();
+            panel19.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            pnlCarrera1.ResumeLayout(false);
+            pnlCarrera1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            pnlAviso.ResumeLayout(false);
+            pnlAviso.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -788,23 +788,23 @@
         private Panel panel3;
         private Label lblfrase2;
         private Label lblFrase;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox1;
+        private PictureBox picCentroEconomicas;
+        private PictureBox picCentroSalud;
+        private PictureBox picCentroBasicas;
         private Panel panel5;
         private Panel panel4;
         private Panel panel6;
-        private Button btnvolver;
+        private Button btnVolver;
         private Label lblIngreso;
         private PictureBox pictureBox5;
         private PictureBox pictureBox6;
         private Label label1;
         private Panel pnlAviso;
         private Label lblAviso;
-        private Button btnIngresar;
-        private Panel panel8;
+        private Button btnContinuar;
+        private Panel pnlCarreraInformatica;
         private PictureBox pictureBox8;
-        private Panel panel7;
+        private Panel pnlCarreraSistemas;
         private PictureBox pictureBox7;
         private Label label5;
         private Label label3;

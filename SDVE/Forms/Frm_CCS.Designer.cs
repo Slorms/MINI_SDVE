@@ -37,7 +37,7 @@
             lblFrase = new Label();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
-            panel8 = new Panel();
+            pnlCarreraNutricion = new Panel();
             pictureBox9 = new PictureBox();
             label3 = new Label();
             pnlCarrera2 = new Panel();
@@ -50,7 +50,7 @@
             panel10 = new Panel();
             label5 = new Label();
             pictureBox8 = new PictureBox();
-            panel7 = new Panel();
+            pnlCarreraEnfermeria = new Panel();
             pictureBox10 = new PictureBox();
             pnlCarrera1 = new Panel();
             label10 = new Label();
@@ -65,17 +65,17 @@
             pictureBox7 = new PictureBox();
             pnlAviso = new Panel();
             lblAviso = new Label();
-            btnIngresar = new Button();
+            btnContinuar = new Button();
             pictureBox6 = new PictureBox();
             label1 = new Label();
             pictureBox11 = new PictureBox();
             pnlContenido = new Panel();
             pictureBox5 = new PictureBox();
             lblIngreso = new Label();
-            btnvolver = new Button();
-            pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox1 = new PictureBox();
+            btnVolver = new Button();
+            picCentroEconomicas = new PictureBox();
+            picCentroSalud = new PictureBox();
+            picCentroBasicas = new PictureBox();
             lblSubtitulo = new Label();
             lblBienvenido = new Label();
             pnlHeader = new Panel();
@@ -86,11 +86,11 @@
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
-            panel8.SuspendLayout();
+            pnlCarreraNutricion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             pnlCarrera2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            panel7.SuspendLayout();
+            pnlCarreraEnfermeria.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             pnlCarrera1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
@@ -99,9 +99,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroEconomicas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroSalud).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroBasicas).BeginInit();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             SuspendLayout();
@@ -179,10 +179,10 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(panel8);
-            panel2.Controls.Add(panel7);
+            panel2.Controls.Add(pnlCarreraNutricion);
+            panel2.Controls.Add(pnlCarreraEnfermeria);
             panel2.Controls.Add(pnlAviso);
-            panel2.Controls.Add(btnIngresar);
+            panel2.Controls.Add(btnContinuar);
             panel2.Controls.Add(pictureBox6);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox11);
@@ -191,18 +191,18 @@
             panel2.Size = new Size(631, 427);
             panel2.TabIndex = 29;
             // 
-            // panel8
+            // pnlCarreraNutricion
             // 
-            panel8.Controls.Add(pictureBox9);
-            panel8.Controls.Add(label3);
-            panel8.Controls.Add(pnlCarrera2);
-            panel8.Controls.Add(panel10);
-            panel8.Controls.Add(label5);
-            panel8.Controls.Add(pictureBox8);
-            panel8.Location = new Point(328, 76);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(238, 235);
-            panel8.TabIndex = 27;
+            pnlCarreraNutricion.Controls.Add(pictureBox9);
+            pnlCarreraNutricion.Controls.Add(label3);
+            pnlCarreraNutricion.Controls.Add(pnlCarrera2);
+            pnlCarreraNutricion.Controls.Add(panel10);
+            pnlCarreraNutricion.Controls.Add(label5);
+            pnlCarreraNutricion.Controls.Add(pictureBox8);
+            pnlCarreraNutricion.Location = new Point(328, 76);
+            pnlCarreraNutricion.Name = "pnlCarreraNutricion";
+            pnlCarreraNutricion.Size = new Size(238, 235);
+            pnlCarreraNutricion.TabIndex = 27;
             // 
             // pictureBox9
             // 
@@ -331,18 +331,18 @@
             pictureBox8.TabIndex = 1;
             pictureBox8.TabStop = false;
             // 
-            // panel7
+            // pnlCarreraEnfermeria
             // 
-            panel7.Controls.Add(pictureBox10);
-            panel7.Controls.Add(pnlCarrera1);
-            panel7.Controls.Add(panel9);
-            panel7.Controls.Add(label4);
-            panel7.Controls.Add(label2);
-            panel7.Controls.Add(pictureBox7);
-            panel7.Location = new Point(54, 76);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(238, 235);
-            panel7.TabIndex = 26;
+            pnlCarreraEnfermeria.Controls.Add(pictureBox10);
+            pnlCarreraEnfermeria.Controls.Add(pnlCarrera1);
+            pnlCarreraEnfermeria.Controls.Add(panel9);
+            pnlCarreraEnfermeria.Controls.Add(label4);
+            pnlCarreraEnfermeria.Controls.Add(label2);
+            pnlCarreraEnfermeria.Controls.Add(pictureBox7);
+            pnlCarreraEnfermeria.Location = new Point(54, 76);
+            pnlCarreraEnfermeria.Name = "pnlCarreraEnfermeria";
+            pnlCarreraEnfermeria.Size = new Size(238, 235);
+            pnlCarreraEnfermeria.TabIndex = 26;
             // 
             // pictureBox10
             // 
@@ -493,20 +493,20 @@
             lblAviso.TabIndex = 22;
             lblAviso.Text = "ⓘ Verás los candidatos de tu centro y tu carrera";
             // 
-            // btnIngresar
+            // btnContinuar
             // 
-            btnIngresar.BackColor = Color.FromArgb(16, 58, 112);
-            btnIngresar.Cursor = Cursors.Hand;
-            btnIngresar.FlatAppearance.BorderSize = 0;
-            btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIngresar.ForeColor = Color.White;
-            btnIngresar.Location = new Point(31, 380);
-            btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(572, 44);
-            btnIngresar.TabIndex = 24;
-            btnIngresar.Text = "Continuar con la votación →";
-            btnIngresar.UseVisualStyleBackColor = false;
+            btnContinuar.BackColor = Color.FromArgb(16, 58, 112);
+            btnContinuar.Cursor = Cursors.Hand;
+            btnContinuar.FlatAppearance.BorderSize = 0;
+            btnContinuar.FlatStyle = FlatStyle.Flat;
+            btnContinuar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnContinuar.ForeColor = Color.White;
+            btnContinuar.Location = new Point(31, 380);
+            btnContinuar.Name = "btnContinuar";
+            btnContinuar.Size = new Size(572, 44);
+            btnContinuar.TabIndex = 24;
+            btnContinuar.Text = "Continuar con la votación →";
+            btnContinuar.UseVisualStyleBackColor = false;
             // 
             // pictureBox6
             // 
@@ -544,10 +544,10 @@
             // 
             pnlContenido.Controls.Add(pictureBox5);
             pnlContenido.Controls.Add(lblIngreso);
-            pnlContenido.Controls.Add(btnvolver);
-            pnlContenido.Controls.Add(pictureBox4);
-            pnlContenido.Controls.Add(pictureBox3);
-            pnlContenido.Controls.Add(pictureBox1);
+            pnlContenido.Controls.Add(btnVolver);
+            pnlContenido.Controls.Add(picCentroEconomicas);
+            pnlContenido.Controls.Add(picCentroSalud);
+            pnlContenido.Controls.Add(picCentroBasicas);
             pnlContenido.Location = new Point(22, 159);
             pnlContenido.Name = "pnlContenido";
             pnlContenido.Size = new Size(376, 427);
@@ -575,47 +575,47 @@
             lblIngreso.TabIndex = 20;
             lblIngreso.Text = "Tu centro universitario";
             // 
-            // btnvolver
+            // btnVolver
             // 
-            btnvolver.Cursor = Cursors.Hand;
-            btnvolver.FlatAppearance.BorderColor = Color.FromArgb(11, 50, 105);
-            btnvolver.ForeColor = Color.FromArgb(11, 50, 105);
-            btnvolver.Location = new Point(26, 387);
-            btnvolver.Name = "btnvolver";
-            btnvolver.Size = new Size(155, 37);
-            btnvolver.TabIndex = 3;
-            btnvolver.Text = "← Volver";
-            btnvolver.UseVisualStyleBackColor = true;
+            btnVolver.Cursor = Cursors.Hand;
+            btnVolver.FlatAppearance.BorderColor = Color.FromArgb(11, 50, 105);
+            btnVolver.ForeColor = Color.FromArgb(11, 50, 105);
+            btnVolver.Location = new Point(26, 387);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(155, 37);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "← Volver";
+            btnVolver.UseVisualStyleBackColor = true;
             // 
-            // pictureBox4
+            // picCentroEconomicas
             // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(26, 281);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(322, 100);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 2;
-            pictureBox4.TabStop = false;
+            picCentroEconomicas.Image = (Image)resources.GetObject("picCentroEconomicas.Image");
+            picCentroEconomicas.Location = new Point(26, 281);
+            picCentroEconomicas.Name = "picCentroEconomicas";
+            picCentroEconomicas.Size = new Size(322, 100);
+            picCentroEconomicas.SizeMode = PictureBoxSizeMode.Zoom;
+            picCentroEconomicas.TabIndex = 2;
+            picCentroEconomicas.TabStop = false;
             // 
-            // pictureBox3
+            // picCentroSalud
             // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(26, 169);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(322, 106);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 1;
-            pictureBox3.TabStop = false;
+            picCentroSalud.Image = (Image)resources.GetObject("picCentroSalud.Image");
+            picCentroSalud.Location = new Point(26, 169);
+            picCentroSalud.Name = "picCentroSalud";
+            picCentroSalud.Size = new Size(322, 106);
+            picCentroSalud.SizeMode = PictureBoxSizeMode.Zoom;
+            picCentroSalud.TabIndex = 1;
+            picCentroSalud.TabStop = false;
             // 
-            // pictureBox1
+            // picCentroBasicas
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(26, 64);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(322, 99);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            picCentroBasicas.Image = (Image)resources.GetObject("picCentroBasicas.Image");
+            picCentroBasicas.Location = new Point(26, 64);
+            picCentroBasicas.Name = "picCentroBasicas";
+            picCentroBasicas.Size = new Size(322, 99);
+            picCentroBasicas.SizeMode = PictureBoxSizeMode.Zoom;
+            picCentroBasicas.TabIndex = 0;
+            picCentroBasicas.TabStop = false;
             // 
             // lblSubtitulo
             // 
@@ -717,14 +717,14 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel8.ResumeLayout(false);
-            panel8.PerformLayout();
+            pnlCarreraNutricion.ResumeLayout(false);
+            pnlCarreraNutricion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             pnlCarrera2.ResumeLayout(false);
             pnlCarrera2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
+            pnlCarreraEnfermeria.ResumeLayout(false);
+            pnlCarreraEnfermeria.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             pnlCarrera1.ResumeLayout(false);
             pnlCarrera1.PerformLayout();
@@ -736,9 +736,9 @@
             pnlContenido.ResumeLayout(false);
             pnlContenido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroEconomicas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroSalud).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picCentroBasicas).EndInit();
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
@@ -756,7 +756,7 @@
         private Label lblFrase;
         private PictureBox pictureBox2;
         private Panel panel2;
-        private Panel panel8;
+        private Panel pnlCarreraNutricion;
         private PictureBox pictureBox9;
         private Label label3;
         private Panel pnlCarrera2;
@@ -769,7 +769,7 @@
         private Panel panel10;
         private Label label5;
         private PictureBox pictureBox8;
-        private Panel panel7;
+        private Panel pnlCarreraEnfermeria;
         private PictureBox pictureBox10;
         private Panel pnlCarrera1;
         private Label label10;
@@ -784,17 +784,17 @@
         private PictureBox pictureBox7;
         private Panel pnlAviso;
         private Label lblAviso;
-        private Button btnIngresar;
+        private Button btnContinuar;
         private PictureBox pictureBox6;
         private Label label1;
         private PictureBox pictureBox11;
         private Panel pnlContenido;
         private PictureBox pictureBox5;
         private Label lblIngreso;
-        private Button btnvolver;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox1;
+        private Button btnVolver;
+        private PictureBox picCentroEconomicas;
+        private PictureBox picCentroSalud;
+        private PictureBox picCentroBasicas;
         private Label lblSubtitulo;
         private Label lblBienvenido;
         private Panel pnlHeader;
