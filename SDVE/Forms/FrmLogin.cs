@@ -1,7 +1,10 @@
+using SDVE.Datos;
 using SDVE.Login;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+
+
 namespace Login
 {
     public partial class FrmLogin : Form
@@ -33,26 +36,62 @@ namespace Login
         {
             string id = txtId.Text.Trim();
 
+            // valida que el id sea correcto
             if (!Validacion.EsNumeroValido(id, 6))
             {
-                MessageBox.Show("Ingresa un ID de alumno válido (solo números, máximo 6 dígitos).",
-                    "ID inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Ingresa un ID de alumno válido (solo números, máximo 6 dígitos).",
+                    "ID inválido",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
                 txtId.Focus();
                 return;
             }
 
+            // busca al alumno en alumnos.csv
+            Alumno? alumno = RegistroAlumnos.BuscarPorId(id);
+
+            if (alumno == null)
+            {
+                MessageBox.Show(
+                    "El ID no está registrado como alumno.",
+                    "Alumno no encontrado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                txtId.Clear();
+                txtId.Focus();
+                return;
+            }
+
+            // revisa si ya ingresó anteriormente
             if (RegistroVotantes.YaIngreso(Rol.Alumno, id))
             {
-                MessageBox.Show("Este ID ya ingresó al sistema. No puede volver a entrar.",
-                    "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(
+                    "Este ID ya ingresó al sistema. No puede volver a entrar.",
+                    "Acceso denegado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Stop);
+
                 txtId.Clear();
                 return;
             }
 
-            RegistroVotantes.Registrar(Rol.Alumno, id);
+            // guarda los datos del alumno en la sesión
             Sesion.RolActual = Rol.Alumno;
-            Sesion.IdActual = id;
+            Sesion.IdActual = alumno.Id;
+            Sesion.CentroActual = alumno.Centro;
+            Sesion.CarreraActual = alumno.Carrera;
+            Sesion.SemestreActual = alumno.Semestre;
+            Sesion.GrupoActual = alumno.Grupo;
+
+            // registra que el alumno ingresó
+            RegistroVotantes.Registrar(Rol.Alumno, id);
+
             txtId.Clear();
+
+            // abre el siguiente formulario
             Navegacion.AbrirDestino(this, Rol.Alumno);
         }
 
