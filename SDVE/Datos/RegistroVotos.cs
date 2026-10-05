@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using System.Web;
-
-namespace SDVE.Datos
+﻿namespace SDVE.Datos
 {
     internal class RegistroVotos
     {

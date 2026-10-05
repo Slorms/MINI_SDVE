@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-
-namespace Votaciones
+﻿namespace Votaciones
 {
     public partial class FormRepresentante : Form
     {
@@ -92,7 +84,7 @@ namespace Votaciones
 
         private void button6_Click(object sender, EventArgs e)
         {
-  
+
             // Habilitar propuesta y botón enviar
             textBox1.Enabled = true;
             button7.Enabled = true;
@@ -106,8 +98,8 @@ namespace Votaciones
 
             // Mandar el cursor al cuadro de texto
             textBox1.Focus();
-        
-        
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
