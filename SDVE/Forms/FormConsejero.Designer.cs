@@ -215,6 +215,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "FormConsejero";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormConsejero";
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();

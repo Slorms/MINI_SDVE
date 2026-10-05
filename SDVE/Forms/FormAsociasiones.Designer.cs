@@ -201,6 +201,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "FormAsociasiones";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAsociasiones";
             Load += FormAsociasiones_Load;
             pnlHeader.ResumeLayout(false);
