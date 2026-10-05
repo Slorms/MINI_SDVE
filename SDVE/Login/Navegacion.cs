@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Votaciones;
 
 namespace SDVE.Login
 { 
@@ -20,8 +21,8 @@ namespace SDVE.Login
             //  AQUI SE CONECTAN LOS FORMULARIOS DE TUS COMPAÑEROS
             //  Solo cambien "new FormPendiente(...)" por "new SuFormulario()"
             // =====================================================================
-            public static Func<Form> FormularioAlumno = () => new FrmLogin();
-        public static Func<Form> FormularioDocente = () => new LoginDocente();
+            public static Func<Form> FormularioAlumno = () => new Form1();
+        public static Func<Form> FormularioDocente = () => new Form1();
         public static Func<Form> FormularioAdmin = () => new LoginAdmin();
         // Ejemplo:  public static Func<Form> FormularioAdmin = () => new FrmConteo();
         // =====================================================================
