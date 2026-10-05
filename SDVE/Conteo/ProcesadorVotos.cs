@@ -88,7 +88,7 @@ namespace SDVE.Conteo
             List<ResultadoCandidato> resultados = new List<ResultadoCandidato>();
 
             foreach (ResultadoCandidato dato in lista)
-            {
+            { 
                 if (dato.Votos < 0)
                 {
                     throw new ArgumentException("La cantidad de votos no puede ser negativa.");
@@ -98,7 +98,8 @@ namespace SDVE.Conteo
 
                 foreach (ResultadoCandidato resultado in resultados)
                 {
-                    if (resultado.Eleccion == dato.Eleccion && resultado.Centro == dato.Centro && resultado.Carrera == dato.Carrera && resultado.Grupo == dato.Grupo && resultado.Candidato == dato.Candidato && resultado.Registrado == dato.Registrado)
+                    if (resultado.Eleccion == dato.Eleccion && resultado.Centro == dato.Centro && resultado.Carrera == dato.Carrera 
+                        && resultado.Grupo == dato.Grupo && resultado.Candidato == dato.Candidato && resultado.Registrado == dato.Registrado)
                     {
                         encontrado = resultado;
                         break;
