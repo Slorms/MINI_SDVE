@@ -7,20 +7,26 @@ namespace SDVE.Login
 { 
         public enum Rol { Alumno, Docente, Admin }
 
-        // Datos de quien acaba de entrar (por si los formularios de tus compañeros los necesitan)
-        public static class Sesion
-        {
-            public static Rol RolActual { get; set; }
-            public static string IdActual { get; set; }  = "";
-        }
+    // Datos de quien acaba de entrar (por si los formularios de tus compañeros los necesitan)
+    public static class Sesion
+    {
+        public static Rol RolActual { get; set; }
+        public static string IdActual { get; set; } = "";
 
-        public static class Navegacion
+        // datos del alumno que inició sesión
+        public static string CentroActual { get; set; } = "";
+        public static string CarreraActual { get; set; } = "";
+        public static string SemestreActual { get; set; } = "";
+        public static string GrupoActual { get; set; } = "";
+    }
+
+    public static class Navegacion
         {
-            // =====================================================================
-            //  AQUI SE CONECTAN LOS FORMULARIOS DE TUS COMPAÑEROS
-            //  Solo cambien "new FormPendiente(...)" por "new SuFormulario()"
-            // =====================================================================
-            public static Func<Form> FormularioAlumno = () => new FrmLogin();
+        // =====================================================================
+        //  AQUI SE CONECTAN LOS FORMULARIOS DE TUS COMPAÑEROS
+        //  Solo cambien "new FormPendiente(...)" por "new SuFormulario()"
+        // =====================================================================
+        public static Func<Form> FormularioAlumno = () => new Votaciones.Form1();
         public static Func<Form> FormularioDocente = () => new LoginDocente();
         public static Func<Form> FormularioAdmin = () => new LoginAdmin();
         // Ejemplo:  public static Func<Form> FormularioAdmin = () => new FrmConteo();
