@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
+
 namespace SDVE.Forms
 {
     public partial class FrmExportaciones : Form
@@ -22,8 +23,8 @@ namespace SDVE.Forms
 
         private string convocatoriaSeleccionada = "Sociedad de Alumnos";
         private string tipoVistaSeleccionada = "General";
-
-        // Colores para la gráfica
+        private SDVE.Conteo.ProcesadorVotos procesadorVotos =
+            new SDVE.Conteo.ProcesadorVotos();        // Colores para la gráfica
         private readonly Color[] coloresGrafica =
         {
             Color.FromArgb(45, 137, 220),
@@ -140,17 +141,8 @@ namespace SDVE.Forms
                 case "Centro de Ciencias Básicas":
                     cmbCarrera.Items.AddRange(new object[]
                     {
-                "Ingeniería Bioquímica",
-                "Ingeniería en Computación Inteligente",
-                "Ingeniería en Electrónica",
                 "Ingeniería en Sistemas Computacionales",
-                "Ingeniería Industrial Estadístico",
-                "Licenciatura en Biología",
-                "Licenciatura en Biotecnología",
-                "Licenciatura en Desarrollo de Videojuegos y Entornos Virtuales",
                 "Licenciatura en Informática y Tecnologías Computacionales",
-                "Licenciatura en Matemáticas Aplicadas",
-                "Químico Farmacéutico Biólogo"
                     });
                     break;
 
@@ -159,66 +151,13 @@ namespace SDVE.Forms
                     {
                 "Contador Público",
                 "Licenciatura en Administración de Empresas",
-                "Licenciatura en Administración de la Producción y Servicios",
-                "Licenciatura en Administración Financiera",
-                "Licenciatura en Comercio Internacional",
-                "Licenciatura en Economía",
-                "Licenciatura en Gestión Turística",
-                "Licenciatura en Mercadotecnia",
-                "Licenciatura en Relaciones Industriales"
                     });
                     break;
-
-                case "Centro de Ciencias Sociales y Humanidades":
-                    cmbCarrera.Items.AddRange(new object[]
-                    {
-                "Licenciatura en Asesoría Psicopedagógica",
-                "Licenciatura en Ciencias Políticas y Administración Pública",
-                "Licenciatura en Comunicación Corporativa Estratégica",
-                "Licenciatura en Comunicación e Información",
-                "Licenciatura en Derecho",
-                "Licenciatura en Docencia de Francés y Español como Lenguas Extranjeras",
-                "Licenciatura en Docencia del Idioma Inglés",
-                "Licenciatura en Filosofía",
-                "Licenciatura en Historia",
-                "Licenciatura en Psicología",
-                "Licenciatura en Sociología",
-                "Licenciatura en Trabajo Social"
-                    });
-                    break;
-
-                case "Centro de Ciencias del Diseño y de la Construcción":
-                    cmbCarrera.Items.AddRange(new object[]
-                    {
-                "Ingeniería Civil",
-                "Licenciatura en Arquitectura",
-                "Licenciatura en Diseño de Interiores",
-                "Licenciatura en Diseño de Moda en Indumentaria y Textiles",
-                "Licenciatura en Diseño Gráfico",
-                "Licenciatura en Diseño Industrial",
-                "Licenciatura en Urbanismo"
-                    });
-                    break;
-
                 case "Centro de Ciencias de la Salud":
                     cmbCarrera.Items.AddRange(new object[]
                     {
-                "Licenciatura en Cultura Física y Deporte",
                 "Licenciatura en Enfermería",
                 "Licenciatura en Nutrición",
-                "Licenciatura en Optometría",
-                "Licenciatura en Terapia Física",
-                "Médico Cirujano",
-                "Médico Estomatólogo"
-                    });
-                    break;
-
-                case "Centro de Ciencias Agropecuarias":
-                    cmbCarrera.Items.AddRange(new object[]
-                    {
-                "Ingeniería en Agronomía",
-                "Ingeniería en Alimentos",
-                "Médico Veterinario Zootecnista"
                     });
                     break;
             }
@@ -388,6 +327,55 @@ namespace SDVE.Forms
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+        }
+        internal void CargarResultadosConteo(
+    int alumnosRegistrados,
+    List<SDVE.Conteo.ResultadoCandidato> resultadosConteo)
+        {
+            if (resultadosConteo == null)
+                return;
+
+            // Contar y agrupar los votos usando el módulo de Conteo
+            List<SDVE.Conteo.ResultadoCandidato> resultados =
+                procesadorVotos.ContarVotos(resultadosConteo);
+
+            int totalVotos = 0;
+
+            foreach (SDVE.Conteo.ResultadoCandidato resultado in resultados)
+            {
+                totalVotos += resultado.Votos;
+            }
+
+            // Usar las estadísticas calculadas por Conteo
+            SDVE.Conteo.Estadisticas estadisticas =
+                procesadorVotos.CalcularEstadisticas(
+                    alumnosRegistrados,
+                    totalVotos
+                );
+
+            // Mostrar las tarjetas
+            lblNumRegistro.Text = estadisticas.Registrados.ToString();
+            lblNumVotantes.Text = estadisticas.Votantes.ToString();
+            label3.Text = estadisticas.Participacion.ToString("0.0") + "%";
+            label4.Text = estadisticas.Abstencionismo.ToString("0.0") + "%";
+
+            // Mostrar resultados en la tabla
+            dgvResultados.Rows.Clear();
+
+            foreach (SDVE.Conteo.ResultadoCandidato resultado in resultados)
+            {
+                double porcentaje =
+                    procesadorVotos.CalcularPorcentaje(
+                        resultado.Votos,
+                        totalVotos
+                    );
+
+                dgvResultados.Rows.Add(
+                    resultado.Candidato,
+                    resultado.Votos,
+                    porcentaje.ToString("0.0") + "%"
+                );
             }
         }
 
