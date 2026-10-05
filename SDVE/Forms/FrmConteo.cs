@@ -1,13 +1,4 @@
-﻿using SDVE.Conteo;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-
-namespace SDVE.Forms
+﻿namespace SDVE.Forms
 {
     public partial class FrmConteo : Form
     {
@@ -39,7 +30,7 @@ namespace SDVE.Forms
         {
             try
             {
-                
+
             }
             catch (ArgumentException ex)
             {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Votaciones
+﻿namespace Votaciones
 {
     internal class DatosVotacion
     {

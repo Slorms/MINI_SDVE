@@ -1,12 +1,7 @@
 ﻿using SDVE.Exportaciones;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.IO;
 using System.Text;
 using System.Text.Json;
-using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace SDVE.Forms
@@ -46,11 +41,11 @@ namespace SDVE.Forms
             pictureBox15.Parent = button1;
             pictureBox17.Parent = btnConsejo;
             pictureBox16.Parent = btnRepresentantes;
-            pictureBox15.Location = new Point(12,(button1.Height - pictureBox15.Height) / 2);
+            pictureBox15.Location = new Point(12, (button1.Height - pictureBox15.Height) / 2);
 
-            pictureBox17.Location = new Point(12,(btnConsejo.Height - pictureBox17.Height) / 2);
+            pictureBox17.Location = new Point(12, (btnConsejo.Height - pictureBox17.Height) / 2);
 
-            pictureBox16.Location = new Point(12,(btnRepresentantes.Height - pictureBox16.Height) / 2);
+            pictureBox16.Location = new Point(12, (btnRepresentantes.Height - pictureBox16.Height) / 2);
 
             pictureBox15.BackColor = Color.Transparent;
             pictureBox17.BackColor = Color.Transparent;
@@ -102,9 +97,9 @@ namespace SDVE.Forms
 
         private void ConfigurarEventos()
         {
-            
-        // Convocatorias
-        button1.Click += button1_Click;
+
+            // Convocatorias
+            button1.Click += button1_Click;
             btnConsejo.Click += btnConsejo_Click;
             btnRepresentantes.Click += btnRepresentantes_Click;
 
@@ -1033,8 +1028,8 @@ namespace SDVE.Forms
         }
 
 
-        }
     }
+}
 
 
 
