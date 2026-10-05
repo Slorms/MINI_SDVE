@@ -93,9 +93,9 @@
             lblTitulo.ForeColor = Color.White;
             lblTitulo.Location = new Point(195, 17);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(650, 32);
+            lblTitulo.Size = new Size(347, 32);
             lblTitulo.TabIndex = 1;
-            lblTitulo.Text = "Sistema de Votación Estudiantil (Centro de Ciencias Básicas)";
+            lblTitulo.Text = "Sistema de Votación Estudiantil";
             lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox2
