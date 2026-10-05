@@ -1,5 +1,3 @@
-using Login;
-
 namespace Votaciones
 {
     public partial class Form1 : Form
@@ -59,7 +57,7 @@ namespace Votaciones
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FrmLogin ventana = new FrmLogin();
+            prueba ventana = new prueba();
             ventana.Show();
 
             this.Hide();
@@ -67,7 +65,6 @@ namespace Votaciones
         }
 
         private void button3_Click(object sender, EventArgs e)
-
         {
             FormRepresentante form = new FormRepresentante();
             form.ShowDialog();
@@ -87,11 +84,6 @@ namespace Votaciones
             {
                 button4.Enabled = true;
             }
-        }
-
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

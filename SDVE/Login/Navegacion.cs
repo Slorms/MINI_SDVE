@@ -1,4 +1,8 @@
 ﻿using Login;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Votaciones;
 
 namespace SDVE.Login
 {
@@ -10,22 +14,15 @@ namespace SDVE.Login
         public static Rol RolActual { get; set; }
         public static string IdActual { get; set; } = "";
 
-        // datos del alumno que inició sesión
-        public static string CentroActual { get; set; } = "";
-        public static string CarreraActual { get; set; } = "";
-        public static string SemestreActual { get; set; } = "";
-        public static string GrupoActual { get; set; } = "";
-    }
-
-    public static class Navegacion
-    {
-        // =====================================================================
-        //  AQUI SE CONECTAN LOS FORMULARIOS DE TUS COMPAÑEROS
-        //  Solo cambien "new FormPendiente(...)" por "new SuFormulario()"
-        // =====================================================================
-        public static Func<Form> FormularioAlumno = () => new Votaciones.Form1();
-        public static Func<Form> FormularioDocente = () => new LoginDocente();
-        public static Func<Form> FormularioAdmin = () => new LoginAdmin();
+        public static class Navegacion
+        {
+            // =====================================================================
+            //  AQUI SE CONECTAN LOS FORMULARIOS DE TUS COMPAÑEROS
+            //  Solo cambien "new FormPendiente(...)" por "new SuFormulario()"
+            // =====================================================================
+            public static Func<Form> FormularioAlumno = () => new Form1();
+        public static Func<Form> FormularioDocente = () => new Form1();
+        public static Func<Form> FormularioAdmin = () => new prueba();
         // Ejemplo:  public static Func<Form> FormularioAdmin = () => new FrmConteo();
         // =====================================================================
 
