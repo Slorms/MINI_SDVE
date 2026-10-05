@@ -43,43 +43,22 @@ namespace SDVE.Forms
         public FrmExportaciones()
         {
             InitializeComponent();
+            pictureBox15.Parent = button1;
+            pictureBox17.Parent = btnConsejo;
+            pictureBox16.Parent = btnRepresentantes;
+            pictureBox15.Location = new Point(12,(button1.Height - pictureBox15.Height) / 2);
 
+            pictureBox17.Location = new Point(12,(btnConsejo.Height - pictureBox17.Height) / 2);
+
+            pictureBox16.Location = new Point(12,(btnRepresentantes.Height - pictureBox16.Height) / 2);
+
+            pictureBox15.BackColor = Color.Transparent;
+            pictureBox17.BackColor = Color.Transparent;
+            pictureBox16.BackColor = Color.Transparent;
             ConfigurarFormulario();
             ConfigurarEventos();
             ConfigurarMenuExportacion();
-            CargarDatosPrueba();
-        
         }
-        private void CargarDatosPrueba()
-        {
-            List<ResultadoCandidato> resultadosPrueba =
-                new List<ResultadoCandidato>();
-
-            resultadosPrueba.Add(new ResultadoCandidato
-            {
-                candidato = "Candidatura A",
-                votos = 120,
-                porcentaje = 0
-            });
-
-            resultadosPrueba.Add(new ResultadoCandidato
-            {
-                candidato = "Candidatura B",
-                votos = 80,
-                porcentaje = 0
-            });
-
-            resultadosPrueba.Add(new ResultadoCandidato
-            {
-                candidato = "Candidatura C",
-                votos = 50,
-                porcentaje = 0
-            });
-
-            CargarResultados(400, resultadosPrueba);
-        }
-
-
         // =========================================================
         // CONFIGURACIÓN INICIAL
         // =========================================================
@@ -110,6 +89,10 @@ namespace SDVE.Forms
                 if (hayResultados)
                     CrearLeyenda();
             };
+            // Dejar filtros vacíos al iniciar
+            cmbCentro.SelectedIndex = -1;
+            cmbCarrera.Items.Clear();
+            cmbCarrera.SelectedIndex = -1;
         }
 
 
@@ -119,8 +102,9 @@ namespace SDVE.Forms
 
         private void ConfigurarEventos()
         {
-            // Convocatorias
-            button1.Click += button1_Click;
+            
+        // Convocatorias
+        button1.Click += button1_Click;
             btnConsejo.Click += btnConsejo_Click;
             btnRepresentantes.Click += btnRepresentantes_Click;
 
@@ -130,6 +114,9 @@ namespace SDVE.Forms
             btnVistaGrupo.Click += btnVistaGrupo_Click;
             btnVistaCentro.Click += btnVistaCentro_Click;
 
+            // Filtros
+            cmbCentro.SelectedIndexChanged += cmbCentro_SelectedIndexChanged;
+
             // Acciones
             btnProcesarResultados.Click += btnProcesarResultados_Click;
             btnDetalleCandidatura.Click += btnDetalleCandidatura_Click;
@@ -138,6 +125,103 @@ namespace SDVE.Forms
 
             // Gráfica
             pnlDona.Paint += pnlDona_Paint;
+        }
+        private void cmbCentro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbCarrera.Items.Clear();
+
+            if (cmbCentro.SelectedItem == null)
+                return;
+
+            string centro = cmbCentro.SelectedItem.ToString();
+
+            switch (centro)
+            {
+                case "Centro de Ciencias Básicas":
+                    cmbCarrera.Items.AddRange(new object[]
+                    {
+                "Ingeniería Bioquímica",
+                "Ingeniería en Computación Inteligente",
+                "Ingeniería en Electrónica",
+                "Ingeniería en Sistemas Computacionales",
+                "Ingeniería Industrial Estadístico",
+                "Licenciatura en Biología",
+                "Licenciatura en Biotecnología",
+                "Licenciatura en Desarrollo de Videojuegos y Entornos Virtuales",
+                "Licenciatura en Informática y Tecnologías Computacionales",
+                "Licenciatura en Matemáticas Aplicadas",
+                "Químico Farmacéutico Biólogo"
+                    });
+                    break;
+
+                case "Centro de Ciencias Económicas y Administrativas":
+                    cmbCarrera.Items.AddRange(new object[]
+                    {
+                "Contador Público",
+                "Licenciatura en Administración de Empresas",
+                "Licenciatura en Administración de la Producción y Servicios",
+                "Licenciatura en Administración Financiera",
+                "Licenciatura en Comercio Internacional",
+                "Licenciatura en Economía",
+                "Licenciatura en Gestión Turística",
+                "Licenciatura en Mercadotecnia",
+                "Licenciatura en Relaciones Industriales"
+                    });
+                    break;
+
+                case "Centro de Ciencias Sociales y Humanidades":
+                    cmbCarrera.Items.AddRange(new object[]
+                    {
+                "Licenciatura en Asesoría Psicopedagógica",
+                "Licenciatura en Ciencias Políticas y Administración Pública",
+                "Licenciatura en Comunicación Corporativa Estratégica",
+                "Licenciatura en Comunicación e Información",
+                "Licenciatura en Derecho",
+                "Licenciatura en Docencia de Francés y Español como Lenguas Extranjeras",
+                "Licenciatura en Docencia del Idioma Inglés",
+                "Licenciatura en Filosofía",
+                "Licenciatura en Historia",
+                "Licenciatura en Psicología",
+                "Licenciatura en Sociología",
+                "Licenciatura en Trabajo Social"
+                    });
+                    break;
+
+                case "Centro de Ciencias del Diseño y de la Construcción":
+                    cmbCarrera.Items.AddRange(new object[]
+                    {
+                "Ingeniería Civil",
+                "Licenciatura en Arquitectura",
+                "Licenciatura en Diseño de Interiores",
+                "Licenciatura en Diseño de Moda en Indumentaria y Textiles",
+                "Licenciatura en Diseño Gráfico",
+                "Licenciatura en Diseño Industrial",
+                "Licenciatura en Urbanismo"
+                    });
+                    break;
+
+                case "Centro de Ciencias de la Salud":
+                    cmbCarrera.Items.AddRange(new object[]
+                    {
+                "Licenciatura en Cultura Física y Deporte",
+                "Licenciatura en Enfermería",
+                "Licenciatura en Nutrición",
+                "Licenciatura en Optometría",
+                "Licenciatura en Terapia Física",
+                "Médico Cirujano",
+                "Médico Estomatólogo"
+                    });
+                    break;
+
+                case "Centro de Ciencias Agropecuarias":
+                    cmbCarrera.Items.AddRange(new object[]
+                    {
+                "Ingeniería en Agronomía",
+                "Ingeniería en Alimentos",
+                "Médico Veterinario Zootecnista"
+                    });
+                    break;
+            }
         }
 
 
@@ -199,8 +283,6 @@ namespace SDVE.Forms
             seleccionado.FlatAppearance.MouseDownBackColor =
                 Color.FromArgb(36, 68, 109);
         }
-
-
         // =========================================================
         // TIPO DE VISTA
         // =========================================================
@@ -270,12 +352,6 @@ namespace SDVE.Forms
 
         // =========================================================
         // RECIBIR RESULTADOS
-        // =========================================================
-        //
-        // ESTE ES EL MÉTODO QUE DESPUÉS PODRÁ UTILIZAR EL RESTO
-        // DEL PROYECTO PARA MANDARTE LOS RESULTADOS.
-        //
-        // No modificamos FrmConteo ni el módulo de votación.
         // =========================================================
 
         public void CargarResultados(
@@ -957,8 +1033,8 @@ namespace SDVE.Forms
         }
 
 
-       
+        }
     }
-}
+
 
 
