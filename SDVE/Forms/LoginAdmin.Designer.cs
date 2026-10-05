@@ -199,6 +199,7 @@
             txtPassword.PlaceholderText = "Ingrese su contraseña";
             txtPassword.Size = new Size(572, 29);
             txtPassword.TabIndex = 4;
+            txtPassword.TextChanged += txtPassword_TextChanged;
             // 
             // lblID
             // 
@@ -498,10 +499,11 @@
             lblTitulo.ForeColor = Color.White;
             lblTitulo.Location = new Point(195, 17);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(650, 32);
+            lblTitulo.Size = new Size(347, 32);
             lblTitulo.TabIndex = 1;
-            lblTitulo.Text = "Sistema de Votación Estudiantil (Centro de Ciencias Básicas)";
+            lblTitulo.Text = "Sistema de Votación Estudiantil";
             lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
+            lblTitulo.Click += lblTitulo_Click;
             // 
             // LoginAdmin
             // 

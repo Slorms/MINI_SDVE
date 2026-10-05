@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using SDVE.Datos;
+using SDVE.Login;
 
 namespace Votaciones
 {
@@ -28,8 +23,6 @@ namespace Votaciones
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DatosVotacion.Asociacion1++;
-
             DialogResult respuesta = MessageBox.Show(
         "¿Estás seguro de votar por Esta Asociación?",
         "Confirmar voto",
@@ -39,13 +32,24 @@ namespace Votaciones
 
             if (respuesta == DialogResult.Yes)
             {
+                DatosVotacion.Asociacion1++;
+
+                RegistroVotos.RegistrarVoto(
+                    "Sociedad de Alumnos",
+                    Sesion.CentroActual,
+                    Sesion.CarreraActual,
+                    Sesion.GrupoActual,
+                    "FEUAA",
+                    true
+                );
+
                 VotoRealizado = true;
+
                 MessageBox.Show(
                     "Tu voto ha sido registrado.",
                     "Voto realizado",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
-
                 );
 
                 this.Close();
@@ -65,13 +69,24 @@ namespace Votaciones
 
             if (respuesta == DialogResult.Yes)
             {
+                DatosVotacion.Asociacion2++;
+
+                RegistroVotos.RegistrarVoto(
+                    "Sociedad de Alumnos",
+                    Sesion.CentroActual,
+                    Sesion.CarreraActual,
+                    Sesion.GrupoActual,
+                    "CONECTA",
+                    true
+                );
+
                 VotoRealizado = true;
+
                 MessageBox.Show(
                     "Tu voto ha sido registrado.",
                     "Voto realizado",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
-
                 );
 
                 this.Close();
@@ -109,13 +124,24 @@ namespace Votaciones
 
             if (respuesta == DialogResult.Yes)
             {
+                DatosVotacion.Asociacion3++;
+
+                RegistroVotos.RegistrarVoto(
+                    "Sociedad de Alumnos",
+                    Sesion.CentroActual,
+                    Sesion.CarreraActual,
+                    Sesion.GrupoActual,
+                    "MUCHACHOS",
+                    true
+                );
+
                 VotoRealizado = true;
+
                 MessageBox.Show(
                     "Tu voto ha sido registrado.",
                     "Voto realizado",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
-
                 );
 
                 this.Close();
@@ -148,6 +174,17 @@ namespace Votaciones
 
             if (respuesta == DialogResult.Yes)
             {
+                DatosVotacion.PropuestasAsociacion.Add(propuesta);
+
+                RegistroVotos.RegistrarVoto(
+                    "Sociedad de Alumnos",
+                    Sesion.CentroActual,
+                    Sesion.CarreraActual,
+                    Sesion.GrupoActual,
+                    propuesta,
+                    false
+                );
+
                 VotoRealizado = true;
 
                 MessageBox.Show(
