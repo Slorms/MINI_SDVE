@@ -1,5 +1,4 @@
-﻿using SDVE.Exportaciones;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -17,14 +16,14 @@ namespace SDVE.Forms
         // =========================================================
         // VARIABLES
         // =========================================================
-
-        private DatosResultados datosActuales;
         private bool hayResultados = false;
 
         private string convocatoriaSeleccionada = "Sociedad de Alumnos";
         private string tipoVistaSeleccionada = "General";
         private SDVE.Conteo.ProcesadorVotos procesadorVotos =
             new SDVE.Conteo.ProcesadorVotos();        // Colores para la gráfica
+        private List<SDVE.Conteo.ResultadoCandidato> resultadosConteoActuales =
+    new List<SDVE.Conteo.ResultadoCandidato>();
         private readonly Color[] coloresGrafica =
         {
             Color.FromArgb(45, 137, 220),
@@ -87,8 +86,11 @@ namespace SDVE.Forms
 
             pnlLeyenda.Resize += (s, e) =>
             {
-                if (hayResultados)
-                    CrearLeyenda();
+                if (hayResultados &&
+                    resultadosConteoActuales.Count > 0)
+                {
+                    CrearLeyendaConteo();
+                }
             };
             // Dejar filtros vacíos al iniciar
             cmbCentro.SelectedIndex = -1;
@@ -293,13 +295,13 @@ namespace SDVE.Forms
         // RECIBIR RESULTADOS
         // =========================================================
 
-        public void CargarResultados(
-            int alumnosRegistrados,
-            List<ResultadoCandidato> resultados)
+        internal void CargarResultadosConteo(
+    int alumnosRegistrados,
+    List<SDVE.Conteo.ResultadoCandidato> resultadosConteo)
         {
             try
             {
-                if (resultados == null)
+                if (resultadosConteo == null)
                 {
                     MessageBox.Show(
                         "No se recibieron resultados.",
@@ -310,14 +312,63 @@ namespace SDVE.Forms
                     return;
                 }
 
-                datosActuales =
-                    CalculosResultados.ProcesarResultados(
-                        alumnosRegistrados,
-                        resultados);
+                // Usamos el procesador del módulo de Conteo
+                resultadosConteoActuales =
+                    procesadorVotos.ContarVotos(resultadosConteo);
 
+                int totalVotos = 0;
+
+                foreach (SDVE.Conteo.ResultadoCandidato resultado
+                         in resultadosConteoActuales)
+                {
+                    totalVotos += resultado.Votos;
+                }
+
+                // Calcular estadísticas
+                SDVE.Conteo.Estadisticas estadisticas =
+                    procesadorVotos.CalcularEstadisticas(
+                        alumnosRegistrados,
+                        totalVotos);
+
+                // Tarjetas
+                lblNumRegistro.Text =
+                    estadisticas.Registrados.ToString();
+
+                lblNumVotantes.Text =
+                    estadisticas.Votantes.ToString();
+
+                label3.Text =
+                    estadisticas.Participacion.ToString("0.0") + "%";
+
+                label4.Text =
+                    estadisticas.Abstencionismo.ToString("0.0") + "%";
+
+                // Tabla
+                dgvResultados.Rows.Clear();
+
+                foreach (SDVE.Conteo.ResultadoCandidato resultado
+                         in resultadosConteoActuales)
+                {
+                    double porcentaje =
+                        procesadorVotos.CalcularPorcentaje(
+                            resultado.Votos,
+                            totalVotos);
+
+                    dgvResultados.Rows.Add(
+                        resultado.Candidato,
+                        resultado.Votos,
+                        porcentaje.ToString("0.0") + "%"
+                    );
+                }
+
+                dgvResultados.ClearSelection();
+
+                // Indicar que ya existen resultados
                 hayResultados = true;
 
-                PresentarResultados();
+                // Actualizar gráfica y leyenda
+                pnlDona.Invalidate();
+                CrearLeyendaConteo();
             }
             catch (Exception ex)
             {
@@ -329,112 +380,6 @@ namespace SDVE.Forms
                     MessageBoxIcon.Error);
             }
         }
-        internal void CargarResultadosConteo(
-    int alumnosRegistrados,
-    List<SDVE.Conteo.ResultadoCandidato> resultadosConteo)
-        {
-            if (resultadosConteo == null)
-                return;
-
-            // Contar y agrupar los votos usando el módulo de Conteo
-            List<SDVE.Conteo.ResultadoCandidato> resultados =
-                procesadorVotos.ContarVotos(resultadosConteo);
-
-            int totalVotos = 0;
-
-            foreach (SDVE.Conteo.ResultadoCandidato resultado in resultados)
-            {
-                totalVotos += resultado.Votos;
-            }
-
-            // Usar las estadísticas calculadas por Conteo
-            SDVE.Conteo.Estadisticas estadisticas =
-                procesadorVotos.CalcularEstadisticas(
-                    alumnosRegistrados,
-                    totalVotos
-                );
-
-            // Mostrar las tarjetas
-            lblNumRegistro.Text = estadisticas.Registrados.ToString();
-            lblNumVotantes.Text = estadisticas.Votantes.ToString();
-            label3.Text = estadisticas.Participacion.ToString("0.0") + "%";
-            label4.Text = estadisticas.Abstencionismo.ToString("0.0") + "%";
-
-            // Mostrar resultados en la tabla
-            dgvResultados.Rows.Clear();
-
-            foreach (SDVE.Conteo.ResultadoCandidato resultado in resultados)
-            {
-                double porcentaje =
-                    procesadorVotos.CalcularPorcentaje(
-                        resultado.Votos,
-                        totalVotos
-                    );
-
-                dgvResultados.Rows.Add(
-                    resultado.Candidato,
-                    resultado.Votos,
-                    porcentaje.ToString("0.0") + "%"
-                );
-            }
-        }
-
-
-        // =========================================================
-        // PRESENTAR RESULTADOS
-        // =========================================================
-
-        private void PresentarResultados()
-        {
-            if (!hayResultados)
-                return;
-
-            // Estadísticas
-            lblNumRegistro.Text =
-                datosActuales.alumnosRegistrados.ToString();
-
-            lblNumVotantes.Text =
-                datosActuales.alumnosVotantes.ToString();
-
-            label3.Text =
-                datosActuales.participacion.ToString("0.0") + "%";
-
-            label4.Text =
-                datosActuales.abstencionismo.ToString("0.0") + "%";
-
-            PresentarTabla();
-
-            pnlDona.Invalidate();
-
-            CrearLeyenda();
-        }
-
-
-        // =========================================================
-        // TABLA DE RESULTADOS
-        // =========================================================
-
-        private void PresentarTabla()
-        {
-            dgvResultados.Rows.Clear();
-
-            if (datosActuales.candidatos == null)
-                return;
-
-            foreach (ResultadoCandidato candidato
-                     in datosActuales.candidatos)
-            {
-                dgvResultados.Rows.Add(
-                    candidato.candidato,
-                    candidato.votos,
-                    candidato.porcentaje.ToString("0.0") + "%"
-                );
-            }
-
-            dgvResultados.ClearSelection();
-        }
-
-
         // =========================================================
         // GRÁFICA DINÁMICA
         // =========================================================
@@ -444,18 +389,16 @@ namespace SDVE.Forms
             if (!hayResultados)
                 return;
 
-            if (datosActuales.candidatos == null)
-                return;
-
-            if (datosActuales.candidatos.Count == 0)
+            if (resultadosConteoActuales == null ||
+                resultadosConteoActuales.Count == 0)
                 return;
 
             int totalVotos = 0;
 
-            foreach (ResultadoCandidato candidato
-                     in datosActuales.candidatos)
+            foreach (SDVE.Conteo.ResultadoCandidato resultado
+                     in resultadosConteoActuales)
             {
-                totalVotos += candidato.votos;
+                totalVotos += resultado.Votos;
             }
 
             if (totalVotos <= 0)
@@ -463,7 +406,8 @@ namespace SDVE.Forms
 
             Graphics g = e.Graphics;
 
-            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.SmoothingMode =
+                SmoothingMode.AntiAlias;
 
             int margen = 8;
 
@@ -476,23 +420,24 @@ namespace SDVE.Forms
             if (tamaño <= 0)
                 return;
 
-            Rectangle rectangulo = new Rectangle(
-                (pnlDona.ClientSize.Width - tamaño) / 2,
-                (pnlDona.ClientSize.Height - tamaño) / 2,
-                tamaño,
-                tamaño);
+            Rectangle rectangulo =
+                new Rectangle(
+                    (pnlDona.ClientSize.Width - tamaño) / 2,
+                    (pnlDona.ClientSize.Height - tamaño) / 2,
+                    tamaño,
+                    tamaño);
 
             float anguloInicial = -90f;
 
             for (int i = 0;
-                 i < datosActuales.candidatos.Count;
+                 i < resultadosConteoActuales.Count;
                  i++)
             {
-                ResultadoCandidato candidato =
-                    datosActuales.candidatos[i];
+                SDVE.Conteo.ResultadoCandidato resultado =
+                    resultadosConteoActuales[i];
 
                 float angulo =
-                    (float)candidato.votos /
+                    (float)resultado.Votos /
                     totalVotos *
                     360f;
 
@@ -511,19 +456,20 @@ namespace SDVE.Forms
                 anguloInicial += angulo;
             }
 
-            // Agujero central para convertirla en gráfica de dona
+            // Centro blanco para convertirla en dona
             int tamañoCentro =
                 (int)(tamaño * 0.48);
 
-            Rectangle centro = new Rectangle(
-                rectangulo.X +
-                    (tamaño - tamañoCentro) / 2,
+            Rectangle centro =
+                new Rectangle(
+                    rectangulo.X +
+                        (tamaño - tamañoCentro) / 2,
 
-                rectangulo.Y +
-                    (tamaño - tamañoCentro) / 2,
+                    rectangulo.Y +
+                        (tamaño - tamañoCentro) / 2,
 
-                tamañoCentro,
-                tamañoCentro);
+                    tamañoCentro,
+                    tamañoCentro);
 
             using (SolidBrush brochaCentro =
                    new SolidBrush(Color.White))
@@ -534,29 +480,34 @@ namespace SDVE.Forms
             }
         }
 
-
         // =========================================================
         // LEYENDA DE LA GRÁFICA
         // =========================================================
 
-        private void CrearLeyenda()
+        private void CrearLeyendaConteo()
         {
             pnlLeyenda.Controls.Clear();
 
-            if (!hayResultados)
+            if (resultadosConteoActuales == null ||
+                resultadosConteoActuales.Count == 0)
                 return;
 
-            if (datosActuales.candidatos == null)
-                return;
+            int totalVotos = 0;
+
+            foreach (SDVE.Conteo.ResultadoCandidato resultado
+                     in resultadosConteoActuales)
+            {
+                totalVotos += resultado.Votos;
+            }
 
             int y = 5;
 
             for (int i = 0;
-                 i < datosActuales.candidatos.Count;
+                 i < resultadosConteoActuales.Count;
                  i++)
             {
-                ResultadoCandidato candidato =
-                    datosActuales.candidatos[i];
+                SDVE.Conteo.ResultadoCandidato resultado =
+                    resultadosConteoActuales[i];
 
                 Panel color = new Panel();
 
@@ -594,10 +545,15 @@ namespace SDVE.Forms
                 texto.ForeColor =
                     Color.FromArgb(50, 60, 75);
 
+                double porcentaje =
+                    procesadorVotos.CalcularPorcentaje(
+                        resultado.Votos,
+                        totalVotos);
+
                 texto.Text =
-                    candidato.candidato +
+                    resultado.Candidato +
                     Environment.NewLine +
-                    candidato.porcentaje.ToString("0.0") +
+                    porcentaje.ToString("0.0") +
                     "%";
 
                 pnlLeyenda.Controls.Add(color);
@@ -613,10 +569,12 @@ namespace SDVE.Forms
         // =========================================================
 
         private void btnProcesarResultados_Click(
-            object sender,
-            EventArgs e)
+     object sender,
+     EventArgs e)
         {
-            if (!hayResultados)
+            if (!hayResultados ||
+                resultadosConteoActuales == null ||
+                resultadosConteoActuales.Count == 0)
             {
                 MessageBox.Show(
                     "Todavía no se han recibido resultados " +
@@ -628,7 +586,9 @@ namespace SDVE.Forms
                 return;
             }
 
-            PresentarResultados();
+            pnlDona.Invalidate();
+            CrearLeyendaConteo();
+            dgvResultados.ClearSelection();
 
             MessageBox.Show(
                 "Los resultados se procesaron correctamente.",
@@ -637,16 +597,17 @@ namespace SDVE.Forms
                 MessageBoxIcon.Information);
         }
 
-
         // =========================================================
         // DETALLE POR CANDIDATURA
         // =========================================================
 
         private void btnDetalleCandidatura_Click(
-            object sender,
-            EventArgs e)
+    object sender,
+    EventArgs e)
         {
-            if (!hayResultados)
+            if (!hayResultados ||
+                resultadosConteoActuales == null ||
+                resultadosConteoActuales.Count == 0)
             {
                 MessageBox.Show(
                     "No hay resultados disponibles.",
@@ -657,35 +618,34 @@ namespace SDVE.Forms
                 return;
             }
 
-            if (datosActuales.candidatos == null ||
-                datosActuales.candidatos.Count == 0)
-            {
-                MessageBox.Show(
-                    "No hay candidaturas para mostrar.",
-                    "Detalle por candidatura",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+            int totalVotos = 0;
 
-                return;
+            foreach (SDVE.Conteo.ResultadoCandidato resultado
+                     in resultadosConteoActuales)
+            {
+                totalVotos += resultado.Votos;
             }
 
             StringBuilder detalle =
                 new StringBuilder();
 
-            detalle.AppendLine(
-                convocatoriaSeleccionada);
-
+            detalle.AppendLine(convocatoriaSeleccionada);
             detalle.AppendLine();
 
-            foreach (ResultadoCandidato candidato
-                     in datosActuales.candidatos)
+            foreach (SDVE.Conteo.ResultadoCandidato resultado
+                     in resultadosConteoActuales)
             {
+                double porcentaje =
+                    procesadorVotos.CalcularPorcentaje(
+                        resultado.Votos,
+                        totalVotos);
+
                 detalle.AppendLine(
-                    candidato.candidato +
+                    resultado.Candidato +
                     ": " +
-                    candidato.votos +
+                    resultado.Votos +
                     " votos (" +
-                    candidato.porcentaje.ToString("0.0") +
+                    porcentaje.ToString("0.0") +
                     "%)");
             }
 
@@ -695,7 +655,6 @@ namespace SDVE.Forms
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
-
 
         // =========================================================
         // PARTICIPACIÓN POR GRUPO
@@ -768,7 +727,9 @@ namespace SDVE.Forms
 
         private bool ValidarExportacion()
         {
-            if (!hayResultados)
+            if (!hayResultados ||
+                resultadosConteoActuales == null ||
+                resultadosConteoActuales.Count == 0)
             {
                 MessageBox.Show(
                     "Primero deben existir resultados " +
@@ -789,8 +750,8 @@ namespace SDVE.Forms
         // =========================================================
 
         private void ExportarCSV_Click(
-            object sender,
-            EventArgs e)
+     object sender,
+     EventArgs e)
         {
             try
             {
@@ -809,36 +770,61 @@ namespace SDVE.Forms
                     return;
                 }
 
-
                 StringBuilder contenido =
                     new StringBuilder();
 
                 contenido.AppendLine(
-                    "Candidato,Votos,Porcentaje");
+                    "Eleccion,Centro,Carrera,Grupo,Candidato,Registrado,Votos,Porcentaje");
 
-                foreach (ResultadoCandidato candidato
-                         in datosActuales.candidatos)
+                int totalVotos = 0;
+
+                foreach (SDVE.Conteo.ResultadoCandidato resultado
+                         in resultadosConteoActuales)
                 {
-                    string nombre =
-                        candidato.candidato
-                            .Replace("\"", "\"\"");
-
-                    contenido.AppendLine(
-                        "\"" +
-                        nombre +
-                        "\"," +
-                        candidato.votos +
-                        "," +
-                        candidato.porcentaje
-                            .ToString("0.00"));
+                    totalVotos += resultado.Votos;
                 }
 
+                foreach (SDVE.Conteo.ResultadoCandidato resultado
+                         in resultadosConteoActuales)
+                {
+                    double porcentaje =
+                        procesadorVotos.CalcularPorcentaje(
+                            resultado.Votos,
+                            totalVotos);
+
+                    string eleccion =
+                        resultado.Eleccion.Replace("\"", "\"\"");
+
+                    string centro =
+                        resultado.Centro.Replace("\"", "\"\"");
+
+                    string carrera =
+                        resultado.Carrera.Replace("\"", "\"\"");
+
+                    string grupo =
+                        resultado.Grupo.Replace("\"", "\"\"");
+
+                    string candidato =
+                        resultado.Candidato.Replace("\"", "\"\"");
+
+                    contenido.AppendLine(
+                        "\"" + eleccion + "\"," +
+                        "\"" + centro + "\"," +
+                        "\"" + carrera + "\"," +
+                        "\"" + grupo + "\"," +
+                        "\"" + candidato + "\"," +
+                        resultado.Registrado + "," +
+                        resultado.Votos + "," +
+                        porcentaje.ToString(
+                            "0.00",
+                            System.Globalization.CultureInfo.InvariantCulture)
+                    );
+                }
 
                 File.WriteAllText(
                     guardar.FileName,
                     contenido.ToString(),
                     Encoding.UTF8);
-
 
                 MessageBox.Show(
                     "El archivo CSV se exportó correctamente.",
@@ -852,14 +838,13 @@ namespace SDVE.Forms
             }
         }
 
-
         // =========================================================
         // EXPORTAR JSON
         // =========================================================
 
         private void ExportarJSON_Click(
-            object sender,
-            EventArgs e)
+     object sender,
+     EventArgs e)
         {
             try
             {
@@ -878,25 +863,20 @@ namespace SDVE.Forms
                     return;
                 }
 
-
                 JsonSerializerOptions opciones =
                     new JsonSerializerOptions();
 
                 opciones.WriteIndented = true;
-                opciones.IncludeFields = true;
-
 
                 string json =
                     JsonSerializer.Serialize(
-                        datosActuales,
+                        resultadosConteoActuales,
                         opciones);
-
 
                 File.WriteAllText(
                     guardar.FileName,
                     json,
                     Encoding.UTF8);
-
 
                 MessageBox.Show(
                     "El archivo JSON se exportó correctamente.",
@@ -910,14 +890,13 @@ namespace SDVE.Forms
             }
         }
 
-
         // =========================================================
         // EXPORTAR XML
         // =========================================================
 
         private void ExportarXML_Click(
-            object sender,
-            EventArgs e)
+     object sender,
+     EventArgs e)
         {
             try
             {
@@ -936,11 +915,9 @@ namespace SDVE.Forms
                     return;
                 }
 
-
                 XmlSerializer serializador =
                     new XmlSerializer(
-                        typeof(DatosResultados));
-
+                        typeof(List<SDVE.Conteo.ResultadoCandidato>));
 
                 using (FileStream archivo =
                        new FileStream(
@@ -949,9 +926,8 @@ namespace SDVE.Forms
                 {
                     serializador.Serialize(
                         archivo,
-                        datosActuales);
+                        resultadosConteoActuales);
                 }
-
 
                 MessageBox.Show(
                     "El archivo XML se exportó correctamente.",

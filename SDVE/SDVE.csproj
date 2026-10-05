@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Exportaciones\" />
     <Folder Include="Votaciones\" />
   </ItemGroup>
 
