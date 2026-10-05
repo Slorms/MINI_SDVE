@@ -1247,7 +1247,7 @@
             pictureBox19.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox19.TabIndex = 16;
             pictureBox19.TabStop = false;
-            pictureBox19.Click += this.pictureBox19_Click;
+            
             // 
             // pictureBox20
             // 
