@@ -34,7 +34,6 @@
             pnlHeader = new Panel();
             panel1 = new Panel();
             picLogo = new PictureBox();
-            btnMenu = new Button();
             pnlContenido = new Panel();
             lblBienvenido = new Label();
             lblSubtitulo = new Label();
@@ -113,7 +112,6 @@
             pnlHeader.BackColor = Color.FromArgb(11, 50, 105);
             pnlHeader.Controls.Add(panel1);
             pnlHeader.Controls.Add(picLogo);
-            pnlHeader.Controls.Add(btnMenu);
             pnlHeader.Controls.Add(lblTitulo);
             pnlHeader.Location = new Point(1, -1);
             pnlHeader.Name = "pnlHeader";
@@ -139,19 +137,6 @@
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
             picLogo.TabIndex = 1;
             picLogo.TabStop = false;
-            // 
-            // btnMenu
-            // 
-            btnMenu.FlatAppearance.BorderSize = 0;
-            btnMenu.FlatStyle = FlatStyle.Flat;
-            btnMenu.Font = new Font("Segoe UI", 20F);
-            btnMenu.ForeColor = Color.White;
-            btnMenu.Location = new Point(11, 0);
-            btnMenu.Name = "btnMenu";
-            btnMenu.Size = new Size(51, 61);
-            btnMenu.TabIndex = 0;
-            btnMenu.Text = "☰";
-            btnMenu.UseVisualStyleBackColor = true;
             // 
             // pnlContenido
             // 
@@ -335,7 +320,7 @@
             lblAviso.Name = "lblAviso";
             lblAviso.Size = new Size(366, 21);
             lblAviso.TabIndex = 22;
-            lblAviso.Text = "ⓘ El ID de alumno es un número de hasta 6 dígitos.";
+            lblAviso.Text = "ⓘ Ingresa únicamente tu ID previamente registrado.";
             // 
             // btnIngresar
             // 
@@ -561,7 +546,6 @@
         private Label lblTitulo;
         private PictureBox pictureBox2;
         private Panel pnlHeader;
-        private Button btnMenu;
         private PictureBox picLogo;
         private Panel panel1;
         private Panel pnlContenido;

@@ -30,21 +30,13 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmExportaciones));
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             pnlMenu = new Panel();
             pictureBox11 = new PictureBox();
-            pictureBox10 = new PictureBox();
-            pictureBox9 = new PictureBox();
-            pictureBox8 = new PictureBox();
-            pictureBox7 = new PictureBox();
             pictureBox6 = new PictureBox();
             btnConfiguracion = new Button();
-            btnExportacion = new Button();
-            btnConvocatorias = new Button();
-            btnEmision = new Button();
-            btnConteo = new Button();
             btnInicio = new Button();
             lblSubtitulo2 = new Label();
             lblSubtitulo = new Label();
@@ -61,10 +53,8 @@
             btnVistaCarrera = new Button();
             btnGeneral = new Button();
             lblTipoVista = new Label();
-            cmbSemestre = new ComboBox();
-            lblSemestre = new Label();
-            lblGrupo = new Label();
             cmbGrupo = new ComboBox();
+            lblGrupo = new Label();
             lblCarrera = new Label();
             cmbCarrera = new ComboBox();
             lblCentro = new Label();
@@ -126,10 +116,6 @@
             pictureBox17 = new PictureBox();
             pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             pnlFiltros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
@@ -166,16 +152,8 @@
             // 
             pnlMenu.BackColor = Color.FromArgb(11, 50, 105);
             pnlMenu.Controls.Add(pictureBox11);
-            pnlMenu.Controls.Add(pictureBox10);
-            pnlMenu.Controls.Add(pictureBox9);
-            pnlMenu.Controls.Add(pictureBox8);
-            pnlMenu.Controls.Add(pictureBox7);
             pnlMenu.Controls.Add(pictureBox6);
             pnlMenu.Controls.Add(btnConfiguracion);
-            pnlMenu.Controls.Add(btnExportacion);
-            pnlMenu.Controls.Add(btnConvocatorias);
-            pnlMenu.Controls.Add(btnEmision);
-            pnlMenu.Controls.Add(btnConteo);
             pnlMenu.Controls.Add(btnInicio);
             pnlMenu.Controls.Add(lblSubtitulo2);
             pnlMenu.Controls.Add(lblSubtitulo);
@@ -196,50 +174,6 @@
             pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox11.TabIndex = 13;
             pictureBox11.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            pictureBox10.BackColor = Color.Transparent;
-            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(12, 417);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(25, 29);
-            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox10.TabIndex = 12;
-            pictureBox10.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            pictureBox9.BackColor = Color.Transparent;
-            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(12, 352);
-            pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(25, 29);
-            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox9.TabIndex = 11;
-            pictureBox9.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            pictureBox8.BackColor = Color.Transparent;
-            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(12, 287);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(25, 29);
-            pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox8.TabIndex = 10;
-            pictureBox8.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            pictureBox7.BackColor = Color.Transparent;
-            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(12, 220);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(25, 29);
-            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox7.TabIndex = 9;
-            pictureBox7.TabStop = false;
             // 
             // pictureBox6
             // 
@@ -267,70 +201,6 @@
             btnConfiguracion.Text = "Configuración";
             btnConfiguracion.TextAlign = ContentAlignment.BottomLeft;
             btnConfiguracion.UseVisualStyleBackColor = true;
-            // 
-            // btnExportacion
-            // 
-            btnExportacion.FlatAppearance.BorderSize = 0;
-            btnExportacion.FlatAppearance.MouseDownBackColor = Color.LightBlue;
-            btnExportacion.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            btnExportacion.FlatStyle = FlatStyle.Flat;
-            btnExportacion.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExportacion.ForeColor = Color.White;
-            btnExportacion.Location = new Point(43, 401);
-            btnExportacion.Name = "btnExportacion";
-            btnExportacion.Size = new Size(187, 45);
-            btnExportacion.TabIndex = 7;
-            btnExportacion.Text = "Exportación";
-            btnExportacion.TextAlign = ContentAlignment.BottomLeft;
-            btnExportacion.UseVisualStyleBackColor = true;
-            // 
-            // btnConvocatorias
-            // 
-            btnConvocatorias.FlatAppearance.BorderSize = 0;
-            btnConvocatorias.FlatAppearance.MouseDownBackColor = Color.LightBlue;
-            btnConvocatorias.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            btnConvocatorias.FlatStyle = FlatStyle.Flat;
-            btnConvocatorias.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConvocatorias.ForeColor = Color.White;
-            btnConvocatorias.Location = new Point(43, 204);
-            btnConvocatorias.Name = "btnConvocatorias";
-            btnConvocatorias.Size = new Size(187, 45);
-            btnConvocatorias.TabIndex = 6;
-            btnConvocatorias.Text = "Convocatorias\r\n";
-            btnConvocatorias.TextAlign = ContentAlignment.BottomLeft;
-            btnConvocatorias.UseVisualStyleBackColor = true;
-            // 
-            // btnEmision
-            // 
-            btnEmision.FlatAppearance.BorderSize = 0;
-            btnEmision.FlatAppearance.MouseDownBackColor = Color.LightBlue;
-            btnEmision.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            btnEmision.FlatStyle = FlatStyle.Flat;
-            btnEmision.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEmision.ForeColor = Color.White;
-            btnEmision.Location = new Point(43, 271);
-            btnEmision.Name = "btnEmision";
-            btnEmision.Size = new Size(187, 45);
-            btnEmision.TabIndex = 5;
-            btnEmision.Text = "Emision de Voto";
-            btnEmision.TextAlign = ContentAlignment.BottomLeft;
-            btnEmision.UseVisualStyleBackColor = true;
-            // 
-            // btnConteo
-            // 
-            btnConteo.FlatAppearance.BorderSize = 0;
-            btnConteo.FlatAppearance.MouseDownBackColor = Color.LightBlue;
-            btnConteo.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            btnConteo.FlatStyle = FlatStyle.Flat;
-            btnConteo.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConteo.ForeColor = Color.White;
-            btnConteo.Location = new Point(43, 336);
-            btnConteo.Name = "btnConteo";
-            btnConteo.Size = new Size(187, 45);
-            btnConteo.TabIndex = 4;
-            btnConteo.Text = "Conteo y resultados";
-            btnConteo.TextAlign = ContentAlignment.BottomLeft;
-            btnConteo.UseVisualStyleBackColor = true;
             // 
             // btnInicio
             // 
@@ -466,10 +336,8 @@
             pnlFiltros.Controls.Add(btnVistaCarrera);
             pnlFiltros.Controls.Add(btnGeneral);
             pnlFiltros.Controls.Add(lblTipoVista);
-            pnlFiltros.Controls.Add(cmbSemestre);
-            pnlFiltros.Controls.Add(lblSemestre);
-            pnlFiltros.Controls.Add(lblGrupo);
             pnlFiltros.Controls.Add(cmbGrupo);
+            pnlFiltros.Controls.Add(lblGrupo);
             pnlFiltros.Controls.Add(lblCarrera);
             pnlFiltros.Controls.Add(cmbCarrera);
             pnlFiltros.Controls.Add(lblCentro);
@@ -501,7 +369,7 @@
             btnVistaCentro.FlatStyle = FlatStyle.Flat;
             btnVistaCentro.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold);
             btnVistaCentro.ForeColor = Color.FromArgb(30, 50, 80);
-            btnVistaCentro.Location = new Point(374, 280);
+            btnVistaCentro.Location = new Point(374, 253);
             btnVistaCentro.Name = "btnVistaCentro";
             btnVistaCentro.Size = new Size(85, 32);
             btnVistaCentro.TabIndex = 8;
@@ -518,11 +386,11 @@
             btnVistaGrupo.FlatStyle = FlatStyle.Flat;
             btnVistaGrupo.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold);
             btnVistaGrupo.ForeColor = Color.FromArgb(30, 50, 80);
-            btnVistaGrupo.Location = new Point(215, 280);
+            btnVistaGrupo.Location = new Point(255, 253);
             btnVistaGrupo.Name = "btnVistaGrupo";
-            btnVistaGrupo.Size = new Size(144, 32);
+            btnVistaGrupo.Size = new Size(85, 32);
             btnVistaGrupo.TabIndex = 11;
-            btnVistaGrupo.Text = "Semestre y Grupo";
+            btnVistaGrupo.Text = "Grupo";
             btnVistaGrupo.UseVisualStyleBackColor = false;
             // 
             // btnVistaCarrera
@@ -535,7 +403,7 @@
             btnVistaCarrera.FlatStyle = FlatStyle.Flat;
             btnVistaCarrera.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold);
             btnVistaCarrera.ForeColor = Color.FromArgb(30, 50, 80);
-            btnVistaCarrera.Location = new Point(120, 280);
+            btnVistaCarrera.Location = new Point(138, 253);
             btnVistaCarrera.Name = "btnVistaCarrera";
             btnVistaCarrera.Size = new Size(85, 32);
             btnVistaCarrera.TabIndex = 10;
@@ -552,7 +420,7 @@
             btnGeneral.FlatStyle = FlatStyle.Flat;
             btnGeneral.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold);
             btnGeneral.ForeColor = Color.FromArgb(30, 50, 80);
-            btnGeneral.Location = new Point(25, 280);
+            btnGeneral.Location = new Point(25, 253);
             btnGeneral.Name = "btnGeneral";
             btnGeneral.Size = new Size(85, 32);
             btnGeneral.TabIndex = 7;
@@ -564,55 +432,32 @@
             lblTipoVista.AutoSize = true;
             lblTipoVista.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTipoVista.ForeColor = Color.FromArgb(30, 50, 80);
-            lblTipoVista.Location = new Point(25, 250);
+            lblTipoVista.Location = new Point(25, 223);
             lblTipoVista.Name = "lblTipoVista";
             lblTipoVista.Size = new Size(101, 20);
             lblTipoVista.TabIndex = 9;
             lblTipoVista.Text = "Tipo de Vista:";
-            // 
-            // cmbSemestre
-            // 
-            cmbSemestre.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbSemestre.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cmbSemestre.FormattingEnabled = true;
-            cmbSemestre.Items.AddRange(new object[] { "A", "B", "C", "D" });
-            cmbSemestre.Location = new Point(180, 200);
-            cmbSemestre.Name = "cmbSemestre";
-            cmbSemestre.Size = new Size(270, 31);
-            cmbSemestre.TabIndex = 8;
-            // 
-            // lblSemestre
-            // 
-            lblSemestre.AutoSize = true;
-            lblSemestre.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSemestre.ForeColor = Color.FromArgb(30, 50, 80);
-            lblSemestre.Location = new Point(20, 160);
-            lblSemestre.Name = "lblSemestre";
-            lblSemestre.Size = new Size(75, 20);
-            lblSemestre.TabIndex = 7;
-            lblSemestre.Text = "Semestre:";
-            // 
-            // lblGrupo
-            // 
-            lblGrupo.AutoSize = true;
-            lblGrupo.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblGrupo.ForeColor = Color.FromArgb(30, 50, 80);
-            lblGrupo.Location = new Point(20, 205);
-            lblGrupo.Name = "lblGrupo";
-            lblGrupo.Size = new Size(56, 20);
-            lblGrupo.TabIndex = 6;
-            lblGrupo.Text = "Grupo:";
             // 
             // cmbGrupo
             // 
             cmbGrupo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGrupo.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbGrupo.FormattingEnabled = true;
-            cmbGrupo.Items.AddRange(new object[] { "", "1°", "2°", "3°", "4°", "5°", "6°", "7°", "8°", "9°", "10°" });
             cmbGrupo.Location = new Point(180, 155);
             cmbGrupo.Name = "cmbGrupo";
             cmbGrupo.Size = new Size(270, 31);
-            cmbGrupo.TabIndex = 5;
+            cmbGrupo.TabIndex = 8;
+            // 
+            // lblGrupo
+            // 
+            lblGrupo.AutoSize = true;
+            lblGrupo.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblGrupo.ForeColor = Color.FromArgb(30, 50, 80);
+            lblGrupo.Location = new Point(20, 160);
+            lblGrupo.Name = "lblGrupo";
+            lblGrupo.Size = new Size(56, 20);
+            lblGrupo.TabIndex = 6;
+            lblGrupo.Text = "Grupo:";
             // 
             // lblCarrera
             // 
@@ -948,32 +793,32 @@
             dgvResultados.AllowUserToDeleteRows = false;
             dgvResultados.AllowUserToResizeColumns = false;
             dgvResultados.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(249, 250, 252);
-            dgvResultados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(249, 250, 252);
+            dgvResultados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvResultados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvResultados.BackgroundColor = Color.White;
             dgvResultados.BorderStyle = BorderStyle.None;
             dgvResultados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(241, 245, 249);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(30, 50, 80);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(241, 245, 249);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(30, 50, 80);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(241, 245, 249);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(30, 50, 80);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(241, 245, 249);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(30, 50, 80);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvResultados.ColumnHeadersHeight = 34;
             dgvResultados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvResultados.Columns.AddRange(new DataGridViewColumn[] { colCandidato, colVotos, colPorcentaje });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(55, 65, 80);
-            dataGridViewCellStyle6.Padding = new Padding(5, 0, 5, 0);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(228, 235, 244);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(30, 50, 80);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvResultados.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(55, 65, 80);
+            dataGridViewCellStyle3.Padding = new Padding(5, 0, 5, 0);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(228, 235, 244);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(30, 50, 80);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvResultados.DefaultCellStyle = dataGridViewCellStyle3;
             dgvResultados.EnableHeadersVisualStyles = false;
             dgvResultados.GridColor = Color.FromArgb(225, 230, 238);
             dgvResultados.Location = new Point(20, 48);
@@ -1332,10 +1177,6 @@
             pnlMenu.ResumeLayout(false);
             pnlMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             pnlFiltros.ResumeLayout(false);
             pnlFiltros.PerformLayout();
@@ -1387,10 +1228,6 @@
         private Label lblSubtitulo;
         private Button btnInicio;
         private Button btnConfiguracion;
-        private Button btnExportacion;
-        private Button btnConvocatorias;
-        private Button btnEmision;
-        private Button btnConteo;
         private Label lblTituloPrincipal;
         private Label lblDescripcion;
         private Button btnConsejo;
@@ -1400,12 +1237,10 @@
         private ComboBox cmbCentro;
         private Label lblTituloFiltros;
         private Label lblCentro;
-        private ComboBox cmbGrupo;
         private Label lblCarrera;
         private ComboBox cmbCarrera;
         private Label lblGrupo;
-        private ComboBox cmbSemestre;
-        private Label lblSemestre;
+        private ComboBox cmbGrupo;
         private Label lblTipoVista;
         private Button btnVistaCarrera;
         private Button btnGeneral;
@@ -1454,10 +1289,6 @@
         private ToolStripMenuItem itemExportarExcel;
         private PictureBox pictureBox5;
         private PictureBox pictureBox6;
-        private PictureBox pictureBox10;
-        private PictureBox pictureBox9;
-        private PictureBox pictureBox8;
-        private PictureBox pictureBox7;
         private PictureBox pictureBox11;
         private PictureBox pictureBox14;
         private PictureBox pictureBox13;

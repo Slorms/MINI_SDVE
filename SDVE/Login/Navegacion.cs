@@ -1,130 +1,250 @@
 ﻿using Login;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Votaciones;
+using System.Windows.Forms;
 
 namespace SDVE.Login
 {
-    public enum Rol { Alumno, Docente, Admin }
-
-    // Datos de quien acaba de entrar (por si los formularios de tus compañeros los necesitan)
-    public static class Sesion
+    public static class Navegacion
     {
-        public static Rol RolActual { get; set; }
-        public static string IdActual { get; set; } = "";
+        // El alumno recibe sus datos del padrón y pasa directamente a votaciones.
+        public static Func<Form> FormularioAlumno =
+            () => new global::Votaciones.Form1();
 
-        public static class Navegacion
+        public static Func<Form> FormularioDocente =
+            () => new global::Votaciones.Form1();
+
+        // Conserva aquí el destino de administrador de tu proyecto.
+        public static Func<Form> FormularioAdmin =
+            () => new SDVE.Forms.FrmExportaciones();
+
+        public static Form InstAlumno;
+        public static Form InstDocente;
+        public static Form InstAdmin;
+
+        public static void RegistrarLogin(Form formulario, Rol rol)
         {
-            // =====================================================================
-            //  AQUI SE CONECTAN LOS FORMULARIOS DE TUS COMPAÑEROS
-            //  Solo cambien "new FormPendiente(...)" por "new SuFormulario()"
-            // =====================================================================
-            public static Func<Form> FormularioAlumno = () => new Form1();
-        public static Func<Form> FormularioDocente = () => new Form1();
-        public static Func<Form> FormularioAdmin = () => new prueba();
-        // Ejemplo:  public static Func<Form> FormularioAdmin = () => new FrmConteo();
-        // =====================================================================
+            switch (rol)
+            {
+                case Rol.Alumno:
+                    InstAlumno = formulario;
+                    break;
 
-        // Instancias de los 3 logins (cada uno se registra solo al crearse)
-        public static Form? InstAlumno, InstDocente, InstAdmin;
+                case Rol.Docente:
+                    InstDocente = formulario;
+                    break;
 
-        public static void Registrar(Form f, Rol rol)
-        {
-            if (rol == Rol.Alumno) InstAlumno = f;
-            else if (rol == Rol.Docente) InstDocente = f;
-            else InstAdmin = f;
-            f.FormClosed += (s, e) => Application.Exit();   // cerrar con la X cierra todo
+                case Rol.Admin:
+                    InstAdmin = formulario;
+                    break;
+            }
+
+            formulario.FormClosed += (s, e) =>
+            {
+                Application.Exit();
+            };
         }
 
-        static Form ObtenerLogin(Rol rol)
+        private static Form ObtenerLogin(Rol rol)
         {
             switch (rol)
             {
                 case Rol.Alumno:
                     if (InstAlumno == null || InstAlumno.IsDisposed)
+                    {
                         InstAlumno = new FrmLogin();
+                    }
 
                     return InstAlumno;
 
                 case Rol.Docente:
                     if (InstDocente == null || InstDocente.IsDisposed)
+                    {
                         InstDocente = new LoginDocente();
+                    }
 
                     return InstDocente;
 
                 default:
                     if (InstAdmin == null || InstAdmin.IsDisposed)
+                    {
                         InstAdmin = new LoginAdmin();
+                    }
 
                     return InstAdmin;
             }
         }
 
-        // Cambia de un login a otro (botones Alumno / Docente / Administrador)
         public static void IrALogin(Form actual, Rol rol)
         {
             Form destino = ObtenerLogin(rol);
-            if (ReferenceEquals(destino, actual)) return;
+
+            if (ReferenceEquals(destino, actual))
+            {
+                return;
+            }
+
             destino.StartPosition = FormStartPosition.Manual;
             destino.Location = actual.Location;
+
             actual.Hide();
             destino.Show();
         }
 
-        // Despues de validar el ID/contraseña: abre el formulario del modulo
         public static void AbrirDestino(Form login, Rol rol)
         {
-            Func<Form> fabrica = rol == Rol.Alumno ? FormularioAlumno
-                               : rol == Rol.Docente ? FormularioDocente
-                               : FormularioAdmin;
+            Sesion.RolActual = rol;
+
+            Func<Form> fabrica;
+
+            switch (rol)
+            {
+                case Rol.Alumno:
+                    fabrica = FormularioAlumno;
+                    break;
+
+                case Rol.Docente:
+                    fabrica = FormularioDocente;
+                    break;
+
+                default:
+                    fabrica = FormularioAdmin;
+                    break;
+            }
+
             Form destino = fabrica();
-            destino.FormClosed += (s, e) => { if (!login.IsDisposed) login.Show(); };
+
+            destino.FormClosed += (s, e) =>
+            {
+                if (!login.IsDisposed)
+                {
+                    login.Show();
+                }
+            };
+
             login.Hide();
-            destino.Show();
+
+            try
+            {
+                destino.Show();
+            }
+            catch
+            {
+                destino.Dispose();
+
+                if (!login.IsDisposed)
+                {
+                    login.Show();
+                }
+
+                throw;
+            }
         }
 
-        // Hace que los 3 botones de rol funcionen (incluye los controles que tengan dentro)
-        public static void ConectarRoles(Form actual, Control pnlAlumno, Control pnlDocente, Control pnlAdmin)
+        // Abre el reporte final.
+        // Al cerrar el siguiente formulario, vuelve al anterior.
+        public static void Abrir(Form actual, Form siguiente)
         {
-            Enlazar(pnlAlumno, () => IrALogin(actual, Rol.Alumno));
-            Enlazar(pnlDocente, () => IrALogin(actual, Rol.Docente));
-            Enlazar(pnlAdmin, () => IrALogin(actual, Rol.Admin));
+            actual.Hide();
+
+            try
+            {
+                using (siguiente)
+                {
+                    siguiente.ShowDialog();
+                }
+            }
+            finally
+            {
+                if (!actual.IsDisposed)
+                {
+                    actual.Show();
+                }
+            }
         }
 
-        static void Enlazar(Control c, Action accion)
+        public static void ConectarRoles(
+            Form actual,
+            Control pnlAlumno,
+            Control pnlDocente,
+            Control pnlAdmin)
         {
-            c.Cursor = Cursors.Hand;
-            c.Click += (s, e) => accion();
-            foreach (Control hijo in c.Controls) Enlazar(hijo, accion);
+            Enlazar(
+                pnlAlumno,
+                () => IrALogin(actual, Rol.Alumno));
+
+            Enlazar(
+                pnlDocente,
+                () => IrALogin(actual, Rol.Docente));
+
+            Enlazar(
+                pnlAdmin,
+                () => IrALogin(actual, Rol.Admin));
+        }
+
+        private static void Enlazar(Control control, Action accion)
+        {
+            control.Cursor = Cursors.Hand;
+            control.Click += (s, e) => accion();
+
+            foreach (Control hijo in control.Controls)
+            {
+                Enlazar(hijo, accion);
+            }
         }
     }
 
     public static class Validacion
     {
-        // Solo deja escribir numeros y limita la longitud
         public static void LimitarADigitos(TextBox txt, int max)
         {
             txt.MaxLength = max;
+
             txt.KeyPress += (s, e) =>
             {
-                if (!char.IsControl(e.KeyChar) && (e.KeyChar < '0' || e.KeyChar > '9'))
+                if (!char.IsControl(e.KeyChar)
+                    && (e.KeyChar < '0' || e.KeyChar > '9'))
+                {
                     e.Handled = true;
+                }
             };
-            txt.TextChanged += (s, e) =>   // por si pegan texto con letras
+
+            txt.TextChanged += (s, e) =>
             {
-                string limpio = string.Concat(Array.FindAll(txt.Text.ToCharArray(), ch => ch >= '0' && ch <= '9'));
-                if (limpio != txt.Text) { txt.Text = limpio; txt.SelectionStart = txt.Text.Length; }
+                string limpio = string.Concat(
+                    Array.FindAll(
+                        txt.Text.ToCharArray(),
+                        ch => ch >= '0' && ch <= '9'));
+
+                if (limpio.Length > max)
+                {
+                    limpio = limpio.Substring(0, max);
+                }
+
+                if (limpio != txt.Text)
+                {
+                    txt.Text = limpio;
+                    txt.SelectionStart = txt.Text.Length;
+                }
             };
         }
 
         public static bool EsNumeroValido(string texto, int max)
         {
-            if (string.IsNullOrWhiteSpace(texto) || texto.Length > max) return false;
-            foreach (char c in texto) if (c < '0' || c > '9') return false;
+            if (string.IsNullOrWhiteSpace(texto)
+                || texto.Length > max)
+            {
+                return false;
+            }
+
+            foreach (char caracter in texto)
+            {
+                if (caracter < '0' || caracter > '9')
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
     }
-
 }
-
