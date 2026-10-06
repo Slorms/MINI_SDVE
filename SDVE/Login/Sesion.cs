@@ -18,6 +18,16 @@ namespace SDVE.Login
         public static string SemestreActual { get; set; } = "";
         public static string GrupoActual { get; set; } = "";
 
+        public static void Cerrar()
+        {
+            RolActual = Rol.Alumno;
+            IdActual = "";
+            CentroActual = "";
+            CarreraActual = "";
+            SemestreActual = "";
+            GrupoActual = "";
+        }
+
         public static void IniciarAlumno(Alumno alumno)
         {
             ArgumentNullException.ThrowIfNull(alumno);

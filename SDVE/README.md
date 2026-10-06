@@ -7,9 +7,9 @@ Aplicación C# Windows Forms para Windows con .NET 10. Abre `SDVE.slnx` en Visua
 1. Entra como **Alumno** con el ID `123459` (también están pendientes `123463` y `123467`).
 2. Haz clic en el botón **Sociedad de Alumnos**: queda azul y muestra **Seleccionada**. También puedes seleccionar dos o las tres convocatorias. Otro clic deselecciona el botón y descarta su papeleta pendiente.
 3. Pulsa **Enviar**. Se abren únicamente las papeletas seleccionadas, una por una. Elige un candidato oficial o escribe uno no registrado y pulsa **Guardar selección** en cada papeleta.
-4. Acepta la confirmación final. Se guardan únicamente las convocatorias seleccionadas y se abre el reporte final. Ningún voto se registra si una papeleta está incompleta o cancelas la confirmación.
-5. En Sociedad de Alumnos verás 55 participantes de 72, aproximadamente 76.4% de participación y 23.6% de abstencionismo. Las otras dos elecciones conservan 54 participantes y 75% de participación.
-6. Cierra el reporte y vuelve a ingresar con `123459`. Sociedad de Alumnos muestra **Ya participaste**; aún puedes votar en las otras dos elecciones.
+4. Acepta la confirmación final. Se guardan únicamente las convocatorias seleccionadas, aparece un aviso de éxito y vuelves al login. El reporte y las exportaciones son exclusivos del administrador. Ningún voto se registra si una papeleta está incompleta o cancelas la confirmación.
+5. Entra como administrador para comprobar los resultados. En Sociedad de Alumnos verás 55 participantes de 72, aproximadamente 76.4% de participación y 23.6% de abstencionismo. Las otras dos elecciones conservan 54 participantes y 75% de participación.
+6. Cierra el reporte y vuelve a ingresar como alumno con `123459`. Sociedad de Alumnos muestra **Ya participaste**; aún puedes votar en las otras dos elecciones.
 7. Cierra y vuelve a ejecutar: los resultados confirmados se conservan en CSV.
 8. Para probar cancelación, entra con `123463`, selecciona dos convocatorias y pulsa **Enviar**. Completa la primera papeleta y cancela la segunda. Regresas a Form1 con las selecciones pendientes; pulsa **Cancelar** y acepta descartar. No cambian los votos ni la participación.
 

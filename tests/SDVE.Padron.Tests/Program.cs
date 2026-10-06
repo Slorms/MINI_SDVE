@@ -52,6 +52,17 @@ void ProbarPadronYSesion()
     Comprobar(RegistroAlumnos.BuscarPorId("999999") == null, "Se aceptó un ID desconocido.");
     Comprobar(RegistroAlumnos.ObtenerTodos().Count == 72, "La búsqueda creó un alumno.");
     Comprobar(File.ReadAllBytes(rutaPadron).SequenceEqual(padronOriginal), "La consulta o el inicio de sesión modificó alumnos.csv.");
+
+    Sesion.Cerrar();
+    Comprobar(Sesion.RolActual == Rol.Alumno && Sesion.IdActual == ""
+        && Sesion.CentroActual == "" && Sesion.CarreraActual == ""
+        && Sesion.GrupoActual == "" && Sesion.SemestreActual == "",
+        "Cerrar sesión dejó datos del alumno activos.");
+    Sesion.RolActual = Rol.Admin;
+    Sesion.IdActual = "admin";
+    Sesion.Cerrar();
+    Comprobar(Sesion.RolActual != Rol.Admin && Sesion.IdActual == "",
+        "Cerrar sesión conservó el acceso de administrador.");
 }
 
 void ProbarConteoYAgrupacion()

@@ -123,8 +123,8 @@ public partial class Form1 : Form
             MessageBox.Show(ex.Message, "No se pudo confirmar la votación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
-        MessageBox.Show("Tus votos se guardaron correctamente.", "Votación confirmada");
-        Navegacion.Abrir(this, new FrmExportaciones());
+        MessageBox.Show("Tus votos se guardaron correctamente. Volverás al inicio de sesión.",
+            "Votación confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         Close();
     }
 
