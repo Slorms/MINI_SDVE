@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using SDVE.Votaciones;
 using SDVE.Datos;
 using SDVE.Conteo;
+using SDVE.Login;
 
 namespace SDVE.Forms
 {
@@ -44,6 +45,10 @@ namespace SDVE.Forms
 
         public FrmExportaciones()
         {
+            if (System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime
+                && (Sesion.RolActual != Rol.Admin || Sesion.IdActual != "admin"))
+                throw new UnauthorizedAccessException("Solo el administrador puede consultar y exportar los resultados.");
+
             InitializeComponent();
             pictureBox15.Parent = button1;
             pictureBox17.Parent = btnConsejo;

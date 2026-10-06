@@ -13,7 +13,7 @@ namespace SDVE.Login
         public static Func<Form> FormularioDocente =
             () => new global::Votaciones.Form1();
 
-        // Conserva aquí el destino de administrador de tu proyecto.
+        // Los resultados y exportaciones están reservados al administrador.
         public static Func<Form> FormularioAdmin =
             () => new SDVE.Forms.FrmExportaciones();
 
@@ -115,6 +115,7 @@ namespace SDVE.Login
 
             destino.FormClosed += (s, e) =>
             {
+                Sesion.Cerrar();
                 if (!login.IsDisposed)
                 {
                     login.Show();
