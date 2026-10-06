@@ -1,8 +1,13 @@
-﻿using SDVE.Exportaciones;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
 using System.Text.Json;
 using System.Xml.Serialization;
+using SDVE.Votaciones;
+using SDVE.Datos;
+using SDVE.Conteo;
 
 namespace SDVE.Forms
 {
@@ -11,14 +16,16 @@ namespace SDVE.Forms
         // =========================================================
         // VARIABLES
         // =========================================================
-
-        private DatosResultados datosActuales;
         private bool hayResultados = false;
 
         private string convocatoriaSeleccionada = "Sociedad de Alumnos";
         private string tipoVistaSeleccionada = "General";
-
-        // Colores para la gráfica
+        private bool actualizandoFiltros;
+        private List<Alumno> alumnosPadron = new();
+        private SDVE.Conteo.ProcesadorVotos procesadorVotos =
+            new SDVE.Conteo.ProcesadorVotos();        // Colores para la gráfica
+        private List<SDVE.Conteo.ResultadoCandidato> resultadosConteoActuales =
+    new List<SDVE.Conteo.ResultadoCandidato>();
         private readonly Color[] coloresGrafica =
         {
             Color.FromArgb(45, 137, 220),
@@ -53,6 +60,7 @@ namespace SDVE.Forms
             ConfigurarFormulario();
             ConfigurarEventos();
             ConfigurarMenuExportacion();
+            ActualizarResultadosDeVotacion();
         }
         // =========================================================
         // CONFIGURACIÓN INICIAL
@@ -81,13 +89,22 @@ namespace SDVE.Forms
 
             pnlLeyenda.Resize += (s, e) =>
             {
-                if (hayResultados)
-                    CrearLeyenda();
+                if (hayResultados &&
+                    resultadosConteoActuales.Count > 0)
+                {
+                    CrearLeyendaConteo();
+                }
             };
-            // Dejar filtros vacíos al iniciar
-            cmbCentro.SelectedIndex = -1;
+            // La primera opción significa que no hay restricción para ese campo.
+            cmbCentro.Items.Clear();
+            cmbCentro.Items.Add("Todos");
+            cmbCentro.SelectedIndex = 0;
             cmbCarrera.Items.Clear();
-            cmbCarrera.SelectedIndex = -1;
+            cmbCarrera.Items.Add("Todas");
+            cmbCarrera.SelectedIndex = 0;
+            cmbGrupo.Items.Clear();
+            cmbGrupo.Items.Add("Todos");
+            cmbGrupo.SelectedIndex = 0;
         }
 
 
@@ -111,6 +128,8 @@ namespace SDVE.Forms
 
             // Filtros
             cmbCentro.SelectedIndexChanged += cmbCentro_SelectedIndexChanged;
+            cmbCarrera.SelectedIndexChanged += cmbCarrera_SelectedIndexChanged;
+            cmbGrupo.SelectedIndexChanged += cmbGrupo_SelectedIndexChanged;
 
             // Acciones
             btnProcesarResultados.Click += btnProcesarResultados_Click;
@@ -121,101 +140,88 @@ namespace SDVE.Forms
             // Gráfica
             pnlDona.Paint += pnlDona_Paint;
         }
-        private void cmbCentro_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbCentro_SelectedIndexChanged(object? sender, EventArgs e)
         {
-            cmbCarrera.Items.Clear();
-
-            if (cmbCentro.SelectedItem == null)
+            if (actualizandoFiltros)
                 return;
-
-            string centro = cmbCentro.SelectedItem.ToString();
-
-            switch (centro)
+            actualizandoFiltros = true;
+            try
             {
-                case "Centro de Ciencias Básicas":
-                    cmbCarrera.Items.AddRange(new object[]
-                    {
-                "Ingeniería Bioquímica",
-                "Ingeniería en Computación Inteligente",
-                "Ingeniería en Electrónica",
-                "Ingeniería en Sistemas Computacionales",
-                "Ingeniería Industrial Estadístico",
-                "Licenciatura en Biología",
-                "Licenciatura en Biotecnología",
-                "Licenciatura en Desarrollo de Videojuegos y Entornos Virtuales",
-                "Licenciatura en Informática y Tecnologías Computacionales",
-                "Licenciatura en Matemáticas Aplicadas",
-                "Químico Farmacéutico Biólogo"
-                    });
-                    break;
+                CargarCarreras();
+                CargarGrupos();
+            }
+            finally { actualizandoFiltros = false; }
+            ActualizarTipoVista();
+            ActualizarResultadosDeVotacion();
+        }
 
-                case "Centro de Ciencias Económicas y Administrativas":
-                    cmbCarrera.Items.AddRange(new object[]
-                    {
-                "Contador Público",
-                "Licenciatura en Administración de Empresas",
-                "Licenciatura en Administración de la Producción y Servicios",
-                "Licenciatura en Administración Financiera",
-                "Licenciatura en Comercio Internacional",
-                "Licenciatura en Economía",
-                "Licenciatura en Gestión Turística",
-                "Licenciatura en Mercadotecnia",
-                "Licenciatura en Relaciones Industriales"
-                    });
-                    break;
+        private void cmbCarrera_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (actualizandoFiltros)
+                return;
+            actualizandoFiltros = true;
+            try { CargarGrupos(); }
+            finally { actualizandoFiltros = false; }
+            ActualizarTipoVista();
+            ActualizarResultadosDeVotacion();
+        }
 
-                case "Centro de Ciencias Sociales y Humanidades":
-                    cmbCarrera.Items.AddRange(new object[]
-                    {
-                "Licenciatura en Asesoría Psicopedagógica",
-                "Licenciatura en Ciencias Políticas y Administración Pública",
-                "Licenciatura en Comunicación Corporativa Estratégica",
-                "Licenciatura en Comunicación e Información",
-                "Licenciatura en Derecho",
-                "Licenciatura en Docencia de Francés y Español como Lenguas Extranjeras",
-                "Licenciatura en Docencia del Idioma Inglés",
-                "Licenciatura en Filosofía",
-                "Licenciatura en Historia",
-                "Licenciatura en Psicología",
-                "Licenciatura en Sociología",
-                "Licenciatura en Trabajo Social"
-                    });
-                    break;
+        private void cmbGrupo_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (actualizandoFiltros)
+                return;
+            ActualizarTipoVista();
+            ActualizarResultadosDeVotacion();
+        }
 
-                case "Centro de Ciencias del Diseño y de la Construcción":
-                    cmbCarrera.Items.AddRange(new object[]
-                    {
-                "Ingeniería Civil",
-                "Licenciatura en Arquitectura",
-                "Licenciatura en Diseño de Interiores",
-                "Licenciatura en Diseño de Moda en Indumentaria y Textiles",
-                "Licenciatura en Diseño Gráfico",
-                "Licenciatura en Diseño Industrial",
-                "Licenciatura en Urbanismo"
-                    });
-                    break;
+        private static string? ValorFiltro(ComboBox control) =>
+            control.SelectedIndex <= 0 ? null : control.SelectedItem?.ToString();
 
-                case "Centro de Ciencias de la Salud":
-                    cmbCarrera.Items.AddRange(new object[]
-                    {
-                "Licenciatura en Cultura Física y Deporte",
-                "Licenciatura en Enfermería",
-                "Licenciatura en Nutrición",
-                "Licenciatura en Optometría",
-                "Licenciatura en Terapia Física",
-                "Médico Cirujano",
-                "Médico Estomatólogo"
-                    });
-                    break;
+        private static void LlenarFiltro(ComboBox control, string todos, IEnumerable<string> valores)
+        {
+            control.Items.Clear();
+            control.Items.Add(todos);
+            control.Items.AddRange(valores.Distinct().OrderBy(v => v).Cast<object>().ToArray());
+            control.SelectedIndex = 0;
+        }
 
-                case "Centro de Ciencias Agropecuarias":
-                    cmbCarrera.Items.AddRange(new object[]
-                    {
-                "Ingeniería en Agronomía",
-                "Ingeniería en Alimentos",
-                "Médico Veterinario Zootecnista"
-                    });
-                    break;
+        private void CargarCarreras()
+        {
+            string? centro = ValorFiltro(cmbCentro);
+            LlenarFiltro(cmbCarrera, "Todas", alumnosPadron
+                .Where(a => centro == null || a.Centro == centro).Select(a => a.Carrera));
+        }
+
+        private void CargarGrupos()
+        {
+            string? centro = ValorFiltro(cmbCentro);
+            string? carrera = ValorFiltro(cmbCarrera);
+            LlenarFiltro(cmbGrupo, "Todos", alumnosPadron
+                .Where(a => (centro == null || a.Centro == centro)
+                    && (carrera == null || a.Carrera == carrera)).Select(a => a.Grupo));
+        }
+
+        private void ActualizarTipoVista()
+        {
+            if (ValorFiltro(cmbGrupo) != null)
+            {
+                tipoVistaSeleccionada = "Grupo";
+                SeleccionarTipoVista(btnVistaGrupo);
+            }
+            else if (ValorFiltro(cmbCarrera) != null)
+            {
+                tipoVistaSeleccionada = "Carrera";
+                SeleccionarTipoVista(btnVistaCarrera);
+            }
+            else if (ValorFiltro(cmbCentro) != null)
+            {
+                tipoVistaSeleccionada = "Centro";
+                SeleccionarTipoVista(btnVistaCentro);
+            }
+            else
+            {
+                tipoVistaSeleccionada = "General";
+                SeleccionarTipoVista(btnGeneral);
             }
         }
 
@@ -228,18 +234,65 @@ namespace SDVE.Forms
         {
             convocatoriaSeleccionada = "Sociedad de Alumnos";
             SeleccionarConvocatoria(button1);
+            ActualizarResultadosDeVotacion();
         }
 
         private void btnConsejo_Click(object sender, EventArgs e)
         {
             convocatoriaSeleccionada = "Consejo Universitario";
             SeleccionarConvocatoria(btnConsejo);
+            ActualizarResultadosDeVotacion();
         }
 
         private void btnRepresentantes_Click(object sender, EventArgs e)
         {
             convocatoriaSeleccionada = "Consejo de Representantes";
             SeleccionarConvocatoria(btnRepresentantes);
+            ActualizarResultadosDeVotacion();
+        }
+
+        private bool ActualizarResultadosDeVotacion()
+        {
+            hayResultados = false;
+            try
+            {
+                if (alumnosPadron.Count == 0)
+                {
+                    alumnosPadron = RegistroAlumnos.ObtenerTodos();
+                    actualizandoFiltros = true;
+                    try
+                    {
+                        LlenarFiltro(cmbCentro, "Todos", alumnosPadron.Select(a => a.Centro));
+                        CargarCarreras();
+                        CargarGrupos();
+                    }
+                    finally { actualizandoFiltros = false; }
+                }
+                string? centro = ValorFiltro(cmbCentro);
+                string? carrera = ValorFiltro(cmbCarrera);
+                string? grupo = ValorFiltro(cmbGrupo);
+                CargarResultadosConteo(
+                    ConsultaResultados.ObtenerAlumnos(centro, carrera, grupo).Count,
+                    DatosVotacion.ObtenerResultados(convocatoriaSeleccionada, centro, carrera, grupo));
+                return hayResultados;
+            }
+            catch (Exception ex) when (ex is IOException || ex is InvalidDataException
+                || ex is UnauthorizedAccessException || ex is ArgumentException)
+            {
+                dgvResultados.Rows.Clear();
+                pnlLeyenda.Controls.Clear();
+                lblNumRegistro.Text = "--";
+                lblNumVotantes.Text = "--";
+                label3.Text = "--%";
+                label4.Text = "--%";
+                pnlDona.Invalidate();
+                MessageBox.Show(
+                    "No fue posible cargar los resultados.\n\n" + ex.Message,
+                    "Error al cargar resultados",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return false;
+            }
         }
 
 
@@ -284,26 +337,48 @@ namespace SDVE.Forms
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
+            actualizandoFiltros = true;
+            try
+            {
+                cmbCentro.SelectedIndex = 0;
+                CargarCarreras();
+                CargarGrupos();
+            }
+            finally { actualizandoFiltros = false; }
             tipoVistaSeleccionada = "General";
             SeleccionarTipoVista(btnGeneral);
+            ActualizarResultadosDeVotacion();
         }
 
         private void btnVistaCarrera_Click(object sender, EventArgs e)
         {
+            actualizandoFiltros = true;
+            try { cmbGrupo.SelectedIndex = 0; }
+            finally { actualizandoFiltros = false; }
             tipoVistaSeleccionada = "Carrera";
             SeleccionarTipoVista(btnVistaCarrera);
+            ActualizarResultadosDeVotacion();
         }
 
         private void btnVistaGrupo_Click(object sender, EventArgs e)
         {
-            tipoVistaSeleccionada = "Semestre y Grupo";
+            tipoVistaSeleccionada = "Grupo";
             SeleccionarTipoVista(btnVistaGrupo);
+            ActualizarResultadosDeVotacion();
         }
 
         private void btnVistaCentro_Click(object sender, EventArgs e)
         {
+            actualizandoFiltros = true;
+            try
+            {
+                cmbCarrera.SelectedIndex = 0;
+                CargarGrupos();
+            }
+            finally { actualizandoFiltros = false; }
             tipoVistaSeleccionada = "Centro";
             SeleccionarTipoVista(btnVistaCentro);
+            ActualizarResultadosDeVotacion();
         }
 
 
@@ -349,13 +424,13 @@ namespace SDVE.Forms
         // RECIBIR RESULTADOS
         // =========================================================
 
-        public void CargarResultados(
-            int alumnosRegistrados,
-            List<ResultadoCandidato> resultados)
+        internal void CargarResultadosConteo(
+    int alumnosRegistrados,
+    List<SDVE.Conteo.ResultadoCandidato> resultadosConteo)
         {
             try
             {
-                if (resultados == null)
+                if (resultadosConteo == null)
                 {
                     MessageBox.Show(
                         "No se recibieron resultados.",
@@ -366,14 +441,65 @@ namespace SDVE.Forms
                     return;
                 }
 
-                datosActuales =
-                    CalculosResultados.ProcesarResultados(
-                        alumnosRegistrados,
-                        resultados);
+                // Usamos el procesador del módulo de Conteo
+                resultadosConteoActuales =
+                    procesadorVotos.ContarVotos(resultadosConteo);
 
+                int totalVotos = 0;
+
+                foreach (SDVE.Conteo.ResultadoCandidato resultado
+                         in resultadosConteoActuales)
+                {
+                    totalVotos += resultado.Votos;
+                }
+
+                // Calcular estadísticas
+                SDVE.Conteo.Estadisticas estadisticas =
+                    procesadorVotos.CalcularEstadisticas(
+                        alumnosRegistrados,
+                        SDVE.Login.RegistroParticipacion.ContarAlumnos(
+                            convocatoriaSeleccionada, ConsultaResultados.ObtenerAlumnos(
+                                ValorFiltro(cmbCentro), ValorFiltro(cmbCarrera), ValorFiltro(cmbGrupo))));
+
+                // Tarjetas
+                lblNumRegistro.Text =
+                    estadisticas.Registrados.ToString();
+
+                lblNumVotantes.Text =
+                    estadisticas.Votantes.ToString();
+
+                label3.Text =
+                    estadisticas.Participacion.ToString("0.0") + "%";
+
+                label4.Text =
+                    estadisticas.Abstencionismo.ToString("0.0") + "%";
+
+                // Tabla
+                dgvResultados.Rows.Clear();
+
+                foreach (SDVE.Conteo.ResultadoCandidato resultado
+                         in resultadosConteoActuales)
+                {
+                    double porcentaje =
+                        procesadorVotos.CalcularPorcentaje(
+                            resultado.Votos,
+                            totalVotos);
+
+                    dgvResultados.Rows.Add(
+                        resultado.Candidato,
+                        resultado.Votos,
+                        porcentaje.ToString("0.0") + "%"
+                    );
+                }
+
+                dgvResultados.ClearSelection();
+
+                // Indicar que ya existen resultados
                 hayResultados = true;
 
-                PresentarResultados();
+                // Actualizar gráfica y leyenda
+                pnlDona.Invalidate();
+                CrearLeyendaConteo();
             }
             catch (Exception ex)
             {
@@ -385,63 +511,6 @@ namespace SDVE.Forms
                     MessageBoxIcon.Error);
             }
         }
-
-
-        // =========================================================
-        // PRESENTAR RESULTADOS
-        // =========================================================
-
-        private void PresentarResultados()
-        {
-            if (!hayResultados)
-                return;
-
-            // Estadísticas
-            lblNumRegistro.Text =
-                datosActuales.alumnosRegistrados.ToString();
-
-            lblNumVotantes.Text =
-                datosActuales.alumnosVotantes.ToString();
-
-            label3.Text =
-                datosActuales.participacion.ToString("0.0") + "%";
-
-            label4.Text =
-                datosActuales.abstencionismo.ToString("0.0") + "%";
-
-            PresentarTabla();
-
-            pnlDona.Invalidate();
-
-            CrearLeyenda();
-        }
-
-
-        // =========================================================
-        // TABLA DE RESULTADOS
-        // =========================================================
-
-        private void PresentarTabla()
-        {
-            dgvResultados.Rows.Clear();
-
-            if (datosActuales.candidatos == null)
-                return;
-
-            foreach (ResultadoCandidato candidato
-                     in datosActuales.candidatos)
-            {
-                dgvResultados.Rows.Add(
-                    candidato.candidato,
-                    candidato.votos,
-                    candidato.porcentaje.ToString("0.0") + "%"
-                );
-            }
-
-            dgvResultados.ClearSelection();
-        }
-
-
         // =========================================================
         // GRÁFICA DINÁMICA
         // =========================================================
@@ -451,18 +520,16 @@ namespace SDVE.Forms
             if (!hayResultados)
                 return;
 
-            if (datosActuales.candidatos == null)
-                return;
-
-            if (datosActuales.candidatos.Count == 0)
+            if (resultadosConteoActuales == null ||
+                resultadosConteoActuales.Count == 0)
                 return;
 
             int totalVotos = 0;
 
-            foreach (ResultadoCandidato candidato
-                     in datosActuales.candidatos)
+            foreach (SDVE.Conteo.ResultadoCandidato resultado
+                     in resultadosConteoActuales)
             {
-                totalVotos += candidato.votos;
+                totalVotos += resultado.Votos;
             }
 
             if (totalVotos <= 0)
@@ -470,7 +537,8 @@ namespace SDVE.Forms
 
             Graphics g = e.Graphics;
 
-            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.SmoothingMode =
+                SmoothingMode.AntiAlias;
 
             int margen = 8;
 
@@ -483,23 +551,24 @@ namespace SDVE.Forms
             if (tamaño <= 0)
                 return;
 
-            Rectangle rectangulo = new Rectangle(
-                (pnlDona.ClientSize.Width - tamaño) / 2,
-                (pnlDona.ClientSize.Height - tamaño) / 2,
-                tamaño,
-                tamaño);
+            Rectangle rectangulo =
+                new Rectangle(
+                    (pnlDona.ClientSize.Width - tamaño) / 2,
+                    (pnlDona.ClientSize.Height - tamaño) / 2,
+                    tamaño,
+                    tamaño);
 
             float anguloInicial = -90f;
 
             for (int i = 0;
-                 i < datosActuales.candidatos.Count;
+                 i < resultadosConteoActuales.Count;
                  i++)
             {
-                ResultadoCandidato candidato =
-                    datosActuales.candidatos[i];
+                SDVE.Conteo.ResultadoCandidato resultado =
+                    resultadosConteoActuales[i];
 
                 float angulo =
-                    (float)candidato.votos /
+                    (float)resultado.Votos /
                     totalVotos *
                     360f;
 
@@ -518,19 +587,20 @@ namespace SDVE.Forms
                 anguloInicial += angulo;
             }
 
-            // Agujero central para convertirla en gráfica de dona
+            // Centro blanco para convertirla en dona
             int tamañoCentro =
                 (int)(tamaño * 0.48);
 
-            Rectangle centro = new Rectangle(
-                rectangulo.X +
-                    (tamaño - tamañoCentro) / 2,
+            Rectangle centro =
+                new Rectangle(
+                    rectangulo.X +
+                        (tamaño - tamañoCentro) / 2,
 
-                rectangulo.Y +
-                    (tamaño - tamañoCentro) / 2,
+                    rectangulo.Y +
+                        (tamaño - tamañoCentro) / 2,
 
-                tamañoCentro,
-                tamañoCentro);
+                    tamañoCentro,
+                    tamañoCentro);
 
             using (SolidBrush brochaCentro =
                    new SolidBrush(Color.White))
@@ -541,29 +611,34 @@ namespace SDVE.Forms
             }
         }
 
-
         // =========================================================
         // LEYENDA DE LA GRÁFICA
         // =========================================================
 
-        private void CrearLeyenda()
+        private void CrearLeyendaConteo()
         {
             pnlLeyenda.Controls.Clear();
 
-            if (!hayResultados)
+            if (resultadosConteoActuales == null ||
+                resultadosConteoActuales.Count == 0)
                 return;
 
-            if (datosActuales.candidatos == null)
-                return;
+            int totalVotos = 0;
+
+            foreach (SDVE.Conteo.ResultadoCandidato resultado
+                     in resultadosConteoActuales)
+            {
+                totalVotos += resultado.Votos;
+            }
 
             int y = 5;
 
             for (int i = 0;
-                 i < datosActuales.candidatos.Count;
+                 i < resultadosConteoActuales.Count;
                  i++)
             {
-                ResultadoCandidato candidato =
-                    datosActuales.candidatos[i];
+                SDVE.Conteo.ResultadoCandidato resultado =
+                    resultadosConteoActuales[i];
 
                 Panel color = new Panel();
 
@@ -601,10 +676,15 @@ namespace SDVE.Forms
                 texto.ForeColor =
                     Color.FromArgb(50, 60, 75);
 
+                double porcentaje =
+                    procesadorVotos.CalcularPorcentaje(
+                        resultado.Votos,
+                        totalVotos);
+
                 texto.Text =
-                    candidato.candidato +
+                    resultado.Candidato +
                     Environment.NewLine +
-                    candidato.porcentaje.ToString("0.0") +
+                    porcentaje.ToString("0.0") +
                     "%";
 
                 pnlLeyenda.Controls.Add(color);
@@ -620,22 +700,11 @@ namespace SDVE.Forms
         // =========================================================
 
         private void btnProcesarResultados_Click(
-            object sender,
-            EventArgs e)
+     object sender,
+     EventArgs e)
         {
-            if (!hayResultados)
-            {
-                MessageBox.Show(
-                    "Todavía no se han recibido resultados " +
-                    "para procesar.",
-                    "Procesar resultados",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
+            if (!ActualizarResultadosDeVotacion())
                 return;
-            }
-
-            PresentarResultados();
 
             MessageBox.Show(
                 "Los resultados se procesaron correctamente.",
@@ -644,16 +713,17 @@ namespace SDVE.Forms
                 MessageBoxIcon.Information);
         }
 
-
         // =========================================================
         // DETALLE POR CANDIDATURA
         // =========================================================
 
         private void btnDetalleCandidatura_Click(
-            object sender,
-            EventArgs e)
+    object sender,
+    EventArgs e)
         {
-            if (!hayResultados)
+            if (!hayResultados ||
+                resultadosConteoActuales == null ||
+                resultadosConteoActuales.Count == 0)
             {
                 MessageBox.Show(
                     "No hay resultados disponibles.",
@@ -664,35 +734,34 @@ namespace SDVE.Forms
                 return;
             }
 
-            if (datosActuales.candidatos == null ||
-                datosActuales.candidatos.Count == 0)
-            {
-                MessageBox.Show(
-                    "No hay candidaturas para mostrar.",
-                    "Detalle por candidatura",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+            int totalVotos = 0;
 
-                return;
+            foreach (SDVE.Conteo.ResultadoCandidato resultado
+                     in resultadosConteoActuales)
+            {
+                totalVotos += resultado.Votos;
             }
 
             StringBuilder detalle =
                 new StringBuilder();
 
-            detalle.AppendLine(
-                convocatoriaSeleccionada);
-
+            detalle.AppendLine(convocatoriaSeleccionada);
             detalle.AppendLine();
 
-            foreach (ResultadoCandidato candidato
-                     in datosActuales.candidatos)
+            foreach (SDVE.Conteo.ResultadoCandidato resultado
+                     in resultadosConteoActuales)
             {
+                double porcentaje =
+                    procesadorVotos.CalcularPorcentaje(
+                        resultado.Votos,
+                        totalVotos);
+
                 detalle.AppendLine(
-                    candidato.candidato +
+                    resultado.Candidato +
                     ": " +
-                    candidato.votos +
+                    resultado.Votos +
                     " votos (" +
-                    candidato.porcentaje.ToString("0.0") +
+                    porcentaje.ToString("0.0") +
                     "%)");
             }
 
@@ -703,7 +772,6 @@ namespace SDVE.Forms
                 MessageBoxIcon.Information);
         }
 
-
         // =========================================================
         // PARTICIPACIÓN POR GRUPO
         // =========================================================
@@ -712,13 +780,40 @@ namespace SDVE.Forms
             object sender,
             EventArgs e)
         {
-            MessageBox.Show(
-                "La participación por grupo se mostrará " +
-                "cuando el módulo de emisión de voto proporcione " +
-                "los resultados agrupados por semestre y grupo.",
-                "Participación por grupo",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            if (!ActualizarResultadosDeVotacion())
+                return;
+
+            List<Estadisticas> grupos = ConsultaResultados.ObtenerParticipacionPorGrupo(
+                convocatoriaSeleccionada, ValorFiltro(cmbCentro), ValorFiltro(cmbCarrera), ValorFiltro(cmbGrupo));
+            var contenido = new StringBuilder();
+            contenido.AppendLine(convocatoriaSeleccionada);
+            contenido.AppendLine();
+            foreach (Estadisticas grupo in grupos)
+            {
+                contenido.AppendLine(grupo.Centro);
+                contenido.AppendLine(grupo.Carrera + " — Grupo " + grupo.Grupo);
+                contenido.AppendLine($"Registrados: {grupo.Registrados} | Votantes: {grupo.Votantes} | Abstenciones: {grupo.Abstenciones}");
+                contenido.AppendLine($"Participación: {grupo.Participacion:0.0}% | Abstencionismo: {grupo.Abstencionismo:0.0}%");
+                contenido.AppendLine();
+            }
+            if (grupos.Count == 0)
+                contenido.AppendLine("No hay alumnos del padrón con estos filtros.");
+
+            using var reporte = new Form
+            {
+                Text = "Participación por grupo",
+                StartPosition = FormStartPosition.CenterParent,
+                Size = new Size(900, 550)
+            };
+            reporte.Controls.Add(new TextBox
+            {
+                Multiline = true,
+                ReadOnly = true,
+                ScrollBars = ScrollBars.Vertical,
+                Dock = DockStyle.Fill,
+                Text = contenido.ToString()
+            });
+            reporte.ShowDialog(this);
         }
 
 
@@ -775,7 +870,9 @@ namespace SDVE.Forms
 
         private bool ValidarExportacion()
         {
-            if (!hayResultados)
+            if (!hayResultados ||
+                resultadosConteoActuales == null ||
+                resultadosConteoActuales.Count == 0)
             {
                 MessageBox.Show(
                     "Primero deben existir resultados " +
@@ -796,8 +893,8 @@ namespace SDVE.Forms
         // =========================================================
 
         private void ExportarCSV_Click(
-            object sender,
-            EventArgs e)
+     object sender,
+     EventArgs e)
         {
             try
             {
@@ -816,36 +913,61 @@ namespace SDVE.Forms
                     return;
                 }
 
-
                 StringBuilder contenido =
                     new StringBuilder();
 
                 contenido.AppendLine(
-                    "Candidato,Votos,Porcentaje");
+                    "Eleccion,Centro,Carrera,Grupo,Candidato,Registrado,Votos,Porcentaje");
 
-                foreach (ResultadoCandidato candidato
-                         in datosActuales.candidatos)
+                int totalVotos = 0;
+
+                foreach (SDVE.Conteo.ResultadoCandidato resultado
+                         in resultadosConteoActuales)
                 {
-                    string nombre =
-                        candidato.candidato
-                            .Replace("\"", "\"\"");
-
-                    contenido.AppendLine(
-                        "\"" +
-                        nombre +
-                        "\"," +
-                        candidato.votos +
-                        "," +
-                        candidato.porcentaje
-                            .ToString("0.00"));
+                    totalVotos += resultado.Votos;
                 }
 
+                foreach (SDVE.Conteo.ResultadoCandidato resultado
+                         in resultadosConteoActuales)
+                {
+                    double porcentaje =
+                        procesadorVotos.CalcularPorcentaje(
+                            resultado.Votos,
+                            totalVotos);
+
+                    string eleccion =
+                        resultado.Eleccion.Replace("\"", "\"\"");
+
+                    string centro =
+                        resultado.Centro.Replace("\"", "\"\"");
+
+                    string carrera =
+                        resultado.Carrera.Replace("\"", "\"\"");
+
+                    string grupo =
+                        resultado.Grupo.Replace("\"", "\"\"");
+
+                    string candidato =
+                        resultado.Candidato.Replace("\"", "\"\"");
+
+                    contenido.AppendLine(
+                        "\"" + eleccion + "\"," +
+                        "\"" + centro + "\"," +
+                        "\"" + carrera + "\"," +
+                        "\"" + grupo + "\"," +
+                        "\"" + candidato + "\"," +
+                        resultado.Registrado + "," +
+                        resultado.Votos + "," +
+                        porcentaje.ToString(
+                            "0.00",
+                            System.Globalization.CultureInfo.InvariantCulture)
+                    );
+                }
 
                 File.WriteAllText(
                     guardar.FileName,
                     contenido.ToString(),
                     Encoding.UTF8);
-
 
                 MessageBox.Show(
                     "El archivo CSV se exportó correctamente.",
@@ -859,14 +981,13 @@ namespace SDVE.Forms
             }
         }
 
-
         // =========================================================
         // EXPORTAR JSON
         // =========================================================
 
         private void ExportarJSON_Click(
-            object sender,
-            EventArgs e)
+     object sender,
+     EventArgs e)
         {
             try
             {
@@ -885,25 +1006,20 @@ namespace SDVE.Forms
                     return;
                 }
 
-
                 JsonSerializerOptions opciones =
                     new JsonSerializerOptions();
 
                 opciones.WriteIndented = true;
-                opciones.IncludeFields = true;
-
 
                 string json =
                     JsonSerializer.Serialize(
-                        datosActuales,
+                        resultadosConteoActuales,
                         opciones);
-
 
                 File.WriteAllText(
                     guardar.FileName,
                     json,
                     Encoding.UTF8);
-
 
                 MessageBox.Show(
                     "El archivo JSON se exportó correctamente.",
@@ -917,14 +1033,13 @@ namespace SDVE.Forms
             }
         }
 
-
         // =========================================================
         // EXPORTAR XML
         // =========================================================
 
         private void ExportarXML_Click(
-            object sender,
-            EventArgs e)
+     object sender,
+     EventArgs e)
         {
             try
             {
@@ -943,11 +1058,9 @@ namespace SDVE.Forms
                     return;
                 }
 
-
                 XmlSerializer serializador =
                     new XmlSerializer(
-                        typeof(DatosResultados));
-
+                        typeof(List<SDVE.Conteo.ResultadoCandidato>));
 
                 using (FileStream archivo =
                        new FileStream(
@@ -956,9 +1069,8 @@ namespace SDVE.Forms
                 {
                     serializador.Serialize(
                         archivo,
-                        datosActuales);
+                        resultadosConteoActuales);
                 }
-
 
                 MessageBox.Show(
                     "El archivo XML se exportó correctamente.",
@@ -1030,6 +1142,4 @@ namespace SDVE.Forms
 
     }
 }
-
-
 

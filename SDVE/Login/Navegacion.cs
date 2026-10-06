@@ -1,46 +1,27 @@
 using Login;
 using System;
 using System.Windows.Forms;
-using Votaciones;
 
 namespace SDVE.Login
 {
-    public enum Rol
-    {
-        Alumno,
-        Docente,
-        Admin
-    }
-
-    public static class Sesion
-    {
-        public static Rol RolActual { get; set; }
-        public static string IdActual { get; set; } = "";
-
-        public static string CentroActual { get; set; } = "";
-        public static string CarreraActual { get; set; } = "";
-        public static string SemestreActual { get; set; } = "";
-        public static string GrupoActual { get; set; } = "";
-    }
-
     public static class Navegacion
     {
-        // Alumno y docente primero seleccionan centro y carrera.
+        // El alumno recibe sus datos del padrón y pasa directamente a votaciones.
         public static Func<Form> FormularioAlumno =
-            () => new CCB();
+            () => new global::Votaciones.Form1();
 
         public static Func<Form> FormularioDocente =
-            () => new CCB();
+            () => new global::Votaciones.Form1();
 
-        // Destino que el equipo tiene actualmente en main.
+        // Conserva aquí el destino de administrador de tu proyecto.
         public static Func<Form> FormularioAdmin =
-            () => new prueba();
+            () => new SDVE.Forms.FrmExportaciones();
 
-        public static Form? InstAlumno;
-        public static Form? InstDocente;
-        public static Form? InstAdmin;
+        public static Form InstAlumno;
+        public static Form InstDocente;
+        public static Form InstAdmin;
 
-        public static void Registrar(Form formulario, Rol rol)
+        public static void RegistrarLogin(Form formulario, Rol rol)
         {
             switch (rol)
             {
@@ -159,6 +140,8 @@ namespace SDVE.Login
             }
         }
 
+        // Abre el reporte final.
+        // Al cerrar el siguiente formulario, vuelve al anterior.
         public static void Abrir(Form actual, Form siguiente)
         {
             actual.Hide();
@@ -176,21 +159,6 @@ namespace SDVE.Login
                 {
                     actual.Show();
                 }
-            }
-        }
-
-        public static void ConectarClick(
-            Control control,
-            EventHandler metodo)
-        {
-            control.Cursor = Cursors.Hand;
-
-            control.Click -= metodo;
-            control.Click += metodo;
-
-            foreach (Control hijo in control.Controls)
-            {
-                ConectarClick(hijo, metodo);
             }
         }
 

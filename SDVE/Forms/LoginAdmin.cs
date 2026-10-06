@@ -1,4 +1,11 @@
 ﻿using SDVE.Login;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Login
 {
@@ -10,7 +17,7 @@ namespace Login
         public LoginAdmin()
         {
             InitializeComponent();
-            Navegacion.Registrar(this, Rol.Admin);
+            Navegacion.RegistrarLogin(this, Rol.Admin);
 
             Navegacion.ConectarRoles(this, pnlAlumno, pnlDocente, pnlAdmin);
 

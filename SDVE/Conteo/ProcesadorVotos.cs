@@ -1,4 +1,9 @@
-﻿namespace SDVE.Conteo
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+
+namespace SDVE.Conteo
 {
     internal class ProcesadorVotos
     {
@@ -62,7 +67,7 @@
 
                 //calcula las estadisticas con el metodo CalcularEstadisticas
                 Estadisticas datos = CalcularEstadisticas(registrados, votantes);
-
+               
                 //asigna los datos de la agrupacion
                 datos.Eleccion = grupo.Key.Eleccion;
                 datos.Centro = grupo.Key.Centro;
@@ -76,14 +81,14 @@
 
         public List<ResultadoCandidato> ContarVotos(List<ResultadoCandidato> lista)
         {
-            if (lista == null)
+            if(lista == null)
             {
                 throw new ArgumentNullException(nameof(lista));
             }
             List<ResultadoCandidato> resultados = new List<ResultadoCandidato>();
 
             foreach (ResultadoCandidato dato in lista)
-            {
+            { 
                 if (dato.Votos < 0)
                 {
                     throw new ArgumentException("La cantidad de votos no puede ser negativa.");
@@ -93,7 +98,7 @@
 
                 foreach (ResultadoCandidato resultado in resultados)
                 {
-                    if (resultado.Eleccion == dato.Eleccion && resultado.Centro == dato.Centro && resultado.Carrera == dato.Carrera
+                    if (resultado.Eleccion == dato.Eleccion && resultado.Centro == dato.Centro && resultado.Carrera == dato.Carrera 
                         && resultado.Grupo == dato.Grupo && resultado.Candidato == dato.Candidato && resultado.Registrado == dato.Registrado)
                     {
                         encontrado = resultado;
@@ -156,7 +161,7 @@
             {
                 throw new ArgumentException("La cantidad de votos o el total de votos no es valida.");
             }
-
+            
             if (totalVotos == 0)
             {
                 return 0;

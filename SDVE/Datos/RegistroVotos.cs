@@ -1,43 +1,52 @@
-﻿namespace SDVE.Datos
+namespace SDVE.Datos
 {
+    using SDVE.Conteo;
+    using System.Text;
+
     internal class RegistroVotos
     {
         private static readonly string Ruta = Path.Combine(AppContext.BaseDirectory, "Datos", "votos.csv");
-        public static void RegistrarVoto(string eleccion, string centro, string carrera, string grupo, string candidato, bool registrado)
+        public static List<ResultadoCandidato> ObtenerVotos(string eleccion) =>
+            AlmacenElectoral.Leer(() => LeerSinBloqueo(eleccion));
+
+        internal static List<ResultadoCandidato> LeerSinBloqueo(string eleccion)
         {
-            string? carpeta = Path.GetDirectoryName(Ruta);
-            if (carpeta != null)
-                Directory.CreateDirectory(carpeta);
+            var votos = new List<ResultadoCandidato>();
+            if (!File.Exists(Ruta))
+                return votos;
 
-            bool archivoNuevo = !File.Exists(Ruta);
+            using var lector = new StreamReader(Ruta, Encoding.UTF8);
+            if (lector.ReadLine() != "Eleccion,Centro,Carrera,Grupo,Candidato,Registrado")
+                throw new InvalidDataException("El encabezado de votos.csv no es válido.");
 
-            using (StreamWriter archivo = new StreamWriter(Ruta, true))
+            string? linea;
+            while ((linea = lector.ReadLine()) != null)
             {
-                // agrega los encabezados solamente la primera vez
-                if (archivoNuevo)
+                if (string.IsNullOrWhiteSpace(linea))
+                    continue;
+
+                string[] campos = RegistroAlumnos.SepararCsv(linea);
+                if (campos.Length != 6 || !bool.TryParse(campos[5], out bool registrado)
+                    || !CatalogoElecciones.Nombres.Contains(campos[0]) || string.IsNullOrWhiteSpace(campos[4]))
+                    throw new InvalidDataException("votos.csv contiene una fila inválida.");
+
+                if (campos[0] != eleccion)
+                    continue;
+
+                votos.Add(new ResultadoCandidato
                 {
-                    archivo.WriteLine("Eleccion,Centro,Carrera,Grupo,Candidato,Registrado");
-                }
-
-                archivo.WriteLine(
-                    $"{Escapar(eleccion)}," +
-                    $"{Escapar(centro)}," +
-                    $"{Escapar(carrera)}," +
-                    $"{Escapar(grupo)}," +
-                    $"{Escapar(candidato)}," +
-                    $"{registrado}");
+                    Eleccion = campos[0],
+                    Centro = campos[1],
+                    Carrera = campos[2],
+                    Grupo = campos[3],
+                    Candidato = campos[4],
+                    Registrado = registrado,
+                    Votos = 1
+                });
             }
-        }
-        private static string Escapar(string texto)
-        {
-            // evita problemas con comas y comillas
-            if (texto.Contains("\""))
-                texto = texto.Replace("\"", "\"\"");
 
-            if (texto.Contains(",") || texto.Contains("\""))
-                texto = "\"" + texto + "\"";
-
-            return texto;
+            return votos;
         }
+
     }
 }

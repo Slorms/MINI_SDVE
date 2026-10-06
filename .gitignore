@@ -361,3 +361,32 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# SDVE: datos de prueba y recuperacion local
+# Salidas de compilación y publicación de .NET
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+
+# Configuración local de Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Temporales y respaldos locales
+*.tmp
+*.bak
+*.log
+SDVE/Datos/respaldo_simulacion_*/
+.recuperacion_transferencia_*/
+
+# Archivos de bloqueo y recuperación generados al votar
+**/Datos/electoral.lock
+**/Datos/confirmacion.pendiente
+**/Datos/*.csv.anterior
+**/Datos/*.csv.nueva
+**/Datos/*.csv.restaurado
+
+# Los CSV fuente de alumnos, participación, votos y catálogos se incluyen.

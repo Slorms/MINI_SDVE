@@ -1,6 +1,8 @@
 using SDVE.Datos;
 using SDVE.Login;
+using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 
 namespace Login
@@ -18,9 +20,8 @@ namespace Login
             Redondear(pnlAviso, 8);
 
             Redondear(btnIngresar, 8);
-            Redondear(btnMenu, 10);
 
-            Navegacion.Registrar(this, Rol.Alumno);
+            Navegacion.RegistrarLogin(this, Rol.Alumno);
 
             // Botones de rol (cambia los nombres si los tuyos son distintos)
             Navegacion.ConectarRoles(this, pnlAlumno, pnlDocente, pnlAdmin);
@@ -48,12 +49,34 @@ namespace Login
             }
 
             // busca al alumno en alumnos.csv
-            Alumno? alumno = RegistroAlumnos.BuscarPorId(id);
+            Alumno? alumno;
+            try
+            {
+                alumno = RegistroAlumnos.BuscarPorId(id);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "No se pudo leer el padrón",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            catch (InvalidDataException ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Padrón inválido",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
 
             if (alumno == null)
             {
                 MessageBox.Show(
-                    "El ID no está registrado como alumno.",
+                    "El ID ingresado no se encuentra registrado.",
                     "Alumno no encontrado",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -63,11 +86,22 @@ namespace Login
                 return;
             }
 
-            // revisa si ya ingresó anteriormente
-            if (RegistroVotantes.YaIngreso(Rol.Alumno, id))
+            // Permite regresar por las elecciones activas que todavía no completó.
+            bool sinPendientes;
+            try
+            {
+                sinPendientes = RegistroParticipacion.ObtenerPendientes(Rol.Alumno, id).Count == 0;
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidDataException)
+            {
+                MessageBox.Show(ex.Message, "No se pudo leer la participación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (sinPendientes)
             {
                 MessageBox.Show(
-                    "Este ID ya ingresó al sistema. No puede volver a entrar.",
+                    "No tienes convocatorias activas pendientes de votar.",
                     "Acceso denegado",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Stop);
@@ -77,15 +111,7 @@ namespace Login
             }
 
             // guarda los datos del alumno en la sesión
-            Sesion.RolActual = Rol.Alumno;
-            Sesion.IdActual = alumno.Id;
-            Sesion.CentroActual = alumno.Centro;
-            Sesion.CarreraActual = alumno.Carrera;
-            Sesion.SemestreActual = alumno.Semestre;
-            Sesion.GrupoActual = alumno.Grupo;
-
-            // registra que el alumno ingresó
-            RegistroVotantes.Registrar(Rol.Alumno, id);
+            Sesion.IniciarAlumno(alumno);
 
             txtId.Clear();
 

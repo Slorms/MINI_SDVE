@@ -1,4 +1,13 @@
-﻿using SDVE.Login;
+using SDVE.Login;
+using System;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using System.Windows.Forms;
 
 namespace Login
 {
@@ -7,7 +16,7 @@ namespace Login
         public LoginDocente()
         {
             InitializeComponent();
-            Navegacion.Registrar(this, Rol.Docente);
+            Navegacion.RegistrarLogin(this, Rol.Docente);
 
             Navegacion.ConectarRoles(this, pnlAlumno, pnlDocentes, pnlAdmin);
 
@@ -28,17 +37,31 @@ namespace Login
                 return;
             }
 
-            if (RegistroVotantes.YaIngreso(Rol.Docente, id))
+            bool sinPendientes;
+            try
             {
-                MessageBox.Show("Este ID ya ingresó al sistema. No puede volver a entrar.",
+                sinPendientes = RegistroParticipacion.ObtenerPendientes(Rol.Docente, id).Count == 0;
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidDataException)
+            {
+                MessageBox.Show(ex.Message, "No se pudo leer la participación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (sinPendientes)
+            {
+                MessageBox.Show("No tienes convocatorias activas pendientes de votar.",
                     "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtId.Clear();
                 return;
             }
 
-            RegistroVotantes.Registrar(Rol.Docente, id);
             Sesion.RolActual = Rol.Docente;
             Sesion.IdActual = id;
+            Sesion.CentroActual = "";
+            Sesion.CarreraActual = "";
+            Sesion.SemestreActual = "";
+            Sesion.GrupoActual = "";
             txtId.Clear();
             Navegacion.AbrirDestino(this, Rol.Docente);
         }

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -21,28 +21,28 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="Datos\alumnos.csv">
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Datos\alumnos.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
+    <None Update="Datos\votos.csv;Datos\participacion.csv">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+    <None Update="Datos\convocatorias.csv;Datos\candidatos.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Votaciones\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-
+  <!-- Crear los datos de prueba una vez, sin reemplazar votos reales al recompilar. -->
+  <Target Name="InicializarDatosElectorales" BeforeTargets="CopyFilesToOutputDirectory">
+    <Copy SourceFiles="Datos\votos.csv" DestinationFiles="$(OutDir)Datos\votos.csv" Condition="!Exists('$(OutDir)Datos\votos.csv')" />
+    <Copy SourceFiles="Datos\participacion.csv" DestinationFiles="$(OutDir)Datos\participacion.csv" Condition="!Exists('$(OutDir)Datos\participacion.csv') And !Exists('$(OutDir)Datos\votantes.csv')" />
+  </Target>
+  <Target Name="InicializarDatosPublicados" AfterTargets="Publish">
+    <Copy SourceFiles="Datos\votos.csv" DestinationFiles="$(PublishDir)Datos\votos.csv" Condition="!Exists('$(PublishDir)Datos\votos.csv')" />
+    <Copy SourceFiles="Datos\participacion.csv" DestinationFiles="$(PublishDir)Datos\participacion.csv" Condition="!Exists('$(PublishDir)Datos\participacion.csv')" />
+  </Target>
 </Project>
