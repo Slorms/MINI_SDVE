@@ -10,8 +10,14 @@ Los alumnos acceden únicamente con un ID del padrón predefinido. Los votos se 
 
 1. Instala el SDK .NET 10 en Windows y utiliza Visual Studio con soporte para ese SDK y desarrollo de escritorio .NET.
 2. Abre `SDVE.slnx` y ejecuta el proyecto `SDVE` con F5.
-3. Prueba un ID pendiente, como `123459`, `123463` o `123467`. Selecciona las convocatorias con sus botones y pulsa **Enviar** para completar las papeletas y confirmar. Después del aviso de éxito, vuelves al login.
-4. El reporte y las exportaciones son exclusivos del administrador. Entra con la clave de demostración `123456`.
+4. Prueba un ID pendiente. Selecciona las convocatorias con sus botones y pulsa **Enviar** para completar las papeletas y confirmar. Después del aviso de éxito, vuelves al login.
+Prueba de ID pendientes:
+123499
+123503
+123507
+123511
+123515
+6. El reporte y las exportaciones son exclusivos del administrador. Entra con la clave de demostración `123456`.
 
 Los datos incluidos son ficticios: 72 alumnos, 54 participantes por elección y 18 abstenciones. Los valores cambian conforme se realizan pruebas. Los CSV fuente están en `SDVE/Datos`; las copias que utiliza la aplicación están en `Datos` junto al ejecutable.
 
